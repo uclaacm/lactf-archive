@@ -1,0 +1,29 @@
+name: uuid hell
+author: burturt
+description: |-
+  UUIDs are the best! I love them (if you couldn't tell)!
+
+  Site: {{ link }}
+
+flag: lactf{uu1d_v3rs10n_1ch1_1s_n07_r4dn0m}
+
+provide:
+  - ./uuid-hell.zip
+
+containers:
+  server:
+    build: ./src
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports: [3500]
+    environment:
+      PORT: "3500"
+      FLAG: 'lactf{uu1d_v3rs10n_1ch1_1s_n07_r4dn0m}'
+
+      
+expose:
+  server:
+    - target: 3500
+      http: uuid-hell

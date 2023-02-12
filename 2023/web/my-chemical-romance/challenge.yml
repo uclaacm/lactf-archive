@@ -1,0 +1,23 @@
+name: my-chemical-romance
+author: bliutech
+description: |-
+  When I was... a young boy... I made a "My Chemical Romance" fanpage!
+
+  {{link}}
+
+flag: "lactf{d0nT_6r1nk_m3rCur1al_fr0m_8_f1aSk}"
+
+containers:
+  main:
+    build: .
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports:
+      - 8080
+
+expose:
+  main:
+    - target: 8080
+      http: my-chemical-romance

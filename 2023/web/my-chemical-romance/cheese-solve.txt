@@ -1,0 +1,5 @@
+hg clone https://my-chemical-romance.lac.tf test
+cd test
+hg log -f gerard_way2001.py
+hg backout -r 3ecb3a79e255
+grep lactf gerard_way2001.py

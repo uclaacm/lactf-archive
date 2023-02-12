@@ -1,0 +1,31 @@
+name: metaverse
+author: aplet123
+description: |-
+  Metaenter the metaverse and metapost about metathings. All you have to metado is metaregister for a metaaccount and you're good to metago.
+
+  {{link}}
+
+  You can metause our fancy new [metaadmin metabot](https://admin-bot.lac.tf/metaverse) to get the admin to metaview your metapost!
+
+flag: "lactf{please_metaget_me_out_of_here}"
+
+provide:
+  - ./index.js
+
+containers:
+  main:
+    build: .
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports:
+      - 8080
+    environment:
+      FLAG: "lactf{please_metaget_me_out_of_here}"
+      ADMINPW: fa68a7925976fdf39318aec59ba01965
+
+expose:
+  main:
+    - target: 8080
+      http: metaverse

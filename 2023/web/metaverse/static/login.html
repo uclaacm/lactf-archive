@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="/style.css" rel="stylesheet" />
+        <title>metaverse login</title>
+    </head>
+    <body>
+        <h1><span class="meta">meta</span>login</h1>
+        <form action="/login" method="POST">
+            <span class="meta">meta</span>username:<br />
+            <input type="text" name="username" /><br />
+            <span class="meta">meta</span>password:<br />
+            <input type="password" name="password" /><br />
+            <button><span class="meta">meta</span>submit</button>
+        </form>
+        <h1><span class="meta">meta</span>register</h1>
+        <form action="/register" method="POST">
+            <span class="meta">meta</span>username:<br />
+            <input type="text" name="username" /><br />
+            <span class="meta">meta</span>password:<br />
+            <input type="password" name="password" /><br />
+            <span class="meta">meta</span>display name (only shown to <span class="meta">meta</span>friends):<br />
+            <input type="text" name="displayName" /><br />
+            <button><span class="meta">meta</span>submit</button>
+        </form>
+        <script>
+            if (location.hash) {
+                const error = document.createElement("p");
+                error.innerText = decodeURIComponent(location.hash.slice(1));
+                error.classList.add("error");
+                document.body.insertAdjacentElement("afterbegin", error);
+            }
+        </script>
+    </body>
+</html>

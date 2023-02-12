@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bin not found</title>
+    <style type="text/css">
+        * {
+            color: white;
+        }
+        body {
+            background-color: #111111;
+        }
+        .chrome {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<h1>Unless you've got a time machine, this bin is no longer available.</h1>
+<p>HTTP 404 Not found</p>
+<p class="chrome">Chrome hides error pages less than 512 bytes. So you get to read this comment about this dumb behavior of Chrome.</p>
+<p class="chrome">Chrome hides error pages less than 512 bytes. So you get to read this comment about this dumb behavior of Chrome.</p>
+<p class="chrome">Chrome hides error pages less than 512 bytes. So you get to read this comment about this dumb behavior of Chrome.</p>
+<p class="chrome">Chrome hides error pages less than 512 bytes. So you get to read this comment about this dumb behavior of Chrome.</p>
+<p class="chrome">Chrome hides error pages less than 512 bytes. So you get to read this comment about this dumb behavior of Chrome.</p>
+</body>
+</html>

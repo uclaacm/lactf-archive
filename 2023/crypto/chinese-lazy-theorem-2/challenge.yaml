@@ -1,0 +1,26 @@
+name: chinese-lazy-theorem-2
+author: joshuazhu17
+description: |-
+  Ok I'm a little less lazy now but you're still not getting much from me.
+  
+  `{{nc}}`
+
+flag:
+  file: flag.txt
+
+provide:
+  - ./chinese-lazy-theorem-2.py
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+  - target: 5000
+    tcp: 31111

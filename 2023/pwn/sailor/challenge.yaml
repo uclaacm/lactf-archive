@@ -1,0 +1,23 @@
+name: sailor
+author: aplet123
+description: |-
+  Every sailor needs an anchor to keep them safe... oh, and a union to fight for their rights.
+  
+  `{{nc}}`
+flag:
+  file: ./flag.txt
+
+provide:
+  - ./dist.tar.gz
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+
+expose:
+  main:
+  - target: 5000
+    tcp: 31136

@@ -1,0 +1,9 @@
+name: ctfd-plus
+author: aplet123
+description: |-
+  CTFd is too insufferably slow. You know why? Because they use an SQL database that's bogged down by JOINs instead of a web scale database like MongoDB. MongoDB is web scale. You turn it on and it scales right up. You know what's more web scale though? Nothing. That's right, the throughput of /dev/null is off the charts. Behold, CTFd+, the first databaseless CTF platform. Can you get the flag for the only challenge?
+
+flag: "lactf{m4yb3_th3r3_1s_s0m3_m3r1t_t0_us1ng_4_db}"
+
+provide:
+  - ./ctfd_plus

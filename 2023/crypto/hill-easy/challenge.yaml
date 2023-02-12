@@ -1,0 +1,26 @@
+name: hill-easy
+author: sdsnow
+description: |-
+    I found a cool rock. Help me figure out what it says.
+
+    `{{nc}}`
+
+flag:
+  file: flag.txt
+
+provide:
+  - ./chall.py
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+  - target: 5000
+    tcp: 31140

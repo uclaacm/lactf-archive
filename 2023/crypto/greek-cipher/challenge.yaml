@@ -1,0 +1,11 @@
+name: greek cipher
+author: burturt
+description: |-
+    You think you've seen all of the "classic" ciphers? Instead of your standard cipher, I've created my own cipher: the monoalphagreek cipher!
+
+    Answer with just the flag in lowercase with symbols left in.
+
+flag: "lactf{i_guess_using_many_greek_characters_didn't_stop_you._well_played_i_must_say.congrats!}"
+
+provide:
+  - ./greek.txt

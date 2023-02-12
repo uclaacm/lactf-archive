@@ -1,0 +1,30 @@
+name: gatekeep
+author: bliutech
+description: |-
+  If I gaslight you enough, you won't be able to get my flag! :)
+  
+  `{{nc}}`
+
+  Note: The attached binary is the exact same as the one executing on the remote server.
+
+flag:
+  file: ./flag.txt
+
+provide:
+  - ./gatekeep.c
+  - ./gatekeep
+  - ./Dockerfile
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+  - target: 5000
+    tcp: 31121

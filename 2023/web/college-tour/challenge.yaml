@@ -1,0 +1,20 @@
+name: college-tour
+author: jerry
+description: |-
+  Welcome to UCLA! To explore the #1 public college, we have prepared a scavenger hunt for you to walk all around the beautiful campus.
+  
+  {{link}}
+
+flag: lactf{j03_4nd_j0S3phIn3_bRU1n_sAY_hi}
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 80
+
+expose:
+  main:
+    - target: 80
+      http: college-tour

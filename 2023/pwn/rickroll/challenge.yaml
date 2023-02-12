@@ -1,0 +1,28 @@
+name: rickroll
+author: aplet123
+description: |-
+  Make your own custom rickroll with my new rickroll program!
+  
+  `{{nc}}`
+
+flag:
+  file: ./flag.txt
+
+provide:
+  - ./rickroll
+  - ./rickroll.c
+  - ./Dockerfile
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+  - target: 5000
+    tcp: 31135

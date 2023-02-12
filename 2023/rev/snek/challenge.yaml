@@ -1,0 +1,28 @@
+name: snek
+author: aplet123
+description: |-
+  snek
+
+  `{{nc}}`
+
+  Note: Tested under the `python:3.10-slim-bullseye` docker image
+
+flag:
+  file: ./flag.txt
+
+provide:
+  - ./snek.py
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+  - target: 5000
+    tcp: 31133

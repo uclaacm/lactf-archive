@@ -1,0 +1,1 @@
+python3 -c 'print("a"*50)' | {{nc}}

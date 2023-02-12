@@ -1,0 +1,22 @@
+name: new-challenge
+author: arcblroth
+description: |-
+  @bliutech could you push an updated description for this challenge thx
+  
+  `git clone git://{{ host }}:{{ port }}/new-challenge.git`
+
+flag: "lactf{wh3n_th3_1mp0st3r_1s_5us}"
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 9418
+    environment:
+      FLAG: "lactf{wh3n_th3_1mp0st3r_1s_5us}"
+
+expose:
+  main:
+  - target: 9418
+    tcp: 31152

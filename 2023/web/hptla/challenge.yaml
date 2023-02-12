@@ -1,0 +1,31 @@
+name: hptla
+author: aplet123
+description: |-
+  I made a new hyper-productive todo list app that limits you to 12 characters per item so you can stop wasting time writing overly intricate todo lists!
+
+  Check it out here: {{link}}
+
+  [Admin Bot](https://admin-bot.lac.tf/hptla) (note: the `adminpw` cookie is HttpOnly and SameSite=Lax)
+
+flag: "lactf{s0_pr0duct1v3_y0u_c4n_3v3n_g3t_xss}"
+
+provide:
+  - ./index.js
+
+containers:
+  main:
+    build: .
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports:
+      - 8080
+    environment:
+      FLAG: "lactf{s0_pr0duct1v3_y0u_c4n_3v3n_g3t_xss}"
+      ADMINPW: bb2362448ae9ad82c1b2ff06f03a6d6e
+
+expose:
+  main:
+    - target: 8080
+      http: hptla

@@ -1,0 +1,9 @@
+name: a hacker's notes
+author: burturt
+description: |-
+  We managed to get ahold of a flash drive which we think contains the decryption keys for the ransomware that a hacker group tried to deploy on our computer network! However, it seems like the hacker encrypted the flash drive. We know that the organization uses passwords in the format hacker### (hacker + 3 digits) for their disks, but a much stronger encryption password once you login. Can you try to get access to their notes?
+
+flag: "lactf{S3cUr3_yOUR_C4cH3D_3nCRYP71On_P422woRD2}"
+
+provide:
+- 'hackers-drive.dd.zip'

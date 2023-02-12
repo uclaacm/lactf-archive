@@ -1,0 +1,3 @@
+# Solution
+1. First, who is the person in the photo? Some UCLA students may immediately recognize who he is, but you can also find his face on our speaker list at https://lactf.uclaacm.com, or noticing the ACM Computer Science T-shirt and finding the department professor list, and finding **Carey Nachenberg** as the person in the image on the UCLA Samueli School webpage.
+2. Now that we know who it is, taking in the hint, searching for something like "Carey Nachenburg Hike", we find out that an organization called Peaks and Professors led a hike with Carey to Skull Rock, the solution and the flag lactf{skull_rock}

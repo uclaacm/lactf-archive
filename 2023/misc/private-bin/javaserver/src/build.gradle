@@ -1,0 +1,57 @@
+plugins {
+    id 'java'
+}
+
+group 'github.scarsz'
+version '1.1.7'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url = "https://nexus.scarsz.me/content/groups/public/" }
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-jdk14:1.7.25'
+    compile 'com.h2database:h2:1.4.199'
+    compile 'com.sparkjava:spark-core:2.8.0'
+    compile 'com.sparkjava:spark-template-velocity:2.7.1'
+    compile 'org.apache.commons:commons-lang3:3.8.1'
+    compile 'com.google.code.gson:gson:2.8.5'
+    compile 'net.jodah:expiringmap:0.5.9'
+    compile 'github.scarsz:configuralize:1.3.1'
+    compile 'org.jline:jline:3.12.1'
+
+    // for uploading
+    compile 'commons-io:commons-io:2.6'
+    compile 'com.github.kevinsawicki:http-request:6.0'
+}
+
+jar {
+    from {
+        configurations.runtime.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    } {
+        // exclude meta-inf signatures
+        exclude "META-INF/*.SF"
+        exclude "META-INF/*.DSA"
+        exclude "META-INF/*.RSA"
+    }
+
+    // remove duplicate classes if introduced
+    jar.duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    manifest {
+        attributes 'Implementation-Title': 'Bin',
+                'Implementation-Version': version,
+                'Main-Class': 'github.scarsz.bin.main.Main'
+    }
+
+    baseName = 'Bin'
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

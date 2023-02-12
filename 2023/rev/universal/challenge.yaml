@@ -1,0 +1,9 @@
+name: universal
+author: aplet123
+description: |-
+  3 billion devices run Java...so I guess 3 billion devices can get the flag.
+
+flag: "lactf{1_d0nt_see_3_b1ll10n_s0lv3s_y3t}"
+
+provide:
+  - ./FlagChecker.class

@@ -1,0 +1,9 @@
+name: discord l34k
+author: burturt
+description: |
+  My friend sent me [this](https://discord.com/channels/1060030874722259057/1060030875187822724/1060031064669700186) message link that apparently links to a "flag", but discord says "You don't have access to this link"! They did mention something about them being able to embed a list of online users on their own website, and sent me this image. Can you figure out how to join the server?
+
+  Note: Discord phone verification is NOT required for this challenge.
+provide:
+  - embed.png
+flag: lactf{D15C0rD_W1D6375_134K_1NV1735}

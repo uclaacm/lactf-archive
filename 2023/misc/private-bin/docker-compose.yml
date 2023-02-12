@@ -1,0 +1,13 @@
+services:
+  javaserver:
+    build: javaserver/
+    restart: always
+    ports:
+      - "6122:6122"
+  nginxserver:
+    build: nginxserver/
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - javaserver

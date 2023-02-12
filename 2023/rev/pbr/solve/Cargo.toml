@@ -1,0 +1,7 @@
+[package]
+name = "solve"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+glam = { version = "0.22.0", features = ["bytemuck"] }

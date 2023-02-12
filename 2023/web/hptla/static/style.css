@@ -1,0 +1,103 @@
+:root {
+    --bg1: #dcedc8;
+    --bg2: #f0f4c3;
+    --stripe-width: 80px;
+    --primary: #004d40;
+    --accent: #90caf9;
+    --accent-shade: #64b5f6;
+    --error: #c62828;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    background: repeating-linear-gradient(
+        45deg,
+        var(--bg1),
+        var(--bg1) var(--stripe-width),
+        var(--bg2) var(--stripe-width),
+        var(--bg2) calc(var(--stripe-width) * 2)
+    );
+}
+
+p, h1, textarea, button, ul {
+    color: var(--primary);
+    font-family: "JetBrains Mono", "Cascadia Code", "Fira Code", monospace;
+    text-align: center;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+p, li {
+    font-size: 24px;
+}
+
+.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+}
+
+textarea, button {
+    border-radius: 10px;
+}
+
+textarea {
+    width: 200px;
+    background-color: #00000010;    
+    border: 2px solid var(--primary);
+    resize: vertical;
+    min-height: 200px;
+    max-height: 500px;
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+textarea:hover, textarea:focus {
+    background-color: #00000020;
+}
+
+button {
+    padding: 5px 7px;
+    border: 2px solid var(--primary);
+    background-color: var(--accent);
+    width: 150px;
+    cursor: pointer;
+}
+
+button:hover, button:focus {
+    background-color: var(--accent-shade);
+}
+
+.hidden {
+    display: none;
+}
+
+ul {
+    list-style: none;
+}
+
+input[type=checkbox] {
+    margin-right: 20px;
+}
+
+input[type=checkbox]:checked ~ label {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+input[type=checkbox], label {
+    cursor: pointer;
+    user-select: none;
+}
+
+#error {
+    color: var(--error);
+}

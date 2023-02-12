@@ -1,0 +1,27 @@
+name: pycjail
+author: aplet123
+description: |-
+  All of you think you're so cute with your fancy little sandbox bypasses, but jokes on you I've started filtering the bytecode! I'd like to see you bypass this!
+  
+  `{{nc}}`
+
+  Note: The program is being run in the `python:3.10-slim-bullseye` Docker image on the server.
+flag:
+  file: ./flag.txt
+
+provide:
+  - ./main.py
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+  - target: 5000
+    tcp: 31130

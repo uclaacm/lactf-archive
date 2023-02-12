@@ -1,0 +1,13 @@
+The clues are hidden in:
+1. HTML comment
+    - j03_4
+2. image alt text
+    - nd_j0
+3. css unused class font-family
+    - S3phI
+4. PDF name
+    - n3_bR
+5. cookie value
+    - U1n_s
+6. javascript code that is never executed
+    - AY_hi

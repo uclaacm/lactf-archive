@@ -1,0 +1,15 @@
+[package]
+name = "lactf2023-pbr-shaders"
+authors = [
+    "ACM Cyber at UCLA <uclacyber@gmail.com>",
+    "Psi Beta Rho <psibetarho@gmail.com>",
+    "Arc-blroth <45273859+Arc-blroth@users.noreply.github.com>",
+]
+version = "4.20.69"
+edition = "2021"
+
+[lib]
+crate-type = ["lib", "dylib"]
+
+[dependencies]
+spirv-std = { version = "0.5", features = ["glam"] }

@@ -1,0 +1,26 @@
+name: chinese-lazy-theorem-1
+author: joshuazhu17
+description: |-
+  I heard about this cool theorem called the Chinese Remainder Theorem, but, uh... I'm feeling kinda tired right now.
+  
+  `{{nc}}`
+
+flag:
+  file: flag.txt
+
+provide:
+  - ./chinese-lazy-theorem-1.py
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+  - target: 5000
+    tcp: 31110

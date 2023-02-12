@@ -1,0 +1,31 @@
+name: california-state-police
+author: aplet123
+description: |-
+  Stop! You're under arrest for making suggestive 3 letter acronyms!
+
+  {{link}}
+
+  [Admin Bot](https://admin-bot.lac.tf/california-state-police) (note: the `adminpw` cookie is HttpOnly and SameSite=Lax)
+
+flag: "lactf{m4yb3_g1v1ng_fr33_xss_1s_jus7_4_b4d_1d3a}"
+
+provide:
+  - ./index.js
+
+containers:
+  main:
+    build: .
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports:
+      - 8080
+    environment:
+      FLAG: "lactf{m4yb3_g1v1ng_fr33_xss_1s_jus7_4_b4d_1d3a}"
+      ADMINPW: 9b4b8557bda4e9a8847300e052a9c1d3
+
+expose:
+  main:
+    - target: 8080
+      http: california-state-police

@@ -1,0 +1,44 @@
+#!/bin/bash
+
+set -e
+
+declare -A LACTF_CHALL_WRITERS
+LACTF_CHALL_WRITERS["Aplet123"]="aplet@lac.tf"
+LACTF_CHALL_WRITERS["alec"]="burturt@lac.tf"
+LACTF_CHALL_WRITERS["Alexander Zhang"]="alex@lac.tf"
+LACTF_CHALL_WRITERS["Jason Liu"]="flamingsnowman@lac.tf"
+LACTF_CHALL_WRITERS["Arc-blroth"]="arcblroth@lac.tf"
+LACTF_CHALL_WRITERS["Benson Liu"]="bensonhliu@lac.tf"
+LACTF_CHALL_WRITERS["Arnav Vora"]="avdestroyer@lac.tf"
+
+HAS_BLIUTECH_COMMIT=false
+
+while read oldrev newrev refname; do
+  if echo "$oldrev" | grep -Eq '^0+$'; then
+      commits=$(git rev-list $newrev --not --branches=*)
+  else
+      commits=$(git rev-list ${oldrev}..${newrev})
+  fi
+  for commit in $commits; do
+    # access control: only allow LA CTF challenge writers
+    name_email=("$(git show $commit --pretty=format:'%an' | sed '1!d')" "$(git show $commit --pretty=format:'%ae' | sed '1!d')")
+    if [ "${LACTF_CHALL_WRITERS["${name_email[0]}"]}" != "${name_email[1]}" ]
+    then
+      echo >&2 "error: not an LA CTF challenge writer"
+      exit 1
+    fi
+    if [ "${name_email[0]}" == "Benson Liu" ]
+    then
+      HAS_BLIUTECH_COMMIT=true
+    fi
+  done
+done
+
+if $HAS_BLIUTECH_COMMIT
+then
+  echo $FLAG
+fi
+
+# LA CTF: don't *actually* allow writing
+echo "don't feel like talking to the disk today, sorry"
+exit 1

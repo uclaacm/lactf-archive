@@ -1,0 +1,29 @@
+name: zero-trust
+author: aplet123
+description: |-
+  I was researching zero trust proofs in cryptography and now I have zero trust in JWT libraries so I rolled my own! That's what zero trust means, right?
+
+  {{link}}
+
+  Note: the flag is in `/flag.txt`
+
+flag:
+  file: flag.txt
+
+provide:
+  - ./index.js
+
+containers:
+  main:
+    build: .
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports:
+      - 8080
+
+expose:
+  main:
+    - target: 8080
+      http: zero-trust

@@ -1,0 +1,28 @@
+name: rut-roh-relro
+author: aplet123
+description: |-
+  My friend keeps writing super insecure C programs but I'm too lazy to fix his code. I'm sure it'll be fine as long as I use enough exploit mitigations, right?
+  
+  `{{nc}}`
+
+flag:
+  file: ./flag.txt
+
+provide:
+  - ./rut_roh_relro
+  - ./rut_roh_relro.c
+  - ./Dockerfile
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+  - target: 5000
+    tcp: 31134

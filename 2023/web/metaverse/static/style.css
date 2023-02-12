@@ -1,0 +1,72 @@
+body {
+    background-color: #0000ff;
+}
+
+p,
+h1,
+form,
+button,
+textarea {
+    color: white;
+    font-family: "Comic Sans MS", sans-serif;
+    font-weight: normal;
+    text-align: center;
+}
+
+.centered {
+    text-align: center;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+form,
+p,
+input,
+button,
+textarea {
+    font-size: 24px;
+}
+
+input,
+textarea {
+    background-color: #ffff00;
+    color: #0000ff;
+    border: 2px solid #ff0000;
+    outline: none;
+}
+
+input {
+    width: 300px;
+    height: 1em;
+}
+
+textarea {
+    width: 500px;
+    height: 300px;
+}
+
+button {
+    width: 200px;
+    margin-top: 10px;
+    height: 40px;
+    background-color: transparent;
+    border: 2px solid #ff0000;
+    cursor: pointer;
+}
+
+.meta {
+    color: #ffff00;
+    font-weight: bold;
+    text-shadow: #00ff00 0 0 10px;
+}
+
+.error {
+    color: #ff0000;
+}
+
+a,
+a:visited {
+    color: #00ff00;
+}

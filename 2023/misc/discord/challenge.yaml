@@ -1,0 +1,12 @@
+name: discord
+author: burturt
+description: |-
+  Join our discord and read the topic of our FAQ channel for the flag.
+
+  Visit our website at [https://lactf.uclaacm.com](https://lactf.uclaacm.com) to get the invite.
+
+flag: "lactf{i_joined_discord_and_read_the_faq}"
+
+value: 10
+tiebreakEligible: false
+sortWeight: 1000

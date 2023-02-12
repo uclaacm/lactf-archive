@@ -1,0 +1,6 @@
+__pycache__/
+.DS_Store
+Dockerfile
+.dockerignore
+solve.py
+challenge.yml

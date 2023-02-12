@@ -1,0 +1,27 @@
+name: string-cheese
+author: aplet123
+description: |-
+  I'm something of a cheese connoisseur myself. If you can guess my favorite flavor of string cheese, I'll even give you a flag. Of course, since I'm lazy and socially inept, I slapped together a program to do the verification for me.
+  
+  Connect to my service at `{{nc}}`
+
+  Note: The attached binary is the exact same as the one executing on the remote server.
+flag:
+  file: ./flag.txt
+
+provide:
+  - ./string_cheese
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+  - target: 5000
+    tcp: 31131

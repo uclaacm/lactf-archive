@@ -1,0 +1,27 @@
+name: stuff
+author: kaiphait
+description: |-
+  Jason keeps bullying me for using Fedora so here's a binary compiled on Fedora.
+
+  `{{nc}}`
+
+flag:
+  file: ./flag.txt
+
+provide:
+  - ./stuff
+  - ./Dockerfile
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31182

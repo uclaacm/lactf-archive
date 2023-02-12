@@ -1,0 +1,30 @@
+name: bot
+author: kaiphait
+description: |-
+  I made a bot to automatically answer all of your questions.
+
+  `{{nc}}`
+
+flag:
+  file: ./flag.txt
+
+provide:
+  - ./bot
+  - ./bot.c
+  - ./ld-2.31.so
+  - ./libc-2.31.so
+  - ./Dockerfile
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31180

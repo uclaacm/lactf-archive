@@ -1,0 +1,14 @@
+.DS_Store
+__pycache__/
+node_modules/
+
+# Remix IDE
+.deps/
+misc/breakup/**/artifacts/
+
+venv/
+
+.prettierrc.json
+
+.ipynb_checkpoints/
+.rcds-cache

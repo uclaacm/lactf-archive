@@ -1,0 +1,9 @@
+name: pbr
+author: arcblroth
+description: |-
+  The first time I heard the abbreviation "PBR", it stood for "Physically Based Rendering", not "Psi Beta Rho". And though this "Ψβρ" has now stolen all of my free time, I'll still always be a game dev at heart... right?
+
+flag: "lactf{ru5t_vu1k4n_n_sp1rv_mak3_pr3tty_ba53d_r3v}"
+
+provide:
+  - ./pbr

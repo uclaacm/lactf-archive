@@ -1,0 +1,18 @@
+module.exports = {
+    name: "california-state-police",
+    timeout: 5000,
+    async execute(browser, url) {
+        const page = await browser.newPage();
+        await page.setCookie({
+            name: "adminpw",
+            value: process.env.CHALL_CSP_ADMINPW || "placeholder",
+            domain: process.env.CHALL_CSP_DOMAIN || "localhost:8080",
+            httpOnly: true,
+        });
+        await page.goto(url);
+        await page.waitForNetworkIdle({
+            timeout: 5000,
+        });
+        await page.close();
+    },
+};

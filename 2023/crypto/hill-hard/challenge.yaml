@@ -1,0 +1,26 @@
+name: hill-hard
+author: sdsnow
+description: |-
+    I found another rock. I tried smashing it with a hammer, but it's really hard this time.
+
+    `{{nc}}`
+
+flag:
+  file: flag.txt
+
+provide:
+  - ./chall.py
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+  - target: 5000
+    tcp: 31141

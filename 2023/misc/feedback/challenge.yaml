@@ -1,0 +1,13 @@
+name: feedback
+author: lactf organizers
+description: |-
+  We really appreciate your feedback, so much so that we are forcing you to fill it out for points!
+
+  [https://docs.google.com/forms/d/1Gynlbqf9OqPL6YIcjIwBUcv0VcUa8mV_eg6fpOqT-oQ/edit](https://docs.google.com/forms/d/1Gynlbqf9OqPL6YIcjIwBUcv0VcUa8mV_eg6fpOqT-oQ/edit)
+
+
+flag: "lactf{i_give_my_very_helpful_feedback_and_i_actually_submitted}"
+
+value: 10
+tiebreakEligible: false
+sortWeight: 1000

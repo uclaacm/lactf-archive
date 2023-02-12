@@ -1,0 +1,42 @@
+name: evmvm
+author: arcblroth
+description: |-
+  All these zoomers with their "metaverse" or something are thinking far too primitive. If the red pill goes down the rabbit hole, then how far *up* can we go?
+  
+  `nc {{ challenge.expose.main[0].host }} {{ challenge.expose.main[0].tcp }}`
+
+flag: "lactf{yul_hav3_a_bad_t1me_0n_th3_m3tam3tavers3}"
+
+provide:
+  - ./chall/EVMVM.sol
+  - ./chall/Setup.sol
+
+containers:
+  main:
+    build:
+      context: ../
+      dockerfile: eth-challenge-base/Dockerfile
+      args:
+        SHARED_SECRET: "57318b4e85d15c65ed64d65c6c2fca403d053a8a6d47ef81c87fbef3e23ec1ec"
+        FLAG: "lactf{yul_hav3_a_bad_t1me_0n_th3_m3tam3tavers3}"
+        CHALLENGE_DIRECTORY: "evmvm/chall"
+        HTTP_HOST: "evmvm.lac.tf"
+        HTTP_PORT: "80"
+    replicas: 1
+    resources:
+      limits:
+        cpu: 300m
+        memory: 1Gi
+      requests:
+        cpu: 50m
+        memory: 64Mi
+    ports:
+      - 5000
+      - 80
+
+expose:
+  main:
+  - target: 5000
+    tcp: 31151
+  - target: 80
+    http: evmvm

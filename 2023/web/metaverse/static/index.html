@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="/style.css" rel="stylesheet" />
+        <title>metaverse</title>
+    </head>
+    <body>
+        <h1><span class="meta">meta</span>friends</h1>
+        <p>to increase realism, <span class="meta">meta</span>friending is not necessarily a two-way relationship</p>
+        <p>if someone <span class="meta">meta</span>friends you, they are your <span class="meta">meta</span>friend but not vice versa</p>
+        <div class="centered">
+            <input id="friend" type="text" /><br />
+            <button onclick="friend()"><span class="meta">meta</span>friend</button>
+        </div>
+        <p><span class="meta">meta</span>friend list:</p>
+        <div id="friendlist"></div>
+        <h1><span class="meta">meta</span>posts</h1>
+        <div class="centered">
+            <textarea id="postcontent"></textarea><br />
+            <button onclick="createPost()">new <span class="meta">meta</span>post</button>
+        </div>
+
+        <p><span class="meta">meta</span>post list:</p>
+        <div id="postlist"></div>
+        <script>
+            function friend() {
+                fetch("/friend", {
+                    method: "POST",
+                    body: "username=" + encodeURIComponent(document.getElementById("friend").value),
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                }).then((res) =>
+                    res.text().then((t) => {
+                        if (res.status !== 200) {
+                            document.querySelector(".error")?.remove();
+                            const error = document.createElement("p");
+                            error.innerText = t;
+                            error.classList.add("error");
+                            document.body.insertAdjacentElement("afterbegin", error);
+                        } else {
+                            location.reload();
+                        }
+                    })
+                );
+            }
+
+            function createPost() {
+                fetch("/post", {
+                    method: "POST",
+                    body: "content=" + encodeURIComponent(document.getElementById("postcontent").value),
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                }).then((res) =>
+                    res.text().then((t) => {
+                        if (res.status !== 200) {
+                            document.querySelector(".error")?.remove()
+                            const error = document.createElement("p");
+                            error.innerText = t;
+                            error.classList.add("error");
+                            document.body.insertAdjacentElement("afterbegin", error);
+                        } else {
+                            window.open("/post/" + t);
+                            location.reload();
+                        }
+                    })
+                );
+            }
+
+            fetch("/friends")
+                .then((res) => res.json())
+                .then((friends) => {
+                    const list = document.getElementById("friendlist");
+                    if (friends.length === 0) {
+                        const ele = document.createElement("p");
+                        ele.innerText = "you have none :(";
+                        list.appendChild(ele);
+                    }
+                    for (const f of friends) {
+                        const ele = document.createElement("p");
+                        ele.innerText = `${f.displayName} (${f.username})`;
+                        list.appendChild(ele);
+                    }
+                });
+            fetch("/posts")
+                .then((res) => res.json())
+                .then((posts) => {
+                    const list = document.getElementById("postlist");
+                    if (posts.length === 0) {
+                        const ele = document.createElement("p");
+                        ele.innerText = "you have none :(";
+                        list.appendChild(ele);
+                    }
+                    for (const p of posts.reverse()) {
+                        const ele = document.createElement("p");
+                        const link = document.createElement("a");
+                        link.href = "/post/" + p.id;
+                        link.target = "_blank";
+                        link.innerText = "link";
+                        ele.appendChild(link);
+                        ele.appendChild(document.createTextNode(` - ${p.blurb}`));
+                        list.appendChild(ele);
+                    }
+                });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+name: 85_reasons_why
+author: Rory
+description: |-
+  If you wanna catch up on ALL the campus news, check out my new blog. It even 
+  has a reverse image search feature!
+
+  {{link}}
+
+flag: "lactf{sixty_four_is_greater_than_eigthy_five_a434d1c0e0425c3f}"
+
+provide:
+  - ./src.tar.gz
+
+containers:
+  main:
+    build: .
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports:
+      - 8080
+    environment:
+      PORT: "8080"
+      SECRET_KEY: "4af3626e05c44b4b83431d4b07e8a852"
+
+expose:
+  main:
+    - target: 8080
+      http: 85-reasons-why

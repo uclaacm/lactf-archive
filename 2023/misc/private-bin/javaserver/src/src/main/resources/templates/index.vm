@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>?</title>
+    <style type="text/css">
+        * {
+            color: white;
+        }
+        body {
+            background-color: $background;
+        }
+    </style>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,13 @@
+name: switcheroo
+author: burturt
+description: |-
+  Never fear, the flag shall not appear (in memory)! I've *switched* it out for a more secure system!
+
+  Note: The actual flag consists purely of non-whitespace printable characters (aka ascii values 0x21 through 0x7E).
+
+  If you need a x86-64 linux VM to work in, check out [https://shell.cloud.google.com](https://shell.cloud.google.com).
+
+flag: "lactf{4223M8LY_5W17Ch_57473M3n75_4r3_7h3_4850LU73_8357_u+1f60a}"
+
+provide:
+  - ./switcheroo

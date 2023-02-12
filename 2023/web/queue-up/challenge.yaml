@@ -1,0 +1,65 @@
+name: queue up!
+author: burturt
+description: |-
+  I've put the flag on a web server, but due to high load, I've had to put a virtual queue in front of it. Just wait your turn patiently, ok? You'll get the flag *eventually*. 
+
+  Disclaimer: Average wait time is 61 days.
+
+  Site: [{{ challenge.expose.flagserver[0].http }}](https://{{ challenge.expose.flagserver[0].http }})
+
+flag: lactf{Byp455in_7he_Qu3u3}
+
+provide:
+  - ./queue-up.zip
+
+containers:
+  flagserver:
+    build: ./flagserver
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports: [3000]
+    environment:
+      QUEUE_SERVER_URL: http://qu-queue.lac.tf
+      QUEUE_SERVER_PORT: "3001"
+      FLAG: lactf{Byp455in_7he_Qu3u3}
+      PORT: "3000"
+      ADMIN_SECRET: "0wN7Q3JQC9Ae4Q9M1kXaserN5byNmvMfffjHDSsvmjvvh2gYUeBfZnTUNlo"
+
+  queue:
+    build: ./queue
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports: [3001]
+    environment:
+      POSTGRES_USER: queue
+      POSTGRES_PASSWORD: BnA6tObcPm44I7RMb1Xqdajs5UYl5LWsMMC4BYpHwoPp6jc7Tk4
+      FLAG_SERVER_URL: http://qu-flag.lac.tf
+      PORT: "3001"
+      ADMIN_SECRET: "0wN7Q3JQC9Ae4Q9M1kXaserN5byNmvMfffjHDSsvmjvvh2gYUeBfZnTUNlo"
+      startTime: "1676088000000"
+
+  db:
+    image: postgres
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports: [5432]
+    environment:
+      POSTGRES_USER: queue
+      POSTGRES_PASSWORD: BnA6tObcPm44I7RMb1Xqdajs5UYl5LWsMMC4BYpHwoPp6jc7Tk4
+
+      
+
+
+expose:
+  queue:
+    - target: 3001
+      http: qu-queue
+  flagserver:
+    - target: 3000
+      http: qu-flag

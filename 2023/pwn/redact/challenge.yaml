@@ -1,0 +1,30 @@
+name: redact
+author: kaiphait
+description: |-
+  I heard C was insecure so I wrote my flag redactor program in C++.
+
+  `{{nc}}`
+
+  Note: There are multiple optimized implementations of `memmove` and one is selected at runtime based on available CPU features, meaning that any solution that uses the `memmove` GOT entry could fail on remote. The challenge is solvable without `memmove`.
+
+flag:
+  file: ./flag.txt
+
+provide:
+  - ./redact
+  - ./redact.cpp
+  - ./Dockerfile
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31281

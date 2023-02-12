@@ -1,0 +1,25 @@
+# Where Bin should listen for connections
+Bind:
+  IP: 0.0.0.0
+  Port: 6122
+
+# Expiration time in minutes to expire bins by
+#
+# You can use TimeUnit names to avoid magic numbers
+# i.e. minutes, hours, days, years
+#
+# Positive value = x minutes since last access
+# Negative value = x minutes since creation
+# never = never expire
+Expiration:
+  Default: 30 days
+  Maximum: 1 year # applies for positive and negative expiration times
+
+  # Minutes between processing bin expirations
+  Cycle: 5
+
+# Bin caching
+#
+# When a bin is requested, it will be served from the cache
+# if possible to avoid database calls, increasing speed
+Cache: 10000

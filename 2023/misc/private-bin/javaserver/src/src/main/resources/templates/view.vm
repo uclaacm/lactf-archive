@@ -1,0 +1,267 @@
+<html>
+<head>
+    <title>Bin Viewer</title>
+    <meta name="viewport" content="width=500"/>
+    <style>
+        body {
+            color: white;
+            background-color: #111111;
+            font-family: Roboto, monospace;
+        }
+        .header {
+            margin-bottom: 3px;
+        }
+        .green {
+            color: lime;
+        }
+        .red {
+            color: red;
+        }
+        #decrypting {
+            text-align: center;
+        }
+        audio {
+            padding: 0.5em;
+        }
+        @media only screen and (max-width : 999px) {
+            audio, .file {
+                width: 95%;
+                padding: 0 2.5%;
+            }
+        }
+        @media only screen and (min-width : 1000px) {
+            audio, .file {
+                width: 80%;
+                padding: 0 10%;
+            }
+        }
+        audio, .file {
+            display: inline-block;
+        }
+        .file audio:nth-child(4), .file pre:nth-child(4) {
+            border: 1px solid white;
+            border-radius: 3px;
+        }
+        pre {
+            margin-top: 1px;
+        }
+        .button {
+            height: 18px;
+            background-color: white;
+            border-radius: 3px;
+            margin: 0 2px;
+            cursor: pointer;
+        }
+        .file-description {
+            font-size: 80%;
+            color: #AAAAAA/*AAAAAAAAAAAAHHHH*/;
+        }
+
+        .hljs-ln-numbers {
+            text-align: center;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 13px;
+            color: #fff;
+            border-right: 1px solid #CCC;
+            vertical-align: top;
+            padding-right: 5px !important;
+        }
+        .hljs-ln-code {
+            padding-left: 10px !important;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 13px;
+            color: white;
+            white-space: pre;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <h2 id="status" class="green">Your browser does not support JavaScript</h2>
+</div>
+<script type="application/javascript" src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
+<script type="application/javascript" src="https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/dist/highlightjs-line-numbers.min.js"></script>
+<script type="application/javascript" src="https://cdn.jsdelivr.net/gh/leizongmin/js-xss/dist/xss.js"></script>
+<script type="application/javascript" src="https://cdn.jsdelivr.net/npm/file-saver@2.0.1/dist/FileSaver.min.js"></script>
+<script type="application/javascript" src="https://cdn.jsdelivr.net/gh/ricmoo/aes-js@e27b99dff787a143e59a3de473cab53e8375af36/index.js"></script>
+<script type="application/javascript" src="https://cdn.jsdelivr.net/gh/beatgammit/base64-js@bf68aaa277d9de7007cc0c58279c411bb10670ac/base64js.min.js"></script>
+<script type="application/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script type="application/javascript" src="https://cdn.jsdelivr.net/npm/ky@0.10.0/umd.js" id="ky" onload="process()" async></script>
+<script>
+    // global variables
+    const bin = { files: [] };
+    let json = {};
+
+    function decrypt(key, b64data) {
+        info("Decrypting " + b64data.substr(0, 32) + "... [" + base64js.byteLength(b64data) + " bytes]");
+        const bytes = base64js.toByteArray(b64data);
+        const iv = bytes.subarray(0, 16);
+        const data = bytes.subarray(16);
+        if (data.length % 16 != 0) {
+            throw new Error("Data length was not multiple of 16");
+        }
+        // console.log("Vector [" + iv.length + "] -> " + iv);
+        // console.log("Encrypted data -> " + data.length + " bytes, decrypting...");
+        const aes = new aesjs.ModeOfOperation.cbc(key, iv);
+        const decrypted = aes.decrypt(data);
+        const unPadded = decrypted.subarray(0, decrypted.byteLength - decrypted[decrypted.byteLength - 1]);
+        // console.log("Decrypted data -> " + unPadded.length + " bytes");
+        // const decoded = aesjs.utils.utf8.fromBytes(unPadded);
+        // console.log("Decoded -> " + decoded);
+        // return decoded;
+        return unPadded;
+    }
+
+    function info(message) {
+        console.log(message);
+
+        let element = document.querySelector("#status");
+        element.innerHTML = message;
+    }
+    function error(message) {
+        console.error(message);
+
+        let element = document.querySelector("#status");
+        element.className = "red";
+        element.innerHTML = message;
+    }
+    function download(i) {
+        let file = bin.files[i];
+        let blob = new Blob([file.content], {type: file.type});
+        let name = file.name.replace(/^.*[\\\/]/, '') // directory/file.name -> file.name
+        saveAs(blob, name);
+    }
+    // function raw(i) {
+    //     let file = bin.files[i];
+    //     // let b64 = base64js.fromByteArray(file.content);
+    //     // let type = file.type;
+    //     // let url = "data:" + type + ";base64," + b64;
+    //     // console.log(url);
+    //     let tab = window.open('about:blank', '_blank');
+    //     tab.document.write("<pre>" + aesjs.utils.utf8.fromBytes(file.content) + "</pre>");
+    //     tab.document.close();
+    // }
+
+    info("Bin server v$version -> awaiting decrypting key");
+
+    async function process() {
+        const id = "$id";
+
+        let key = window.location ? window.location.hash.replace("#", "") : null;
+        while (key == null || key.match(/^([A-z0-9]{16}){1,2}$/g) == null) {
+            let given = prompt("Please input the decryption key for this paste\n\n" +
+                    "If you do not know the key, ask the creator of this link for it.\n" +
+                    "If the key has been lost, it is not recoverable. All pastes are encrypted and the server never knows the key.");
+            if (given == null) {
+                document.location = "/";
+                throw new Error("User failed to provide decryption key");
+            }
+            if (!given.match(/^([A-z0-9]{16}){1,2}$/g)) {
+                alert("Invalid key!\n\nDecryption keys are 16 or 32 alphanumeric characters.")
+            } else {
+                key = given;
+            }
+        }
+        const keyBytes = Uint8Array.from(encodeURIComponent(key).replace(/%(..)/g,(m,v)=>{return String.fromCodePoint(parseInt(v,16))}), c=>c.codePointAt(0));
+        info("Loading bin " + id + " using decryption key [" + keyBytes + "]...");
+
+        try {
+            const data = await ky.default('v1/' + id + ".json");
+            data.json().then(response => {
+                json = response;
+                console.log(json);
+                bin.id = json.id;
+                bin.hits = json.hits;
+                bin.time = json.time;
+                bin.description = json.description ? aesjs.utils.utf8.fromBytes(decrypt(keyBytes, json.description)) : null;
+
+                info("Received " + json.files.length + " files");
+                document.querySelector("#status").innerHTML = "Received " + json.files.length + " files";
+
+                json.files.forEach(function (f) {
+                    info("Decrypting file " + f.id);
+                    let name = aesjs.utils.utf8.fromBytes(decrypt(keyBytes, f.name));
+                    let content = decrypt(keyBytes, f.content);
+                    let type = f.type ? aesjs.utils.utf8.fromBytes(decrypt(keyBytes, f.type)) : null;
+                    let description = f.description ? aesjs.utils.utf8.fromBytes(decrypt(keyBytes, f.description)) : null;
+
+                    if (aesjs.utils.utf8.fromBytes(name) === '') {
+                        throw new Error("Decrypted name was blank. Your decryption key is probably incorrect.");
+                    }
+                    if (aesjs.utils.utf8.fromBytes(content) === '') {
+                        throw new Error("Decrypted content was blank. Your decryption key is probably incorrect.");
+                    }
+
+                    bin.files.push({
+                        name,
+                        content,
+                        type,
+                        description
+                    });
+                });
+
+                info("Finished decrypting");
+                console.log(bin);
+
+                $("#status").remove();
+                let container = document.querySelector("#container");
+                let headerDiv = $("<div id=\"header\" class=\"file\"></div>");
+                headerDiv.html("<h2>Bin <code>" + bin.id + "</code></h2>\n" +
+                        (bin.description ? ("<h3>Description <code>" + (bin.description) + "</code></h3>\n") : ""));
+                $("#container").append(headerDiv);
+                for (let i = 0; i < bin.files.length; i++) {
+                    let file = bin.files[i];
+                    let div = $("<div class='file' id='" + i + "'></div>");
+
+                    let header = "<p style=\"float:right\" class=\"header\"><a ><img class=\"button\" onclick=\"download("+i+")\" src='img/download.svg'></a></p> " +
+                            "<p style=\"display:none;float:right\" class=\"header\"><img class=\"button\" onclick=\"raw("+i+")\" src='img/text.svg'></p>" +
+                            "<p id=\"" + i + "-" + (file.name) + "\" class=\"header\">" + (file.name) +
+                            (file.description !== '' ? (" <span class=\"file-description\">" + (file.description) + "</span>") : "") +
+                            "</p>";
+
+                    let known = true;
+                    if (file.type != null) {
+                        if (file.type.startsWith('text/')) {
+                            // {"whitelist": {}, "stripIgnoreTag": true}
+                            let lastDot = file.name.lastIndexOf('.');
+                            let fileExtension = lastDot !== -1 ? file.name.substr(lastDot + 1, file.name.length) : null;
+                            div.html(
+                                header + "<pre><code class=\"" + (fileExtension != null && fileExtension.length != 0 ? fileExtension : "plaintext") + " hljs\">"
+                                       + (aesjs.utils.utf8.fromBytes(file.content)) + "</code></pre>"
+                            );
+                        } else if (file.type.startsWith('audio/')) {
+                            div.html(header + "<audio controls src=\"data:" + (file.type) + ";base64," + (base64js.fromByteArray(file.content)) + "\" /></code></pre>");
+                        } else {
+                            known = false;
+                        }
+                    } else {
+                        known = false;
+                    }
+
+                    if (!known) {
+                        div.html(header + "<pre style=\"padding:3px;\">binary file, " + file.content.length + " bytes</pre>");
+                    }
+
+                    $("#container").append(div);
+                }
+
+                document.querySelectorAll('pre code').forEach((block) => {
+                    // let the user see content without highlighting (in case the content is huge highlighting takes long)
+                    setTimeout(function () {
+                        hljs.highlightBlock(block);
+                        hljs.lineNumbersBlock(block, { singleLine: true });
+                    }, 1);
+                });
+            }).catch(reason => {
+                error("Failed decrypting! " + reason);
+            });
+        } catch (e) {
+            error("Failed retrieving data! HTTP " + e.response.status);
+            document.documentElement.innerHTML = await e.response.text();
+        }
+    }
+</script>
+<link href="styles/atom-one-dark.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet">
+</body>
+</html>

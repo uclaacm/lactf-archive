@@ -1,0 +1,42 @@
+name: private Bin
+author: burturt
+description: |-
+  As cybersecurity pioneers, we love to use end-to-end encrypted platforms so that even if we are hacked, the data is safe, right?
+
+  Actually, it turns out taking [https://github.com/scarsz/bin](https://github.com/scarsz/bin) and ripping out the XSS protection wasn't a good idea (hey, it was messing up sending html code!), as someone reported that they noticed some weird script running in some bin files! I've attached a copy so you can take a look.
+
+  In *completely unrelated news*, a certain 3-letter agency has told us that we need to get the contents of a certain paste someone uploaded. Problem is, it's kinda been deleted. Not to worry! While we promised no web logs, we have packet logs! I've already narrowed down the network traffic to only that user. Convenient that they were connected to our network, huh?
+
+  P.S. the bin server is still online if you need it. I have kinda forgotten the url though, sorry ¯\&#95;(ツ)&#95;/¯. It's hosted *somewhere* under lac.tf, and I'm sure you can figure it out using the packet capture.
+
+  P.P.S. said 3-letter agency starts with an A, ends with an M, and has a C in it.
+
+  P.P.P.S. No, there is no admin bot, and no, you do not need to hack the website. This is a MISC challenge, not a web one.
+
+flag: lactf{e2e_encryption_is_only_as_safe_as_the_client_1dc5f2}
+
+provide:
+  - ./sus-script.html
+  - ./private-bin.pcapng.zip
+
+containers:
+  javaserver:
+    build: ./javaserver
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports: [6122]
+  nginxserver:
+    build: ./nginxserver
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports: [80]
+
+      
+expose:
+  nginxserver:
+    - target: 80
+      http: privatebin-0191c4fc
