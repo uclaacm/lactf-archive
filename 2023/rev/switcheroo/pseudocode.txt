@@ -1,0 +1,15 @@
+**Spoiler alert**
+
+Super high level pseudocode of what the code does and what my goal was when writing this challenge. This challenge was written directly in assembly.
+
+Read in flag
+Verify length of input was flag length + newline = 64 characters long, if not, fail immediately
+loop through characters:
+    switch on character ascii value, getting result from data table, with table value results being qwords
+    (note: "first byte" meaning most significant)
+    Loop through first byte many bytes in qword (excluding first byte), most significant to least significant:
+        if character index in string equals byte, character is good, continue loop
+        ex: example qword: 03010405AAAAAAAA - take the first byte, 03, and count through that many bytes, so check 01, 04, and 05, see if the character index in the input matches that, and if so, it is a valid char (exit loop immediately).
+    If none matched, character is invalid and add 1 to invalid counter
+If invalid counter is zero, it is the flag
+    otherwise it isn't the flag
