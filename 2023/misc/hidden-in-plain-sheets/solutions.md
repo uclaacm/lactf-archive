@@ -16,6 +16,7 @@ function myFunction() {
 ## Find & Replace
 - Using the find & replace function, you are able to "leak" characters in the hidden sheet
 - Unfortionately it's partially broken: you have to search each character individually
+- You can search using regex to loop through all of the characters, using the option to search specific ranges to leak character by character.
 
 ## Network Requests/Inspect element
 - Google sheets stores the data for the sheets locally, and when using the find & replace and forcing hidden data out, a request is made to the /streamrows endpoint, leaking the entire sheet
