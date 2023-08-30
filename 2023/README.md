@@ -3,4 +3,4 @@ Welcome! You can find all of the challenges and their corresponding files, inclu
 
 If you were redirected here after clicking a link from the challenge platform, the challenges are no longer up and running. Please use these files instead.
 
-If you have any questions, please feel free to join our discord at https://lactf.uclaacm.com/discord!
+If you have any questions, please feel free to join our discord at [https://lac.tf/discord](https://lac.tf/discord)!
