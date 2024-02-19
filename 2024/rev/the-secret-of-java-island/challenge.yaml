@@ -1,0 +1,25 @@
+name: the-secret-of-java-island
+author: aplet123
+description: |-
+  **The Secret of Java Island** is a 2024 point-and-click graphic adventure game developed and published by LA CTF Games.
+  It takes place in a fictional version of Indonesia during the age of hacking.
+  The player assumes the role of Benson Liu, a young man who dreams of becoming a hacker, and explores fictional flags while solving puzzles.
+
+flag: "lactf{the_graphics_got_a_lot_worse_from_what_i_remembered}"
+
+provide:
+  - ./game.jar
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+  - target: 5000
+    tcp: 31151

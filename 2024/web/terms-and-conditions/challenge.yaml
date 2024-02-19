@@ -1,0 +1,23 @@
+name: terms-and-conditions
+author: aplet123
+description: |-
+  Welcome to LA CTF 2024! All you have to do is accept the terms and conditions and you get a flag!
+
+  {{link}}
+
+flag: "lactf{that_button_was_definitely_not_one_of_the_terms}"
+
+containers:
+  main:
+    build: .
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports:
+      - 80
+
+expose:
+  main:
+    - target: 80
+      http: terms-and-conditions

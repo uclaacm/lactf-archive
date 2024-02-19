@@ -1,0 +1,14 @@
+.DS_Store
+.vscode/
+__pycache__/
+node_modules/
+.venv
+
+venv/
+
+.prettierrc.json
+
+.ipynb_checkpoints/
+.rcds-cache
+
+*.sage.py

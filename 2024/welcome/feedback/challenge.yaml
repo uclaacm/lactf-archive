@@ -1,0 +1,12 @@
+name: feedback
+author: la ctf organizers
+value: 5
+description: |-
+  Thank you for participating in LA CTF 2024! We hope you enjoyed the CTF, but to make sure we know how to improve for next year, [please fill out our feedback form by clicking here](https://docs.google.com/forms/d/e/1FAIpQLSfHYklc8moQoApNCIq9hknZnBd83ZsTCM_5_bJMuS2y5d9hWQ/viewform)!
+
+  **Please note: this challenge does NOT affect tiebreakers - there is NO advantage to submitting early.**
+
+  The feedback form will open at 2/17 9pm PST, 5am UTC.
+
+flag: "lactf{i_gave_feedback_now_give_me_points}"
+tiebreakEligible: false

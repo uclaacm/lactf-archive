@@ -1,0 +1,28 @@
+name: sus
+author: kaiphait
+description: |-
+  sus
+
+  `{{nc}}`
+
+flag:
+  file: ./flag.txt
+
+provide:
+  - ./sus.c
+  - ./sus
+  - ./Dockerfile
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31284

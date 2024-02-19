@@ -1,0 +1,10 @@
+name: very-hot
+author: Red Guy
+description: |-
+  I didn't think that using two primes for my RSA was sexy enough, so I used three.
+
+flag: "lactf{th4t_w45_n0t_so_53xY}"
+
+provide:
+  - ./src.py
+  - ./out.txt

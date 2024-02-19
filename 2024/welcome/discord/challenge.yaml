@@ -1,0 +1,9 @@
+name: discord
+author: la ctf organizers
+value: 15
+description: |-
+  Discord is our primary platform of communication, support, and chatter during the competition, and (spoilers!) may be necessary to solve a couple challenges.
+
+  [Join our discord](https://lac.tf/discord) and see the pinned message in &#35;general for the flag!
+
+flag: "lactf{i'm_in_the_discord_server!}"

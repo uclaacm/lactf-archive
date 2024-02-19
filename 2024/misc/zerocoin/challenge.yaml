@@ -1,0 +1,31 @@
+name: zerocoin
+author: aplet123
+description: |-
+  Behold my new revolutionary cryptocurrency built on top of Solana: zerocoin! I named it after how much it's worth.
+  
+  `{{nc}}`
+flag:
+  file: ./flag.txt
+
+provide:
+  - ./dist.tar.gz
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    resources:
+      limits:
+        cpu: 300m
+        memory: 256Mi
+      requests:
+        cpu: 50m
+        memory: 64Mi
+
+
+expose:
+  main:
+  - target: 5000
+    tcp: 31337

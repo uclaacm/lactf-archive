@@ -1,0 +1,25 @@
+name: hOlyT
+author: freed
+description: |-
+  God is trying to talk to you through a noisy wire
+
+  Use `{{nc}}` to talk to him.
+
+flag: "lactf{1s_r4bin_g0d?}"
+
+provide:
+  - ./server.py
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31171

@@ -1,0 +1,2 @@
+# . create_zip
+zip -9r ctf-wiki.zip app.py docker-compose.yml Dockerfile requirements.txt setup.sql static/* templates/*

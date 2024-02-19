@@ -1,0 +1,27 @@
+name: jsfudge
+author: r2dev2
+description: |-
+  JsFudge this JsFudge that, why don't you JsFudge the flag.
+  
+  `{{nc}}`
+
+flag:
+  file: ./flag.txt
+
+provide:
+  - ./Dockerfile
+  - ./index.js
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+  - target: 5000
+    tcp: 31130

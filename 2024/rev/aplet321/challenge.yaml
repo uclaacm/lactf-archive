@@ -1,0 +1,27 @@
+name: aplet321
+author: kaiphait
+description: |-
+  Unlike Aplet123, Aplet321 might give you the flag if you beg him enough.
+
+  `{{nc}}`
+
+flag:
+  file: ./flag.txt
+
+provide:
+  - ./aplet321
+  - ./Dockerfile
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31321

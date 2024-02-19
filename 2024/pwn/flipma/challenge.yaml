@@ -1,0 +1,27 @@
+name: flipma
+author: enzocut
+description: |-
+  what's flipma?
+
+  `{{nc}}`
+
+flag:
+  file: ./flag.txt
+
+provide:
+  - ./flipma
+  - ./Dockerfile
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31165

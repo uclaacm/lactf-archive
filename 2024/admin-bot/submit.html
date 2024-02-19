@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Bot</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        body {
+            background-color: #222222;
+        }
+
+        p, h1, input {
+            color: #dddddd;
+            font-family: monospace;
+        }
+
+        p, h1 {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        p {
+            font-size: 24px;
+        }
+
+        input {
+            font-size: 24px;
+            width: 100%;
+            background-color: #ffffff20;
+            border: none;
+        }
+
+        input::placeholder {
+            color: #999999;
+        }
+
+        input[type=submit] {
+            border: none;
+            border-radius: 2px;
+            background-color: #0d47a1;
+        }
+
+        form {
+            display: flex;
+            width: 75%;
+            margin: auto;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .error {
+            color: #ec407a;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Bot for $NAME</h1>
+    <p id="msg" class="hidden"></p>
+    <form action="/$NAME" method="POST">
+        <input type="text" placeholder="url to submit" name="url">
+        <br>
+        <div class="g-recaptcha" data-sitekey="$RECAPTCHA_SITE"></div>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+    <script defer>
+        const qs = new URLSearchParams(location.search);
+        const msg = document.getElementById("msg");
+        if (qs.get("e")) {
+            msg.innerText = qs.get("e");
+            msg.classList.remove("hidden");
+            msg.classList.add("error");
+        } else if (qs.get("m")) {
+            msg.innerText = qs.get("m");
+            msg.classList.remove("hidden");
+        }
+    </script>
+</body>
+</html>

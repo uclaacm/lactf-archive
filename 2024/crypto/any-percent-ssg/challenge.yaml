@@ -1,0 +1,26 @@
+name: any% ssg
+author: AVDestroyer
+description: |-
+  Check out this new open-source version of Minecraft my friend is making! They started working on it yesterday, but I want to speedrun it before anyone else can ... can you find me a seed that makes the end portal complete? Run the game with `java -jar my-new-game.jar`.
+
+  Send your seed to `{{nc}}` to get the flag.
+
+flag:
+  file: flag.txt
+
+provide:
+  - ./dist.tar.gz
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31170

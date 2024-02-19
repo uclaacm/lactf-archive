@@ -1,0 +1,26 @@
+name: my smart git
+author: burturt
+description: |-
+  Apparently my poor git server didn't like being called "dumb", so it disabled its dumb capabilities.
+
+  The git repo is available at /flag.git
+
+  {{link}}
+
+flag: "lactf{0ut5m4r7_7h3_5m4r5_g1t_s3rv}"
+
+
+containers:
+  main:
+    build: serv/
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports:
+      - 80
+
+expose:
+  main:
+    - target: 80
+      http: smart-git

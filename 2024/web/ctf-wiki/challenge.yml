@@ -1,0 +1,46 @@
+name: ctf-wiki
+author: bliutech
+description: |-
+  I am such a huge fan of CTF players that I decided to create a wiki with some of my favorites! Hopefully, none of them hack it. ;D
+
+  {{link}}
+
+  [Admin Bot](https://admin-bot.lac.tf/ctf-wiki)
+
+flag: "lactf{k4NT_k33P_4lL_my_F4v0r1T3_ctF3RS_S4m3_S1t3}"
+
+provide:
+ - ctf-wiki.zip
+
+containers:
+  db:
+    image: postgres
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports:
+      - 5432
+    environment:
+      POSTGRES_USER: "40e7b816b18857ac622138f8b2f384e18dc94491"
+      POSTGRES_PASSWORD: "d50fd27142e8965a4c54096c99aa8d2c26a30169"
+  
+  wiki:
+    build: .
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports:
+      - 1337
+    environment:
+      SECRET_KEY: "b0a9c9fb0d38ee1eb37e32628ffd5efa45e0adb9"
+      FLAG: "lactf{k4NT_k33P_4lL_my_F4v0r1T3_ctF3RS_S4m3_S1t3}"
+      ADMINPW: "94303cfc991188dc67f8a1cf42d16ec69ec82d7d"
+      POSTGRES_USER: "40e7b816b18857ac622138f8b2f384e18dc94491"
+      POSTGRES_PASSWORD: "d50fd27142e8965a4c54096c99aa8d2c26a30169"
+
+expose:
+  wiki:
+    - target: 1337
+      http: ctf-wiki

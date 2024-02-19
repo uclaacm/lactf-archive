@@ -1,0 +1,1 @@
+zip -9r jwt.zip app.py auth.py Dockerfile index.html static/

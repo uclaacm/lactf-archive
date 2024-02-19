@@ -1,0 +1,11 @@
+name: glottem
+author: aplet123
+description: |-
+  Haha glottem good!
+
+  Note: The correct flag is 34 characters long.
+
+flag: "lactf{solve_one_get_two_free_deal}"
+
+provide:
+  - ./glottem

@@ -1,0 +1,28 @@
+name: woogie-boogie
+author: enzocut
+description: |-
+  i haven't been watching too much jjk
+
+  `{{nc}}`
+
+flag:
+  file: ./flag.txt
+
+provide:
+  - ./run
+  - ./woogie-boogie
+  - ./Dockerfile
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31166

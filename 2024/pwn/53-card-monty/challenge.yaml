@@ -1,0 +1,28 @@
+name: 53-card-monty
+author: kaiphait + enzocut
+description: |-
+  52-card monty wasn't toxic enough for me so I made it a little harder. Note that the Dockerfile is different.
+
+  `{{nc}}`
+
+flag:
+  file: ./flag.txt
+
+provide:
+  - ./monty.c
+  - ./monty
+  - ./Dockerfile
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31133

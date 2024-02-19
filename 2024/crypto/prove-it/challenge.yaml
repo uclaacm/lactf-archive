@@ -1,0 +1,25 @@
+name: prove it!
+author: freed
+description: |-
+  He's just snarking at me, menacingly!
+
+  `{{nc}}`
+
+flag: "lactf{2kp_1s_ov3rr4t3d}"
+
+provide:
+  - ./server.py
+  
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31179

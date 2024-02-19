@@ -1,0 +1,8 @@
+name: discord events
+author: arcblroth
+description: |-
+  I wrote a new script to sync PBR's events to a bunch of places. I even deployed it to the LA CTF server with a flag as an event id!
+
+  Note: the event ID is formatted in the normal flag format `lactf{...}` - it is not the discord numerical ID.
+
+flag: "lactf{j311yf15h_1n_da_cyb3r_s3a}"

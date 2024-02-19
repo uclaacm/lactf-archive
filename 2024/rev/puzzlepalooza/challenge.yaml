@@ -1,0 +1,9 @@
+name: puzzlepalooza
+author: aplet123
+description: |-
+  I love solving puzzles, but they aren't hard enough for me. So, I decided to start solving them blindfolded. Are you up to the task?
+  
+flag: "lactf{looking_at_the_puzzles_is_honestly_so_overrated}"
+
+provide:
+  - ./puzzlepalooza

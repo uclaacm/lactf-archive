@@ -1,0 +1,33 @@
+name: yacc
+author: enzocut
+description: |-
+  yet another compiled calculator
+
+  `{{nc}}`
+
+flag:
+  file: ./flag.txt
+
+provide:
+  - ./dist.tar.gz
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+    resources:
+      limits:
+        cpu: 500m
+        memory: 512Mi
+      requests:
+        cpu: 50m
+        memory: 64Mi
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31169

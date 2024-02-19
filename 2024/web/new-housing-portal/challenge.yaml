@@ -1,0 +1,37 @@
+name: new-housing-portal
+author: r2uwu2
+description: |-
+  After that old portal, we decided to make a new one that is ultra secure and not based off any real housing sites.
+  Can you make Samy tell you his deepest darkest secret?
+
+  Hint - You can send a link that the admin bot will visit as `samy`.
+
+  Hint - Come watch the real Samy's talk if you are stuck!
+
+  Site - {{link}}
+
+  Admin Bot - [https://admin-bot.lac.tf/new-housing-portal](https://admin-bot.lac.tf/new-housing-portal)
+
+flag: "lactf{b4t_m0s7_0f_a77_y0u_4r3_my_h3r0}"
+
+provide:
+  - new-housing-portal.zip
+
+containers:
+  main:
+    build: .
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports:
+      - 3000
+    environment:
+      FLAG: "lactf{b4t_m0s7_0f_a77_y0u_4r3_my_h3r0}"
+      ADMINPW: "df229744eb0e0b358b470769fb7c63f0"
+      SECRET: "46008ca92353c23a95534f5801c1b9f1"
+
+expose:
+  main:
+    - target: 3000
+      http: new-housing-portal

@@ -1,0 +1,3 @@
+[profile.default]
+solc = "0.8.24"
+optimizer_details = { yul = false }

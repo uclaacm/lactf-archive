@@ -1,0 +1,49 @@
+* commit 3a61a740f809e45faad92891392eabc9de2a615a
+| Author: burturt <31748545+burturt@users.noreply.github.com>
+| Date:   Sat Feb 10 15:44:32 2024 -0800
+| 
+|     remove file contents
+|   
+*   commit 0eef65ac776a976e1592fc9f13c1891f89848f0f
+|\  Merge: a05ecc2 3e2a72b
+| | Author: burturt <31748545+burturt@users.noreply.github.com>
+| | Date:   Sat Feb 10 15:43:38 2024 -0800
+| | 
+| |     merge bad data
+| | 
+| * commit 3e2a72b62939dc78e1e814751eb61fdfdc3ae70a
+| | Author: burturt <31748545+burturt@users.noreply.github.com>
+| | Date:   Sat Feb 10 15:39:25 2024 -0800
+| | 
+| |     INSERT INCRIMINATING EVIDENCE HERE
+| |   
+* |   commit a05ecc287bcd996a29e39745869c2fffe43e1d1a
+|\ \  Merge: 68f9038 2c295ea
+| |/  Author: burturt <31748545+burturt@users.noreply.github.com>
+|/|   Date:   Sat Feb 10 15:43:20 2024 -0800
+| |   
+| |       Merge the -flag in
+| | 
+| * commit 2c295ea2ab9788eadcd9fb34c8560a9d16b95bee
+| | Author: burturt <31748545+burturt@users.noreply.github.com>
+| | Date:   Sat Feb 10 15:31:12 2024 -0800
+| | 
+| |     -flag
+| | 
+| * commit 59b3473ab80e03541028e98c975ed206f7b682c6
+| | Author: burturt <31748545+burturt@users.noreply.github.com>
+| | Date:   Sat Feb 10 15:30:51 2024 -0800
+| | 
+| |     +flag
+| | 
+* | commit 68f9038c5764f06449e3e7260b22bae31fef0848
+|/  Author: burturt <31748545+burturt@users.noreply.github.com>
+|   Date:   Sat Feb 10 15:35:47 2024 -0800
+|   
+|       "I used a super fancy hand-trained AI/ML/Neural Network (ooOOOoooOooOO) that has billions of parameters to respond to my brand new never seen before comment!"
+| 
+* commit d17edb1d1a686a5e4edb94577013d0ebd680c64b
+  Author: burturt <31748545+burturt@users.noreply.github.com>
+  Date:   Sat Feb 10 15:28:59 2024 -0800
+  
+      init

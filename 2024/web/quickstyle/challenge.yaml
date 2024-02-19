@@ -1,0 +1,31 @@
+name: quickstyle
+author: r2uwu2
+description: |-
+  Script on the streets, style in the sheets, they call me the cascader.
+
+  Site - {{link}}
+
+  Admin Bot - [https://admin-bot.lac.tf/quickstyle](https://admin-bot.lac.tf/quickstyle)
+
+flag: "lactf{masterfu3_para7737_css_exf1l7ration}"
+
+provide:
+  - quickstyle.zip
+
+containers:
+  main:
+    build: .
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports:
+      - 3000
+    environment:
+      FLAG: "lactf{masterfu3_para7737_css_exf1l7ration}"
+      ADMINPW: "4cdb60a8287516157cbc24da204e7bb9"
+
+expose:
+  main:
+    - target: 3000
+      http: quickstyle

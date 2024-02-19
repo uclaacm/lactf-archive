@@ -1,0 +1,32 @@
+name: biscuit-of-totality
+author: arcblroth
+description: |-
+  Farm crops, cultivate flowers, and generate mana to craft the vaunted
+  Biscuit of Totality in my new game that is definitely not a ripoff of
+  any Vazkii mods or anything... 
+
+  {{link}}
+
+  I'm not that good at the game, so if you wanna send your high scores to me drop them at
+  [https://admin-bot.lac.tf/biscuit-of-totality](https://admin-bot.lac.tf/biscuit-of-totality)
+  thx
+
+flag: "lactf{e1v3n_m4giks}"
+
+provide:
+  - ./biscuit-of-totality.zip
+
+containers:
+  main:
+    build: .
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports:
+      - 8080
+
+expose:
+  main:
+    - target: 8080
+      http: biscuit-of-totality

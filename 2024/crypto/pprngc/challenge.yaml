@@ -1,0 +1,25 @@
+name: pprngc
+author: joshuazhu
+description: |-
+  Cracking PRNGs is hard, but I can pseudo do it for you.
+
+  `{{nc}}`
+
+flag: "lactf{we_love_blum-micali_generators_h1MNZuJSFjlAEwc1}"
+
+provide:
+  - ./pprngc.py
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31173

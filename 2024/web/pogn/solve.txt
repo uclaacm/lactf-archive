@@ -1,0 +1,7 @@
+put below into console:
+
+```
+ws.send(JSON.stringify([1, [[0, 0], [0, 0]]]))
+```
+
+it works because when the server tries to normalize the [0, 0], it gets a NaN and the win check results in usr winning

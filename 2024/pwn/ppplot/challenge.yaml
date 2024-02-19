@@ -1,0 +1,27 @@
+name: ppplot
+author: enzocut
+description: |-
+  i plan to plot to pwn this
+
+  `{{nc}}`
+
+flag:
+  file: ./flag.txt
+
+provide:
+  - ppplot
+  - Dockerfile
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31164

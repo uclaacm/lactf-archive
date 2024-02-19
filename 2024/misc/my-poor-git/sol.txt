@@ -1,0 +1,4 @@
+Using modified git-dumper:
+python3 git_dumper.py http://localhost/flag.git output/
+cd output
+git cat-file -p 741fa59ac9ec45f978d799bd88b7290bc304abdd # use git log or manual object inspection to determine this is the proper flag object

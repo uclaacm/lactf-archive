@@ -1,0 +1,43 @@
+name: penguin-login
+author: r2uwu2
+description: |-
+  I got tired of people leaking my password from the db so I moved it out of the db.
+  {{link}}
+
+flag:
+  file: flag.txt
+
+provide:
+  - ./penguin-login.zip
+
+containers:
+  db:
+    image: postgres
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports:
+      - 5432
+    environment:
+      POSTGRES_USER: "uwu"
+      POSTGRES_PASSWORD: "969881396136ef2830c6eb1892021ad6"
+
+  main:
+    build: .
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports:
+      - 8080
+    environment:
+      PORT: "8080"
+      PASSWORD: "5b19dafd560a54b0abc74a5e544a3388"
+      POSTGRES_USER: "uwu"
+      POSTGRES_PASSWORD: "969881396136ef2830c6eb1892021ad6"
+
+expose:
+  main:
+    - target: 8080
+      http: penguin

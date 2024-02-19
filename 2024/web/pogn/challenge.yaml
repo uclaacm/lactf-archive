@@ -1,0 +1,28 @@
+name: pogn
+author: r2uwu2
+description: |-
+  Pogn in mong.
+
+  {{link}}
+
+flag: "lactf{7_supp0s3_y0u_g0t_b3773r_NaNaNaN}"
+
+provide:
+  - ./pogn.zip
+
+containers:
+  main:
+    build: .
+    resources:
+      limits:
+        cpu: 500m
+        memory: 500M
+    ports:
+      - 3000
+    environment:
+      FLAG: "lactf{7_supp0s3_y0u_g0t_b3773r_NaNaNaN}"
+
+expose:
+  main:
+    - target: 3000
+      http: pogn

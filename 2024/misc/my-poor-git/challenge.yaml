@@ -1,0 +1,25 @@
+name: my poor git
+author: burturt
+description: |-
+  My poor git server! I think someone took a hammer to the server and ruined a few of the files!
+
+  The git repo is available at /flag.git
+
+  {{link}}
+
+flag: "lactf{u51n9_dum8_g17_pr070c01z}"
+
+containers:
+  main:
+    build: serv/
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports:
+      - 80
+
+expose:
+  main:
+    - target: 80
+      http: poor-git

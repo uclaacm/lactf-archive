@@ -1,0 +1,26 @@
+name: flaglang
+author: r2uwu2
+description: |-
+  Do you speak the language of the flags?
+
+  {{link}}
+
+flag: "lactf{n0rw3g7an_y4m7_f4ns_7n_sh4mbl3s}"
+
+provide:
+  - flaglang.zip
+
+containers:
+  main:
+    build: .
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports:
+      - 3000
+
+expose:
+  main:
+    - target: 3000
+      http: flaglang

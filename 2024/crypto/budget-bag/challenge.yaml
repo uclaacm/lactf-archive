@@ -1,0 +1,10 @@
+name: budget-bag
+author: freed
+description: |-
+  I heard knapsack crypto is insecure so I put it on a curve. Unfortunately I was broke so I had to go to the dollar store.
+
+flag: "lactf{im_w4y_t00_br0k3!}"
+
+provide:
+  - ./main.py
+  - ./output.txt

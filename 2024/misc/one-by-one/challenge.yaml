@@ -1,0 +1,10 @@
+name: one by one
+author: burturt
+description: |-
+  One..... by.......... one............... whew I'm tired, this form is waaaaaaay too long.
+
+  Note: the flag does have random characters at the end - that is intentional.
+
+  [Click Me](https://docs.google.com/forms/d/e/1FAIpQLSc-A-Vmx_Te-bAqnu3TrRj-DAsYTgn52uSk92v3fECQb3T83A/viewform)
+
+flag: "lactf{1_by_0n3_by3_un0_*,\"g1'}"

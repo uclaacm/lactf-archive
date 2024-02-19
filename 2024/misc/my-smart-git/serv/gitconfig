@@ -1,0 +1,4 @@
+[http]
+	receivepack = false
+	uploadpack = true
+    getanyfile = false

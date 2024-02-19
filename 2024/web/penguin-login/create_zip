@@ -1,0 +1,2 @@
+# . create_zip
+zip -9r penguin-login.zip app.py docker-compose.yaml Dockerfile requirements.txt 

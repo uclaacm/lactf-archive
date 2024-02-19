@@ -1,0 +1,30 @@
+name: aplet123
+author: kaiphait
+description: |-
+  bliutech: Can we get ApletGPT?  
+  me: No we have ApletGPT at home.  
+  ApletGPT at home:
+
+  `{{nc}}`
+
+flag:
+  file: ./flag.txt
+
+provide:
+  - ./aplet123.c
+  - ./aplet123
+  - ./Dockerfile
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31123

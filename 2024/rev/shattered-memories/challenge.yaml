@@ -1,0 +1,9 @@
+name: shattered-memories
+author: aplet123
+description: |-
+  I swear I knew what the flag was but I can't seem to remember it anymore... can you dig it out from my inner psyche?
+
+flag: "lactf{not_what_forgive_and_forget_means}"
+
+provide:
+  - ./shattered-memories

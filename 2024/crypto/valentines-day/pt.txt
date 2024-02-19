@@ -1,0 +1,46 @@
+On this Valentine's day, I wanted to show my love for professor Paul Eggert. This challenge is dedicated to him. Enjoy the challenge!
+
+I was sitting in the hot, steamy room of Franz 1178 carefully reading each and every exam problem, then searching through my slide print-outs for the closest match and then just writing it down and hoping for the best, when all of a sudden I stumbled upon the question: "was bing banned in China?"
+
+I remembered the wise words that my TA once told me:
+
+Bing was never banned in China. Naive undergrad. Rent a virtual machine and check.
+
+That's when I realized, the exam was a test all along. And I had managed to crack the code. I had to rent a lnxsrv and check. Under my breath, I muttered the words export PATH=/usr/local/cs/bin:$PATH, and then the following:
+
+cat ~eggert/finalexamanswerkey.txt | less
+lactf{known_plaintext_and_were_off_to_the_races}
+
+Suddenly, chilling wind brushed over my back.
+
+After one and a half hours, they had finally managed to turn on the AC in the lecture hall.
+
+I cautiously read through the answer key, slowly copying down the right answers onto my long, thick answer sheet when I hear Eggert scream C-s Student Who Is Cheating Off The Answer Key in his native emacs tongue. I was in total shock. Shivering, I looked down at the front of the classroom, and watched as Eggert slowly turned his head until it locked onto me. "I will pkill you," he echoed. I was frozen at my desk and could only watch as he summoned his stand [BIRTHPLACE OF THE INTERNET].
+
+I boelted from my seat, jumping over several unlucky students' desks and sprinting up the stairs and out of Franz into the Court of Sciences. But I could sense that Eggert was close on my tail. He summoned a dozen copies of himself with calls to pthread_create(), and they proceeded to chase me as I ran towards the mathsci building. I hastily grabbed the door to enter mathsci, when one of the Eggert threads shouted "chmod a-x MATHSCI DOOR." I tried opening the door, but it shouted at me: "Permission denied." I said "rm -f door" and ran into the mathsci building.
+
+I ran desperately from the Eggert clones, but soon found myself out of breath, because I'm a CS major and I sit at my desk all day. Suddenly, I saw one of Eggert's clones run down the hallway. I quickly opened the door next to me and stepped inside, breathing a sigh of relief. But then I turned myself around and screamed.
+
+"Welcome to my office." Eggert echoed. "You've made it so far. I can tell that you have a good grasp of the fundamentals of commonly-used software tools and environments, particularly open-source tools likely to be used in upper-division computer science courses."
+
+I whimpered and backed into the corner of his office.
+
+"You may be wondering how you got here. I created a symbolic link between mathsci 6229 and my office here in Engineering VI. I want you to know that I won't hurt you. I was merely testing you."
+
+I gulped and looked into his eyes. "Really?"
+
+"Yes..." Eggert replied, "In fact, I brought you here into my office to ask you one very important question."
+
+"What?" I stuttered.
+
+Eggert leaned back in his chair, smiling. "You see, for the past several years I have been building up a team of highly capable individuals, ones that can anticipate foreign cybersecurity threats from places such as USC and stop them. I use the class CS35L in order to sort through all of UCLA's undergraduate CS students, and find the ones with the potential to join this league of cyber heroes."
+
+"That's... That's impossible..." I said.
+
+"You probably haven't realized it yet," Eggert explained, "but while running away from me you were able to utilize a multitude of linux commands in order to escape my wrath. Do you understand what that means?"
+
+"Uh...." I said, realizing it was quite strange I was able to verbally incantate gnu coreutils, "y-yeah, I guess...?"
+
+Eggert gazed so deeply into my soul I felt as if he had run the command top on my internal organs. "Join me, and together we will curve down the world."
+
+source: https://www.reddit.com/r/ucla/comments/b2d4zz/my_experience_with_the_cs35l_final/

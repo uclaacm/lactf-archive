@@ -1,0 +1,28 @@
+name: 52-card-monty
+author: bliutech
+description: |-
+  3-card monty was too easy for me so I made 52-card monty! Can you show me the lady?
+  
+  `{{nc}}`
+
+flag:
+  file: ./flag.txt
+
+provide:
+  - ./monty.c
+  - ./monty
+  - ./Dockerfile
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+  - target: 5000
+    tcp: 31132

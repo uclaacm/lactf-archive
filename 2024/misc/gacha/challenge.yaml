@@ -1,0 +1,12 @@
+name: gacha
+author: r2uwu2
+description: |-
+  All my friends have been getting into genshin and honkai recently and keep sending me pictures. However, they keep hiding their favorite characters, demanding for more money for their gacha pulls.
+
+  Can you free zhongli my waifu???
+
+flag: 'lactf{zh0ng_l7_x_ch7ld3_b4t_w7th_x0r}'
+
+provide:
+  - chall.zip
+  - package.sh

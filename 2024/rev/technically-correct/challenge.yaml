@@ -1,0 +1,9 @@
+name: technically-correct
+author: aplet123
+description: |-
+  Technically correct is the best kind of correct.
+
+flag: "lactf{i_l0v3_l1nux_elf_p4rs1ng}"
+
+provide:
+  - ./technically_correct

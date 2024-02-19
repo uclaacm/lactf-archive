@@ -1,0 +1,42 @@
+name: remi's-world
+author: arcblroth
+description: |-
+  In the vibrant lands of Remi / where pink diamonds float all over yore / an unsuspecting doom approaches / not told in the books of lore
+  
+  `nc {{ challenge.expose.main[0].host }} {{ challenge.expose.main[0].tcp }}`
+
+flag: "lactf{irr3v3r5ib1e_d4m4g3}"
+
+provide:
+  - ./chall/Remis.sol
+  - ./chall/Setup.sol
+
+containers:
+  main:
+    build:
+      context: ../
+      dockerfile: eth-challenge-base/Dockerfile
+      args:
+        SHARED_SECRET: "d90e529436b0d3c86ed3688648d2e4ae6c33f974c23bf6ca68207a8cdd0df6a5"
+        FLAG: "lactf{irr3v3r5ib1e_d4m4g3}"
+        CHALLENGE_DIRECTORY: "remis-world/chall"
+        HTTP_HOST: "remis-world.chall.lac.tf"
+        HTTP_PORT: "80"
+    replicas: 1
+    resources:
+      limits:
+        cpu: 300m
+        memory: 1Gi
+      requests:
+        cpu: 50m
+        memory: 64Mi
+    ports:
+      - 5000
+      - 80
+
+expose:
+  main:
+  - target: 5000
+    tcp: 31150
+  - target: 80
+    http: remis-world

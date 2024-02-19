@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            body,
+            html {
+                margin: 0;
+                padding: 0;
+                background: linear-gradient(
+                        rgba(255, 0, 0, 1) 0%,
+                        rgba(255, 154, 0, 1) 10%,
+                        rgba(208, 222, 33, 1) 20%,
+                        rgba(79, 220, 74, 1) 30%,
+                        rgba(63, 218, 216, 1) 40%,
+                        rgba(47, 201, 226, 1) 50%,
+                        rgba(28, 127, 238, 1) 60%,
+                        rgba(95, 21, 242, 1) 70%,
+                        rgba(186, 12, 248, 1) 80%,
+                        rgba(251, 7, 217, 1) 90%,
+                        rgba(255, 0, 0, 1) 100%
+                    )
+                    0 0/100% 200%;
+                animation: shift 20s linear infinite;
+            }
+
+            @keyframes shift {
+                to {
+                    background-position: 0 -200%;
+                }
+            }
+            body,
+            div,
+            html {
+                width: 100%;
+                height: 100%;
+            }
+
+            div {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                column-gap: 20px;
+            }
+
+            p, h1,
+            button {
+                font-family: "Comic Sans MS", "Roboto", sans-serif;
+            }
+
+            p {
+                font-size: 14px;
+                max-width: 75%;
+            }
+
+            h1 {
+                font-size: 36px;
+                font-weight: bold;
+            }
+
+            button {
+                font-size: 24px;
+                z-index: 99;
+            }
+
+            * {
+                user-select: none;
+            }
+        </style>
+        <script defer src="/analytics.js"></script>
+    </head>
+    <body>
+        <div>
+            <h1>Accept the terms and conditions:</h1>
+            <p>
+                1. You may use any tool, subject to the restrictions below, at your disposal to attempt to solve the problems. We especially encourage the use
+                of free and open-source tools. Google is your best friend!
+            </p>
+            <p>
+                2. During the competition, each person may only be a part of one team total, and only members of a given team may assist in solving a challenge
+                for that team. Do not share flags, challenge solutions, tips, hints, or otherwise implicitly or explicitly leak information about solving
+                challenges outside your team until after the CTF is over.
+            </p>
+            <p>
+                3. Each team must have a valid email address that should serve as the point of contact. UCLA students should use a @g.ucla.edu email to register
+                for access to the UCLA-only division.
+            </p>
+            <p>
+                4. There are two divisions for teams, UCLA and Open. Teams in the UCLA-only division may consist of up to four participants, all of which must
+                be current UCLA students. Open division teams have no team size or makeup restrictions. UCLA students may choose to participate in either
+                division but not both.
+            </p>
+            <button tabindex="-1" id="accept">I Accept</button>
+            <p>
+                5. No flag or hint sharing. Do not solicit or accept hints or guidance from any person except through official support channels. You are allowed
+                to use technologies such as ChatGPT or Google Gemini to assist you.
+            </p>
+            <p>
+                6. Do not attempt to attack or interfere with other teams or any servers used in this competition that are not explicitly designated for being
+                hacked in a problem. Do not perform any sort of online bruteforce against any of our systems including challenges, such as dirbuster or nmap -
+                it won't help. If you ever have a question about whether something is allowed, please ask!
+            </p>
+            <p>
+                7. Flags are of the format lactf{TEXT_HERE} unless otherwise noted on the challenge description. No brute-force guessing flags. Feel free to try
+                several flags if you're not sure, but don't try any sort of brute forcing on the scoreboard platform. If you think a flag is valid but the
+                system isn't taking it, please contact us using one of the methods below and we'd be happy to help.
+            </p>
+            <p>8. Finally, have fun and try and learn something new!</p>
+        </div>
+        <script id="mainscript">
+            const accept = document.getElementById("accept");
+            document.body.addEventListener("touchstart", (e) => {
+                document.body.innerHTML = "<div><h1>NO TOUCHING ALLOWED</h1></div>";
+            });
+            let tx = 0;
+            let ty = 0;
+            let mx = 0;
+            let my = 0;
+            window.addEventListener("mousemove", function (e) {
+                mx = e.clientX;
+                my = e.clientY;
+            });
+            setInterval(function () {
+                const rect = accept.getBoundingClientRect();
+                const cx = rect.x + rect.width / 2;
+                const cy = rect.y + rect.height / 2;
+                const dx = mx - cx;
+                const dy = my - cy;
+                const d = Math.hypot(dx, dy);
+                const mind = Math.max(rect.width, rect.height) + 10;
+                const safe = Math.max(rect.width, rect.height) + 25;
+                if (d < mind) {
+                    const diff = mind - d;
+                    if (d == 0) {
+                        tx -= diff;
+                    } else {
+                        tx -= (dx / d) * diff;
+                        ty -= (dy / d) * diff;
+                    }
+                } else if (d > safe) {
+                    const v = 2;
+                    const offset = Math.hypot(tx, ty);
+                    const factor = Math.min(v / offset, 1);
+                    if (offset > 0) {
+                        tx -= tx * factor;
+                        ty -= ty * factor;
+                    }
+                }
+                accept.style.transform = `translate(${tx}px, ${ty}px)`;
+            }, 1);
+            let width = window.innerWidth;
+            let height = window.innerHeight;
+            setInterval(function() {
+                if (window.innerHeight !== height || window.innerWidth !== width) {
+                    document.body.innerHTML = "<div><h1>NO CONSOLE ALLOWED</h1></div>";
+                    height = window.innerHeight;
+                    width = window.innerWidth;
+                }
+            }, 10);
+        </script>
+    </body>
+</html>

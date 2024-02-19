@@ -1,0 +1,29 @@
+name: jason-web-token
+author: r2uwu2
+description: |-
+  With all this hype around jwt, I decided to implement jason web tokens to secure my OWN jason fan club site. Too bad its not in haskell.
+  {{link}}
+
+flag: "lactf{pr3v3nt3d_th3_d0s_bu7_47_wh3_c0st}"
+
+provide:
+  - ./jwt.zip
+
+containers:
+  main:
+    build: .
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports:
+      - 8080
+    environment:
+      PORT: "8080"
+      ADMIN: "admin-7009c0c07a9c37f1"
+      ADMINAGE: "40"
+
+expose:
+  main:
+    - target: 8080
+      http: jwt

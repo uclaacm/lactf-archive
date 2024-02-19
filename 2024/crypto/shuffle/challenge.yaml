@@ -1,0 +1,25 @@
+name: shuffle
+author: AVDestroyer
+description: |-
+  Casinos hate this one simple trick!
+  
+  `{{nc}}`
+
+flag: "lactf{th3_h0us3_c0uld_n3v3r_l0se_r1ght}"
+
+provide:
+  - ./shuffler.py
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31172
