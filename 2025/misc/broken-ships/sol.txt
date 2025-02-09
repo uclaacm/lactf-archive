@@ -1,0 +1,5 @@
+When we visit https://broken-ships.chall.lac.tf/v2/, we get just `{}`. Not very useful. However, if we look at the headers, we find `docker-distribution-api-version: registry/2.0` as a header. Looking this up or just having experience with docker registries, you will find that this endpoint is a docker registry.
+
+Using the docker registry API documentation at https://docker-docs.uclv.cu/registry/spec/api/, we can list all images using `/v2/_catalog` and then `/v2/rms-titanic/tags/list` to find the name of the image as `rms-titanic:wreck`. When we try to docker pull however, we get a blob error - that's because one of the layers is corrupted/deleted.
+
+Instead, we need to download the image layers manually. Using `/v2/rms-titanic/manifests/wreck`, we get the list of blob IDs we need to download. All we need to do is then get `/v2/rms-titanic/blobs/HASH` on each of the hashes, tar extract each layer, and search for the flag.
