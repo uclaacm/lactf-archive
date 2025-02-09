@@ -1,0 +1,42 @@
+body {
+  font-family: Arial;
+  background: #FFC5C5;
+}
+
+.moles {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.mole {
+  background: url(/static/img/hibernating.webp);
+  background-size: cover;
+  background-position: center;
+  width: 90px;
+  height: 80px;
+}
+
+.mole.up {
+  background-image: url(/static/img/diglet.webp);
+}
+
+.hammer {
+  --x: 0px;
+  --y: 0px;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  z-index: 1;
+  transform-origin: bottom right;
+  transform: translate(calc(var(--x) - 0%), calc(var(--y) - 50%));
+}
+
+.hammer.bonkers {
+  transform: translate(calc(var(--x) - 0%), calc(var(--y) - 50%)) rotate(-20deg);
+}

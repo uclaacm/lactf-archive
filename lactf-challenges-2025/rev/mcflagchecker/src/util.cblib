@@ -1,0 +1,71 @@
+import common
+
+function f1(x, y)
+    foobar = 0
+    bar = 1
+    barfoo = f3(x,y)
+    while barfoo > 0
+        m = bar * f2(x%2, y%2)
+        foobar += m
+        bar *= 2
+        barfoo /= 2
+        x /= 2
+        y /= 2
+    end
+    return foobar
+end
+
+function f3(x,y)
+    if x > y
+        return x
+    else
+        return y
+    end
+end
+
+function f2(xin, yin)
+    foo = 0
+    if xin == 1 and yin == 1
+        foo = 0
+    else if xin == 1 and yin == 0
+        foo = 1
+    else if xin == 0 and yin == 1
+        foo = 1
+    else
+        foo = 0
+    end
+    return foo
+end
+
+function f4(s)
+	s *= 97
+	s += 129
+    s %= 256
+	return s
+end
+
+function f5(a,b,c)
+    d = 1
+    for i = 1 to b
+        d *= a
+        d %= c
+    end
+    return d
+end
+
+function f6()
+    for $r in $list($range(0x00, 0x28))
+        s = 0
+        for $c in $list($range(0x00, 0x28))
+            /execute store result score Global m run data get block $r 0 $c RecordItem.tag.Storage
+            /scoreboard players operation Global f = Global Reg$c
+            s += (m * f)
+        s %= 251
+        end
+        /scoreboard players operation Global TempReg$r = Global s
+    end
+
+    for $r in $list($range(0x00, 0x28))
+        /scoreboard players operation Global Reg$r = Global TempReg$r
+    end
+end

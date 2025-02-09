@@ -1,0 +1,1 @@
+zip -9r mole.zip app.py Dockerfile static/ templates/

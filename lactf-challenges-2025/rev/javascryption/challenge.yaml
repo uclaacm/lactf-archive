@@ -1,0 +1,19 @@
+name: javascryption
+author: aplet123
+description: |-
+  You wake up alone in a dark cabin, held captive by a bushy-haired man demanding you submit a "flag" to leave. Can you escape?
+
+  {{link}}
+
+flag: "lactf{no_grizzly_walls_here}"
+
+containers:
+  main:
+    build: .
+    ports:
+      - 80
+
+expose:
+  main:
+    - target: 80
+      http: javascryption

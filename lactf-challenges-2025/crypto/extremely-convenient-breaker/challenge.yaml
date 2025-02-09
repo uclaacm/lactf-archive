@@ -1,0 +1,26 @@
+name: Extremely Convenient Breaker
+author: joshuazhu17
+description: |-
+  I won't let you decrypt the flag, but you can use my Extremely Convenient Breaker.
+
+  `{{nc}}`
+
+flag:
+  file: flag.txt
+
+provide:
+  - chall.py
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31180

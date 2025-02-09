@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mavs Anonymous Messaging System</title>
+    <link rel="stylesheet" href="/home/styles.css" />
+</head>
+
+<body>
+    <div class="header">
+        <img src="https://logos-world.net/wp-content/uploads/2020/06/mavs-logo.png" alt="Mavericks Logo" />
+        <h1>Mavs Anonymous Messaging System</h1>
+    </div>
+    <h3>Run by the Dallas Mavericks' Front Office: we want to hear what you have to say!</h3>
+
+    <div class="post-form">
+        <h2>Write New Message</h2>
+        <form action="/api/post" method="POST">
+            <textarea name="message" placeholder="Enter your thoughts here..." required></textarea>
+            <br>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <div class="posts">
+        <h2>Featured Messages</h2>
+        <div id="posts-list">
+            <!-- Posts will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script>
+        async function loadPosts() {
+            try {
+                const response = await fetch('/api/posts');
+                const posts = await response.json();
+                const postsList = document.getElementById('posts-list');
+
+                postsList.innerHTML = Object.entries(posts)
+                    .map(([id, post]) => `
+                        <div class="post">
+                            <h3>Featured Message</h3>
+                            <a href="/post/${id}">View details</a>
+                        </div>
+                    `)
+                    .join('');
+            } catch (error) {
+                console.error('Error loading messages:', error);
+            }
+        }
+
+
+        loadPosts();
+    </script>
+</body>
+
+</html>

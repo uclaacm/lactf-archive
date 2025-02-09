@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antisocial Media</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <nav>
+        <img src="/logo.webp" class="logo" alt="Antisocial Media Logo">
+        <span class="name">Antisocial Media</span>
+        <button type="button" id="logout">Logout</button>
+    </nav>
+
+    <article>
+        <div class="profile">
+            <h1>Profile</h1>
+            <p>Username: {{username}}</p>
+
+            <h2>Add Note</h2>
+            <input type="text" id="note-input" placeholder="Enter a note" autocomplete="off">
+            <button type="button" id="addNote">Add Note</button>
+
+            <div id="error"></div>
+
+            <h2>Your Notes</h2>
+            <ul id="note"></ul>
+        </div>
+    </article>
+
+    <script nonce="{{nonce}}">
+        const note = {{...notes}};
+        const noteList = document.getElementById('note');
+        for (const noteItem of note) {
+            const li = document.createElement('li');
+            li.textContent = noteItem;
+            noteList.appendChild(li);
+        }
+
+        async function logout() {
+            let res = await fetch('/api/logout', {
+                method: 'POST'
+            });
+
+            if (!res.ok) {
+                const error = document.getElementById('error');
+                error.innerText = 'Logout failed. Please try again.';
+                return;
+            }
+
+            window.location.href = '/';
+        }
+
+        const logoutButton = document.getElementById('logout');
+        logoutButton.addEventListener('click', logout);
+
+        async function addNote() {
+            const note = document.getElementById('note-input').value;
+            if (!note) {
+                const error = document.getElementById('error');
+                error.innerText = 'Note cannot be empty.';
+                return;
+            }
+
+            let res = await fetch('/api/notes', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ note })
+            });
+
+            if (!res.ok) {
+                const error = document.getElementById('error');
+                error.innerText = 'Failed to add note. Please try again.';
+                return;
+            }
+
+            window.location.reload();
+        }
+
+        const addNoteButton = document.getElementById('addNote');
+        addNoteButton.addEventListener('click', addNote);
+
+        const noteInput = document.getElementById('note-input');
+        noteInput.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                addNote();
+            }
+        });
+    </script>
+</body>
+</html>

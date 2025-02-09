@@ -1,0 +1,25 @@
+name: whats-my-number
+author: AVDestroyer
+description: |-
+  Wha's my numba?
+
+  {instancer}
+
+  Fallback if link above breaks: {{ link }}
+
+flag:
+  file: app/flag.txt
+
+provide:
+  - app/src/index.js
+
+containers:
+  main:
+    build: .
+    ports:
+      - 3000
+
+expose:
+  main:
+    - target: 3000
+      http: whats-my-number

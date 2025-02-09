@@ -1,0 +1,2 @@
+#!/bin/bash
+zip -r antisocial-media.zip app/package.json app/package-lock.json app/index.js app/views/* app/public/* app/Dockerfile

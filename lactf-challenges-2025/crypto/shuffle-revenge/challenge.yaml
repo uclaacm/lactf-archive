@@ -1,0 +1,25 @@
+name: shuffle-revenge
+author: AVDestroyer
+description: |-
+  Casino grade shuffling: use this to always WIN WIN WIN!!!
+
+  `{{nc}}`
+
+flag: "lactf{i_c4nt_st0p_w1nn1ng!!11_ekjbwq52bD#}"
+
+provide:
+  - ./shuffler.py
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31172

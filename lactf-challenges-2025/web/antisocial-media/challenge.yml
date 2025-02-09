@@ -1,0 +1,33 @@
+name: antisocial-media
+author: bliutech
+description: |-
+  A brand new platform, just for yourself!
+
+  {{ link }}
+
+  [Admin Bot](https://admin-bot.lac.tf/antisocial-media)
+
+flag: &flag "lactf{50_50CiaL_y0u_CaN_57Ill_937_HAx0R3D}"
+
+provide:
+  - antisocial-media.zip
+  - ../../admin-bot/handlers/antisocial-media.js
+
+containers:
+  app:
+    build: app/.
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100M
+    ports:
+      - 3000
+    environment:
+      FLAG: *flag
+      SESSION_SECRET: 0DhyRcoEkweJE8+skPTWjh+FoIVwo3ml4W0kMdEX6BQXzqON/2TOYT5HHh9xz3Df
+      ADMIN_PW: w3gbTf+UW72TkFl6oRKstnr3TK5ffD+cdEHo+X2XtGYeCh3T3FMK9JGYvTfs/ZFC
+
+expose:
+  app:
+    - target: 3000
+      http: antisocial-media

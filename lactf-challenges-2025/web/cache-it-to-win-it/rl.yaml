@@ -1,0 +1,10 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: cache-it-to-win-it-rl
+  namespace: rcds-cache-it-to-win-it
+spec:
+  rateLimit:
+    average: 60
+    burst: 150
+    period: 1m

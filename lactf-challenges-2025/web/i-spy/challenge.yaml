@@ -1,0 +1,21 @@
+name: I spy...
+author: burturt
+description: |-
+  I spy with my little eye...
+
+  A website!
+
+  {{link}}
+
+flag: "lactf{1_sp0773d_z_t0k3ns_4v3rywh3r3}"
+
+containers:
+  web:
+    build: app
+    ports:
+      - 5000
+
+expose:
+  web:
+    - target: 5000
+      http: i-spy

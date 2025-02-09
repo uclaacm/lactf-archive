@@ -1,0 +1,25 @@
+name: library
+author: enzocut
+description: |-
+  read any book on the filesystem, including the flag
+
+  `{{nc}}`
+
+flag: "lactf{procfs_my_beloved_and_sendfile_my_behated}"
+
+provide:
+  - dist.tar.gz
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+    
+expose:
+  main:
+    - target: 5000
+      tcp: 31174

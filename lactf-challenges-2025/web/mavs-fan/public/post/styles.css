@@ -1,0 +1,64 @@
+body {
+    font-family: 'Arial', sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: url('https://wallpapersok.com/images/hd/nba-player-luka-doncic-fbg9p2j2mfe53n92.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #ffffff;
+}
+
+.post-container {
+    background-color: rgba(0, 43, 94, 0.9);
+    border-radius: 10px;
+    padding: 25px;
+    margin: 20px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border: 2px solid #BBC4CA;
+}
+
+.post-header {
+    border-bottom: 2px solid #BBC4CA;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+h1 {
+    color: #36A9E1;
+    text-align: center;
+    font-size: 28px;
+}
+
+.post-id {
+    color: #BBC4CA;
+    font-size: 1em;
+    text-align: center;
+}
+
+.post-content {
+    font-size: 1.2em;
+    line-height: 1.8;
+    margin: 20px 0;
+    color: #ffffff;
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #36A9E1;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    color: #FFC72C;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+}

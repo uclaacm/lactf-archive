@@ -1,0 +1,30 @@
+name: 2password
+author: kaiphait
+description: |-
+  2Password > 1Password
+  
+  `{{nc}}`
+
+flag:
+  file: flag.txt
+
+provide:
+  - chall.c
+  - chall
+  - Dockerfile
+  - libc.so.6
+  - ld-linux-x86-64.so.2
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31142

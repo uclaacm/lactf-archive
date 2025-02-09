@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'Heavyweight Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Heavyweight Regular'), url('/HEAVYWEI.woff') format('woff');
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-image: url("/cabin.webp");
+    background-size: cover;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+p, input, button {
+    font-size: 48px;
+    font-family: 'Heavyweight Regular', 'Roboto', sans-serif;
+    text-align: center;
+    margin: 5px 0;
+}
+
+input {
+    color: white;
+    background: none;
+    border: none;
+    width: 100%;
+}
+
+p, button {
+    color: #FFCA28;
+}
+
+button {
+    background: none;
+    border: none;
+    width: 200px;
+    cursor: pointer;
+}
+
+button:hover {
+    color: #F44336;
+}
+
+@keyframes shake {
+    from {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-30px);
+    }
+
+    75% {
+        transform: translateX(30px);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.shake {
+    animation: shake 0.2s normal forwards ease-in-out;
+    animation-iteration-count: 2;
+}
+
+.correct {
+    font-family: 'Roboto', sans-serif;
+    color: #66BB6A;
+}

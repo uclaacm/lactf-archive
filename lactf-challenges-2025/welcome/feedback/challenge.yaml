@@ -1,0 +1,16 @@
+name: feedback
+author: lactf organizers
+value: 20
+
+description: |-
+  We hope you enjoyed LA CTF 2025! Please take a moment to provide feedback on the event. You can find the form [here](https://forms.gle/1Km47YLQdefPBJkg8).
+
+  The form will open (roughly) at 8pm PST 2/8/2025.
+
+  This is a non-tiebreaking challenge, so solving this challenge fast does NOT matter as long as it is solved before the end of the CTF.
+
+
+flag: "lactf{thx_4_z_f33db4ck}"
+
+visible: true
+tiebreakEligible: false

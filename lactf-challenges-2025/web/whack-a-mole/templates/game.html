@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Whack a Mole</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="icon" href="/static/img/diglet.webp">
+  <script defer src="/static/game.js"></script>
+</head>
+<body>
+  <h1>Welcome {{ username }}</h1>
+  <p>Whack some moles!</p>
+  <div class="moles">
+    {% for i in range(5) %}
+      <div class="mole"></div>
+    {% endfor %}
+  </div>
+  <img class="hammer" src="/static/img/hammer.webp" alt="hammer">
+</body>
+</html>

@@ -1,0 +1,12 @@
+name: 1000xREV
+author: burturt
+description: |-
+
+  This program is taking *forever* to check my flag! It's been running for over 24 hours, and it's still not done. Can you take a look?
+
+  In some cases, the program may not work locally. In that case, try running it on [https://shell.cloud.google.com/](https://shell.cloud.google.com/?show=terminal).
+
+flag: "lactf{b1t_by_b1t_0r_jus7_411_4t_0nc3}"
+
+provide:
+  - ./1000xREV

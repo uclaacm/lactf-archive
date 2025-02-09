@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Level $level$</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>Welcome to Level $level$ - $name$</h1>
+  <p>Here in purellland, we sanitize your html before showing it to you.</p>
+  <p>
+    Token (only admin bot can see the real token!): <span class="flag">$flag$</span>
+  </p>
+  <p>
+    Sanitizer: <span class="sanitizer">$sanitizer$</span>
+  </p>
+  <div class="html">$html$</div>
+  <form class="html-form" action="" method="GET">
+    <label for="html">HTML Editor</label>
+    <textarea id="html" name="html" cols="30" rows="10"></textarea>
+    <input type="submit" value="Render">
+  </form>
+
+  <br>
+
+  <p><a href="https://admin-bot.lac.tf/purell">Adminbot</a></p>
+  <br>
+  <form class="flag-form" action="/flag" method="GET">
+    <label for="flag">Admin's Token:</label>
+    <input type="text" name="flag">
+    <input type="submit" value="submit">
+  </form>
+</body>
+</html>

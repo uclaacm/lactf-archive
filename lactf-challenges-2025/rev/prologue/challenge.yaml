@@ -1,0 +1,8 @@
+name: prologue
+author: arcblroth
+description: |-
+  You can do this.
+
+  [https://scratch.mit.edu/projects/1130755420/](https://scratch.mit.edu/projects/1130755420/)
+
+flag: "lactf{intr0_car_g0_brrr}"

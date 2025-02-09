@@ -1,0 +1,10 @@
+name: rules
+author: lactf organizers
+value: 10
+description: |-
+  Welcome to LA CTF 2025! We hope that you enjoy our challenges and learn while doing so.
+
+  Please take this time to read the rules, which is on the home page of the platform (the site you are on right now). You can find the flag somewhere inside the rules. You MUST solve this challenge in order to be eligible for prizes.
+
+flag: "lactf{my_entire_team_agrees_to_follow_the_rules}"
+tiebreakEligible: false

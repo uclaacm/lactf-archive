@@ -1,0 +1,30 @@
+name: eepy
+author: enzocut
+description: |-
+  life is exhausting
+  
+  `{{nc}}`
+
+flag:
+  file: flag.txt
+
+provide:
+  - run.py
+  - vuln
+  - vuln.c
+  - Makefile
+  - Dockerfile
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31188

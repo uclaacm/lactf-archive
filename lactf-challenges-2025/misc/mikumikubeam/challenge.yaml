@@ -1,0 +1,12 @@
+name: mikumikubeam
+author: r2uwu2
+description: |-
+  Miku miku beaaammmmmmmmmmmmmmmmm
+
+flag:
+  file: ./flag.txt
+
+provide:
+  - create.sh
+  - mikumikubeam.png
+  - mikumikusteg.png

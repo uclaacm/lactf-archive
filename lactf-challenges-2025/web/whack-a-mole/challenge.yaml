@@ -1,0 +1,25 @@
+name: whack-a-mole
+author: r2uwu2
+description: |-
+  Whackers!
+
+  {{link}}
+
+flag: &flag "lactf{wh4ck_1_m0l3_1_m0r3_sh4ll_t4k3_it5_pl4c3}"
+
+provide:
+  - ./mole.zip
+
+containers:
+  main:
+    build: .
+    ports:
+      - 5000
+    environment:
+      PORT: "5000"
+      FLAG: *flag
+
+expose:
+  main:
+    - target: 5000
+      http: whack-a-mole

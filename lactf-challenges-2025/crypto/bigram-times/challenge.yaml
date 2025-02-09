@@ -1,0 +1,9 @@
+name: bigram-times
+author: joshuazhu17
+description: |-
+  It's time to times some bigrams!
+
+flag: "lactf{mULT1pl1cAtiV3_6R0uPz_4rE_9RE77y_5we3t~~~}"
+
+provide:
+  - chall.py

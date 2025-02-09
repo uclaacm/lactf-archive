@@ -1,0 +1,19 @@
+name: broken ships
+author: burturt
+description: |-
+  I found a hole in my ship! Can you help me patch it up and retrieve whatever is left?
+
+  [{{ url }}/v2/]({{ url }}/v2/)
+
+flag: "lactf{thx_4_s4lv4g1ng_my_sh1p!}"
+
+containers:
+  reg:
+    build: registry
+    ports:
+      - 5000
+
+expose:
+  reg:
+    - target: 5000
+      http: broken-ships

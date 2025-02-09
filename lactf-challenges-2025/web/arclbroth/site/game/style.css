@@ -1,0 +1,20 @@
+.scene {
+  position: relative;
+}
+
+.arc {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  transition: 5s linear;
+}
+
+.arc.brewing {
+  transition: 2s ease-out;
+}
+
+.cauldron {
+  position: absolute;
+  bottom: 20px;
+  right: 300px;
+}

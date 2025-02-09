@@ -1,0 +1,169 @@
+/* Token: 29D3065EFED4A6F82F2116DA1784C265 */
+
+:root {
+  --primary: #f44d8a;
+  --background: #f5f6fa;
+  --card: #ffffff;
+  --text: #2c3e50;
+  --error: #e74c3c;
+  --success: #2ecc71;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--background);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  margin: 0;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--primary);
+  text-align: center;
+  font-weight: 700;
+}
+
+#suggestionForm {
+  background: var(--card);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 2rem;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+input[type="text"]:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  background: #eb1f6a;
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.result {
+  background: var(--card);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+#hint {
+  color: var(--text);
+  font-size: 1.1rem;
+}
+
+#error {
+  color: var(--error);
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* From https://codepen.io/whipcat/pen/ExKPQqZ */
+
+.move-area {
+  /*normally use body*/
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.container {
+  width: 100%;
+}
+.eye {
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  background: #ccc;
+}
+.eye:after {
+  /*pupil*/
+  position: absolute;
+  bottom: 17px;
+  right: 10px;
+  width: 10px;
+  height: 10px;
+  background: #000;
+  border-radius: 50%;
+  content: " ";
+}

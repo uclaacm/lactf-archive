@@ -1,0 +1,51 @@
+name: cache it to win it!
+author: burturt
+description: |-
+  Are YOU today's unlucky contestant in Cache! It! To! Win! It???????
+
+  Find out below!
+
+  {{link}}
+
+  Note: do NOT perform any sort of denial-of-service attack against the web server or databases, directly or indirectly.
+
+flag: "lactf{my_c4ch3_f41l3d!!!!!!!}"
+
+provide:
+- "./cache-it-to-win-it.zip"
+
+containers:
+  web:
+    build: .
+    ports:
+      - 5000
+    environment:
+      FLAG: lactf{my_c4ch3_f41l3d!!!!!!!}
+      DATABASE_HOST: db
+      DATABASE_USER: root
+      DATABASE_PASSWORD: rootpassword
+      DATABASE_NAME: cacheit
+      REDIS_HOST: redis
+  redis:
+    image: redis:latest
+    ports:
+      - 6379
+    resources:
+      limits:
+        memory: 1024Mi
+      requests:
+        memory: 256Mi
+
+  db:
+    build: db-docker
+    ports:
+      - 3306
+    environment:
+      MARIADB_ROOT_PASSWORD: rootpassword
+      MARIADB_DATABASE: cacheit
+
+
+expose:
+  web:
+    - target: 5000
+      http: cache-it-to-win-it

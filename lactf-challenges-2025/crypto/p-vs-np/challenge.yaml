@@ -1,0 +1,27 @@
+name: p-vs-np
+author: freed
+description: |-
+  Someone wants me to perform a large computation before the CTF ends, but this isn't possible unless P = NP! But P != NP, right?
+
+  `{{nc}}`
+
+flag:
+  file: flag.txt
+
+provide:
+  - chall.py
+  - VDF.py
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31182

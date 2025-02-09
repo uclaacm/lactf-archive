@@ -1,0 +1,2 @@
+-A INPUT -p udp -m udp --dport 53 -m hashlimit --hashlimit-above 1/sec --hashlimit-burst 3 --hashlimit-mode srcip --hashlimit-name dns_rate_limit_udp --hashlimit-htable-expire 30000 -j REJECT --reject-with icmp-port-unreachable
+-A INPUT -p tcp -m tcp --dport 53 --tcp-flags ACK NONE -m hashlimit --hashlimit-above 4/hour --hashlimit-burst 4 --hashlimit-mode srcip --hashlimit-name dns_rate_limit_tcp_hour --hashlimit-htable-expire 7200000 -j REJECT --reject-with icmp-admin-prohibited

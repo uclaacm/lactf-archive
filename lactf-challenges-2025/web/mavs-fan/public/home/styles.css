@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #F4F4F4;
+    color: #333;
+}
+
+.header {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.header img {
+    width: 150px;
+    height: auto;
+}
+
+h1, h3 {
+    color: #00538C;
+}
+
+.post-form {
+    background: #FFFFFF;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+textarea {
+    width: 80%;
+    height: 100px;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #CCC;
+    font-size: 14px;
+    display: block;
+}
+
+button {
+    background-color: #005A9C;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+}
+
+button:hover {
+    background-color: #00538C;
+}
+
+.posts {
+    background: #FFFFFF;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.post {
+    background: #FAFAFA;
+    border: 1px solid #DDD;
+    padding: 15px;
+    margin: 10px auto;
+    border-radius: 8px;
+    width: 80%;
+    text-align: left;
+}
+
+a {
+    color: #00538C;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,22 @@
+.html-form {
+  display: flex;
+  flex-direction: column;
+  width: min-content;
+  margin-top: 2rem;
+}
+
+span.flag,
+span.sanitizer {
+  font-family: monospace;
+  font-size: 14px;
+  background-color: #f0f0f0;
+  padding: 2px 4px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  color: #333;
+}
+
+body {
+  background: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fgoldshieldbrands.com%2Fwp-content%2Fuploads%2Fgoldshield-blog-hand-main.jpg&f=1&nofb=1&ipt=777bc42cd40aef3a456f7ff2891b58df744b880408f4710f12b6e0865bccfbc1&ipo=images);
+  background-size: cover;
+}

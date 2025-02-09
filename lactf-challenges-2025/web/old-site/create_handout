@@ -1,0 +1,2 @@
+cd ..
+zip -9r old-site/old-site.zip old-site/.gitignore old-site/Dockerfile old-site/guestbook.txt old-site/jsconfig.json old-site/next.config.mjs old-site/package.json old-site/pnpm-lock.yaml old-site/pages old-site/public

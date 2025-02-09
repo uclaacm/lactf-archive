@@ -1,0 +1,26 @@
+name: RSAaaS
+author: joshuazhu17
+description: |-
+  Tired of doing RSA on your own? Try out my new service!
+
+  `{{nc}}`
+
+flag:
+  file: flag.txt
+
+provide:
+  - chall.py
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31176

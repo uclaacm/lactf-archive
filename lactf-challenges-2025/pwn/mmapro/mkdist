@@ -1,0 +1,14 @@
+#!/bin/bash
+BASE=$(basename "$(pwd)")
+FILES=(
+	"Dockerfile"
+	"mmapro.c"
+	"mmapro"
+	"libc.so.6"
+	"ld-2.37.so"
+)
+DIST=$(for FILE in "${FILES[@]}"; do echo "$BASE/$FILE"; done)
+echo "flag{not_the_real_thing}" > /tmp/flag.txt
+cd ..
+tar -czf "$BASE/dist.tar.gz" $DIST \
+	--transform "s|flag.txt|$BASE/flag.txt|" -C /tmp flag.txt

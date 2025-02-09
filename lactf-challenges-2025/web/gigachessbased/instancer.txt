@@ -1,0 +1,29 @@
+curl --location --request POST 'https://instancer.lac.tf/api/admin/challenges/create' \
+--header 'authorization: Bearer IO-9gJ--fA6oHk1Z2rU3R6-EF-OK2Z6UkGC5rzPmehA' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'chall_id=gigachessbased-admin' \
+--data-urlencode 'per_team=true' \
+--data-urlencode 'lifetime=900' \
+--data-urlencode 'boot_time=15' \
+--data-urlencode 'replace_existing=True' \
+--data-urlencode 'cfg={
+  "containers": {
+    "main": {
+      "image": "us-west1-docker.pkg.dev/la-ctf/lactf-challs/rcds-gigachessbased-admin",
+      "ports": [
+        8080
+      ],
+      "securityContext": {
+        "privileged": true
+      }
+    }
+  },
+  "http": {
+    "main": [[8080, "gigachessbased-admin.instancer.lac.tf"]]
+  }
+}' \
+--data-urlencode 'name=gigachessbased-admin' \
+--data-urlencode 'description=LA CTF 2025 Challenge. Note: If you see "no available servers", please wait up to ~5 minutes. If still errored, open a support ticket in our discord.' \
+--data-urlencode 'author=r2uwu2' \
+--data-urlencode 'categories=web' \
+--data-urlencode 'tags=lactf2025'

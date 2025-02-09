@@ -1,0 +1,31 @@
+name: gigachessbased
+author: r2uwu2
+description: |
+  I was too focused on the trap, I forgot about the cheese.
+
+  {{ link }}
+
+  [Deploy Admin Bot]({instancer:gigachessbased-admin})
+
+flag: &flag "lactf{4ll_int3nded_fr_fr}"
+
+provide:
+  - gigachessbased.zip
+
+containers:
+  main:
+    build: .
+    ports:
+      - 3000
+    environment:
+      FLAG: *flag
+      ADMINPW: "ba33f7c862fcff20e2c341e0fcaa62d7"
+      CHALLDOMAIN: "https://gigachessbased.chall.lac.tf/"
+
+extraBuilds:
+  admin: admin-bot
+
+expose:
+  main:
+    - target: 3000
+      http: gigachessbased

@@ -1,0 +1,27 @@
+name: the-eye
+author: aplet123
+description: |-
+  I believe we’ve reached the end of our journey. All that remains is to collapse the innumerable possibilities before us.
+
+  `{{nc}}`
+
+flag: "lactf{are_you_ready_to_learn_what_comes_next?}"
+
+provide:
+  - ./the-eye
+  - ./Dockerfile
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+  - target: 5000
+    tcp: 31313
+

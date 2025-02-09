@@ -1,0 +1,26 @@
+name: mmapro
+author: enzocut
+description: |-
+  punching holes in memory like an mma pro fighter
+  
+  `{{nc}}`
+
+flag:
+  file: flag.txt
+
+provide:
+  - dist.tar.gz
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31179

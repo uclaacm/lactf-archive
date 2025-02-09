@@ -1,0 +1,27 @@
+name: crypto-civilization
+author: AVDestroyer
+description: |-
+  In Crypto Civilization, nobody commits the beef.
+
+  `{{nc}}`
+
+flag:
+  file: flag.txt
+
+provide:
+  - ./chall.py
+  - ./Dockerfile
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31173

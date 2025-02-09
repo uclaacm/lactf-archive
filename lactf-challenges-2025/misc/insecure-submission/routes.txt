@@ -1,0 +1,19 @@
+GET /
+Main index.html page, shows list of classes that students can click onto
+
+GET /?class=cs31
+Show class info, class home page
+
+GET /?class=c31&page=assignments
+Get specific class page. Visible to everyone, except for some pages like submissions and connecting_to_seasnet, which requires a userid query parameter to verify the student is enrolled in the course.
+
+POST /submit?userid=123456789&class=cs31
+Upload submission for student userid for class class. Students can upload submissions multiple times.
+
+GET /submissions?userid=123456789&class=cs31
+Lists all submissions in class, TA only. userid must be a TA in the class.
+
+GET /submissions?userid=123456789&submissionid=6&class=cs31
+Download submission with id 6, TA only. userid must be a TA in the class. If submission is for a different class, responds with 400. If submission does not exist, responds with 404. Note that submission ids are assigned sequentially, so TAs attempt to download submission ids 1, 2, 3, 4, ..., until they receive a 404 to download all submissions for a class.
+
+All endpoints respond with 401 if a userid is invalid, or 403 if logged in but no permissions.

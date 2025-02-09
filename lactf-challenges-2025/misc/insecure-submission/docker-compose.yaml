@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  app:
+    build: ./app
+    restart: always
+    stop_grace_period: 2s
+
+  proxy:
+    build: ./proxy
+    ports:
+      - "8000:8080"
+    depends_on:
+      - app
+    restart: always
+    volumes:
+      - ./logs:/var/log/nginx:rw

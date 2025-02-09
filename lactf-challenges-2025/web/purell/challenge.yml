@@ -1,0 +1,24 @@
+name: purell
+author: r2uwu2, adapted by burturt for la ctf
+description: |-
+  Here in purellland, we sanitize your inputs. We kill 99% of germs, can you be the 1% germ that slips through?
+
+  {{ link }}
+
+  Note: when giving links to the [admin bot](https://admin-bot.lac.tf/purell), the link must be *exactly* of the form `https://purell.chall.lac.tf/level/LEVEL_NAME?html=YOUR_PAYLOAD_HERE`.
+
+flag: "lactf{1_4m_z3_b3s7_x40ss_h4nd_g34m_4cr0ss_411_t1m3_4nd_z_un1v3rs3_1nf3c71ng_3v34y_1}"
+
+provide:
+  - "purell-dist.zip"
+
+containers:
+  main:
+    build: .
+    ports:
+      - 3000
+
+expose:
+  main:
+    - target: 3000
+      http: purell

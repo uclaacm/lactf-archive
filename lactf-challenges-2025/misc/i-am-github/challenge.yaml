@@ -1,0 +1,46 @@
+name: I am GitHub
+author: burturt
+category: misc
+description: |
+  I have this GitHub Classroom assignment I need to do, but I kinda don't want to do it. Can you do it instead? All you need to do is follow the instructions, editing README.md to say that `LA CTF 2025 is the best ctf.` and putting the repo's name in the blank provided. Because, you know, LA CTF 2025 is the best ctf!
+
+  Oh and by the way, please have the github classroom user do it instead, with the little verified tag thingy next to the commit. Even better, have all commits in the repo's default branch ONLY be by github classroom, fully verified! I think that would be really funny! I can't wait to see my teacher's reaction when I submit this! XD
+
+  Pick one (or two!), they're all the same (GitHub Classroom can be temperamental sometimes):
+
+  [Link 1](https://classroom.github.com/a/o_TkJYcx),
+  [Link 2](https://classroom.github.com/a/Q_lnOD1Y),
+  [Link 3](https://classroom.github.com/a/jcg8jyS1),
+  [Link 4](https://classroom.github.com/a/mfpSYuRq),
+  [Link 5](https://classroom.github.com/a/neh5bXxQ),
+  [Link 6](https://classroom.github.com/a/9t6foNVp),
+  [Link 7](https://classroom.github.com/a/V-IzmufB),
+  [Link 8](https://classroom.github.com/a/HzSAi7D7),
+  [Link 9](https://classroom.github.com/a/JAQZyoa3),
+  [Link 10](https://classroom.github.com/a/rgAT65sx)
+
+  If you give me the repo URL and the commit ID of the latest commit on the default branch, I will check that you did the assignment properly, using the actual assignment as a base and not copying someone else's assignment, and that commits on the default branch are by github classroom and verified:
+
+  `{{ nc }}`
+
+flag: lactf{squ4sh_1mp34s0n4t3_g1thu8_c1assr00m}
+
+containers:
+  main:
+    build: checker
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+    resources:
+      requests:
+        cpu: 200m
+        memory: 512Mi
+      limits:
+        cpu: 1000m
+        memory: 2048Mi
+
+expose:
+  main:
+  - target: 5000
+    tcp: 31617

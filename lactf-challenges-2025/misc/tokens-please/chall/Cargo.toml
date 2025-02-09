@@ -1,0 +1,20 @@
+[package]
+name = "tokens-please"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anchor-lang = "0.30.1"
+solana-program = "1.18.26"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+
+[lib]
+crate-type = ["cdylib", "rlib"]

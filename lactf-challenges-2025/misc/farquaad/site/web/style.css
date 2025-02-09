@@ -1,0 +1,90 @@
+body {
+  background: fixed no-repeat 100% 100%/cover url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2Ff9%2Fa4%2Ff9%2Ff9a4f913b80a94577ceabea36f699887.jpg&f=1&nofb=1&ipt=1763fd5b07857239f0a9d8e126720131948a2447d9cd38d75757158eede4bbb4&ipo=images);
+  color: white;
+  font-family: Impact, sans-serif;
+  font-size: 1.2rem;
+}
+
+input.expr-input {
+  color: white;
+  width: 440px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+/* terminal styles from llama */
+.terminal-box {
+  width: 500px;
+  height: 300px;
+  background-color: #2c3e50;
+  border: 1px solid #2c3e50;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  font-family: 'Monaco', monospace;
+  font-size: 14px;
+  color: #fff;
+}
+
+.terminal-header {
+  height: 30px;
+  background-color: #2c3e50;
+  border-bottom: 1px solid #2c3e50;
+  padding: 10px 10px 0 10px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.close-button, .minimize-button, .maximize-button {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  color: transparent;
+  pointer-events: none;
+}
+
+.close-button {
+  background-color: #e74c3c;
+}
+
+.minimize-button {
+  background-color: #f1c40f;
+}
+
+.maximize-button {
+  background-color: #2ecc71;
+}
+
+.terminal-body {
+  padding: 0px 10px 10px 10px;
+  overflow-y: auto;
+}
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0;
+  height: 250px;
+  overflow-y: scroll;
+}
+
+code, input {
+  font-family: 'Monaco', monospace;
+  font-size: 14px;
+  color: #fff;
+}
+
+code:has(input) {
+  display: flex;
+}
+
+code input {
+  flex: 1;
+}
+
+.title {
+  margin: auto;
+  transform: translateY(-7px);
+}

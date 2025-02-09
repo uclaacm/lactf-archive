@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <style>
+        html {
+            zoom: 75%;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            margin-top: 30px;
+            color: #333;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #moneyCounter {
+            font-weight: bold;
+            color: green;
+            font-size: 1.5rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #gameInfo {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #444;
+        }
+
+        /* Style for the canvas */
+        canvas {
+            border: 2px solid #333;
+            margin-top: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Plinko</h1>
+
+    <button id="drop">Drop a ball ($100)</button>
+
+    <div id="gameInfo">
+        <p>Your total money: <span id="moneyCounter">{{money}}</span></p>
+        <p>Get to $10,000 for a prize!!</p>
+    </div>
+
+    <!-- Game canvas will appear below -->
+    <div id="gameCanvas"></div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.20.0/matter.min.js"></script>
+    <script src="physics.js"></script>
+</body>
+</html>

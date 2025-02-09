@@ -1,0 +1,30 @@
+name: plinko
+author: chinmay
+description: |-
+  I was tired of the rigged gambling games online, so I made this completely fair version of plinko. Don't try and cheat me.
+
+  Site - {{ link }}
+
+flag: &flag "lactf{mY_b4Ll_w3Nt_P1iNk_pL0Nk_4nD_n0W_1m_br0K3}"
+
+provide:
+  - plinko.zip
+
+containers:
+  main:
+    build: .
+    ports:
+      - 3000
+    environment:
+      FLAG: *flag
+    resources:
+      requests:
+        memory: 256Mi
+        cpu: 200m
+      limits:
+        memory: 512Mi
+        cpu: 500m
+expose:
+  main:
+    - target: 3000
+      http: plinko

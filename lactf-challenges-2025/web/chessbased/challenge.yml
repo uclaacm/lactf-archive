@@ -1,0 +1,35 @@
+name: chessbased
+author: r2uwu2
+description: |
+  Me: Mom, can we get chessbase?
+
+  Mom: No, we have chessbase at home.
+
+  Chessbase at home:
+
+  {{ link }}
+
+  [Deploy Admin Bot]({instancer:chessbased-admin})
+
+flag: &flag "lactf{t00_b4s3d_4t_ch3ss_f3_kf2}"
+
+provide:
+  - chessbased.zip
+
+containers:
+  main:
+    build: .
+    ports:
+      - 3000
+    environment:
+      FLAG: *flag
+      ADMINPW: "1a7f3e77479fdac13cf793bd23b7a769"
+      CHALLDOMAIN: "https://chessbased.chall.lac.tf/"
+
+extraBuilds:
+  admin: admin-bot
+
+expose:
+  main:
+    - target: 3000
+      http: chessbased

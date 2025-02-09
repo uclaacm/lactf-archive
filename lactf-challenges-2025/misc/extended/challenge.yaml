@@ -1,0 +1,10 @@
+name: extended
+author: joshuazhu17
+description: |-
+  What if I took my characters and... extended them?
+
+flag: "lactf{Funnily_Enough_This_Looks_Different_On_Mac_And_Windows}"
+
+provide:
+  - chall.txt
+  - gen.py

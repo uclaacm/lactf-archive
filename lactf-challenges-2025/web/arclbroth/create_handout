@@ -1,0 +1,1 @@
+zip -9r arclbroth.zip app.js Dockerfile package.json package-lock.json site/

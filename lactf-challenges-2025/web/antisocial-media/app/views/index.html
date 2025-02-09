@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antisocial Media</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <nav>
+        <img src="/logo.webp" class="logo" alt="Antisocial Media Logo">
+        <span class="name">Antisocial Media</span>
+    </nav>
+
+    <article>        
+        <div class="login-form">
+            <h1>Login</h1>
+            <input type="text" id="username" placeholder="Enter your username." autocomplete="off">
+            <input type="password" id="password" placeholder="Enter your password." autocomplete="off">
+            <button type="button" id="login">Login</button>
+            <div id="error"></div>
+        </div>
+    </article> 
+
+    <script nonce="{{nonce}}">
+        async function login() {
+            const username = document.getElementById('username').value;
+            if (!username) {
+                const error = document.getElementById('error');
+                error.innerText = 'Username cannot be empty.';
+                return;
+            }
+            const password = document.getElementById('password').value;
+            if (!password) {
+                const error = document.getElementById('error');
+                error.innerText = 'Password cannot be empty.';
+                return;
+            }
+
+            let res = await fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+
+            if (!res.ok) {
+                const error = document.getElementById('login-error');
+                error.innerText = 'Login failed. Please try again.';
+                return;
+            }
+
+            window.location.href = '/profile';
+        }
+
+        const loginButton = document.getElementById('login');
+        loginButton.addEventListener('click', login);
+        
+        const usernameInput = document.getElementById('username');
+        usernameInput.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                login();
+            }
+        });
+
+        const passwordInput = document.getElementById('password');
+        passwordInput.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                login();
+            }
+        });
+    </script>
+</body>
+</html>

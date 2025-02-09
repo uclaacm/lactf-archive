@@ -1,0 +1,11 @@
+name: patricks-paraflag
+author: aplet123
+description: |-
+  I was going to give you the flag, but I dropped it into my parabox, and when I pulled it back out, it got all scrambled up!
+
+  Can you recover the flag?
+
+flag: "lactf{the_flag_got_lost_in_infinity}"
+
+provide:
+  - ./patricks-paraflag

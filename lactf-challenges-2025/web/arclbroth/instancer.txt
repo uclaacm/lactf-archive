@@ -1,0 +1,30 @@
+curl --location --request POST 'https://instancer.lac.tf/api/admin/challenges/create' \
+--header 'authorization: Bearer K-tJ9wCO8NnTLlXMM_kJL6atPhP8J_ecPhbjBN0Q6Qw' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'chall_id=arclbroth' \
+--data-urlencode 'per_team=true' \
+--data-urlencode 'lifetime=900' \
+--data-urlencode 'boot_time=15' \
+--data-urlencode 'replace_existing=True' \
+--data-urlencode 'cfg={
+  "containers": {
+    "main": {
+      "image": "us-west1-docker.pkg.dev/la-ctf/lactf-challs/rcds-arclbroth-main",
+      "ports": [
+        3000
+      ],
+      "environment": {
+        "FLAG": "lactf{bulri3v3_it_0r_n0t_s3cur3_sqlit3_w4s_n0t_s3cur3}"
+      }
+    }
+  },
+  "http": {
+    "main": [[3000, "arclbroth.instancer.lac.tf"]
+    ]
+  }
+}' \
+--data-urlencode 'name=arclbroth' \
+--data-urlencode 'description=LA CTF 2025 Challenge. Note: If you see "no available servers", please wait up to ~5 minutes. If still errored, open a support ticket in our discord.' \
+--data-urlencode 'author=r2uwu2' \
+--data-urlencode 'categories=web' \
+--data-urlencode 'tags=lactf2025'

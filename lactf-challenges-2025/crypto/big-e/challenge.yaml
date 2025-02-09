@@ -1,0 +1,11 @@
+name: big e
+author: freed
+description: |-
+  I'm so confident in my big e's, I'll give them to you twice!
+
+flag:
+  lactf{b1g_3_but_sm4ll_d!!!_part2_since_i_trolled}
+
+provide:
+  - ./chall.py
+

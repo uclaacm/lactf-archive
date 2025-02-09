@@ -1,0 +1,12 @@
+Essentially, when doing a squash merge in the github web interface, the commit that is made to squash is made under the user who created the pull request, but signed by github's web signing key!
+
+As such, in order to change readme.md while still signing the commit:
+1. Edit the file in the main branch as yourself
+2. Merge the automatically created feedback PR.
+3. git clone the repo locally
+4. git reset --hard feedback
+5. git push -f
+
+And now submit the repo URL and commit id on the main branch for the flag!
+
+If you are curious, I found this challenge when during LA CTF 2025 prep, we had to edit our site and as part of best practices, we have branch rules to prevent pushing directly to main. @aplet123 added the schedule link to https://lac.tf and told me to approve and merge in-person, and we had just talked about merge vs rebase merging, so I decided to be funny and squash merge his one commit PR at https://github.com/lactf/lactf-website/pull/97, but then I noticed in the main GitHub repository, despite the fact that the PR was from a branch I could edit and a commit message I control, the commit with signed with the PR author's github username and email and the GitHub.com signing key. Hence, the challenge was born (using GitHub classroom to autocreate the PR through the 'Feedback' PR option).

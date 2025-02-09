@@ -1,0 +1,17 @@
+{
+  "name": "lactf-web-old-site",
+  "version": "1.0.0-OLD",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "packageManager": "pnpm@9.12.1"
+}

@@ -1,0 +1,14 @@
+body {
+  font-family: Comic Sans Ms;
+  animation: rainbow 10s linear infinite alternate;
+}
+
+@keyframes rainbow {
+  from {
+    background: hsl(0, 100%, 72%);
+  }
+  to {
+    background: hsl(240, 100%, 72%);
+  }
+}
+

@@ -1,0 +1,14 @@
+[package]
+edition = "2021"
+name = "server"
+version = "0.1.0"
+
+[dependencies]
+rand = "^0.7.0"
+sol-ctf-framework = {git = "https://github.com/lactf/sol-ctf-framework.git", branch = "main"}
+solana-program = "1.18.26"
+solana-program-test = "1.18.26"
+solana-sdk = "1.18.26"
+anchor-lang = "0.30.1"
+tokio = "1.43.0"
+tokens-please = {path = "../chall", features = ["no-entrypoint"]}

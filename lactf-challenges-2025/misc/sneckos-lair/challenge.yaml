@@ -1,0 +1,27 @@
+name: sneckos-lair
+author: aplet123
+description: |-
+  pepega the Silent&nbsp;&nbsp;&nbsp;HP 1/66&nbsp;&nbsp;&nbsp;Floor 29 - Ascension 20&nbsp;&nbsp;&nbsp;Turn 1<br>
+  Snecko&nbsp;&nbsp;&nbsp;HP 122/122&nbsp;&nbsp;&nbsp;Intent: Perplexing Gaze
+
+  `{{ nc }}`
+
+flag: "lactf{LITERALLY_all_my_cards_cost_3}"
+
+provide:
+  - ./dist.tar.gz
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 32323
+

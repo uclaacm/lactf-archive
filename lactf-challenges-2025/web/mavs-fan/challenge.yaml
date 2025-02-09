@@ -1,0 +1,29 @@
+name: mavs-fan
+author: stewie
+description: |-
+  Just a Mavs fan trying to figure out what Nico Harrison cooking up for my team nowadays...
+
+  Hint - You can send a link to your post that the admin bot will visit. Note that the admin cookie is HttpOnly!
+
+  Site - {{ link }}
+
+  Admin Bot - [https://admin-bot.lac.tf/mavs-fan](https://admin-bot.lac.tf/mavs-fan)
+
+flag: &flag "lactf{m4yb3_w3_sh0u1d_tr4d3_1uk4_f0r_4d}"
+
+provide:
+  - mavs-fan.zip
+
+containers:
+  main:
+    build: .
+    ports:
+      - 3000
+    environment:
+      FLAG: *flag
+      ADMIN_SECRET: fklajsdfklajsdlaskjdfhaksjhdfkjashdfkjashdfjklhads
+
+expose:
+  main:
+    - target: 3000
+      http: mavs-fan

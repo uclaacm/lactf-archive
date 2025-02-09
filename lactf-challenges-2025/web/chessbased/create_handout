@@ -1,0 +1,1 @@
+zip -9r chessbased.zip frontend/ backend/ docker-compose.yml Dockerfile admin-bot/Dockerfile admin-bot/handlers/chessbased.js -x "*/node_modules/*" -x "*/dist/*"

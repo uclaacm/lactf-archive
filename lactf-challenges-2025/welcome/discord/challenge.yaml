@@ -1,0 +1,11 @@
+name: discord
+author: lactf organizers
+value: 15
+
+description: |-
+  Discord is our primary platform of communication, support, and chatter during the competition. This is how we will let you know if anything happens that needs to be said, such as challenges being updated, and is how you can contact us with issues, like if you think you have the right flag but it isn't working, or if you think one of the challenges is broken.
+
+  [Join our discord](https://lac.tf/discord) and see the pinned message in #general for the flag!
+
+flag: "lactf{i_l0v3_3d1t1ng_my_d1sc0rd_msgs}"
+tiebreakEligible: false

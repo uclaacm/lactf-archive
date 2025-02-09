@@ -1,0 +1,11 @@
+--- a/ipc/msgutil.c
++++ b/ipc/msgutil.c
+@@ -93,7 +93,7 @@
+ 		return ERR_PTR(-ENOMEM);
+ 
+ 	alen = min(len, DATALEN_MSG);
+-	if (copy_from_user(msg + 1, src, alen))
++	if (copy_from_user(msg + 1, src, alen + 3))
+ 		goto out_err;
+ 
+ 	for (seg = msg->next; seg != NULL; seg = seg->next) {

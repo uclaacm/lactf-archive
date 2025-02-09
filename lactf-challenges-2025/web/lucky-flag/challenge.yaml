@@ -1,0 +1,19 @@
+name: lucky-flag
+author: r2uwu2
+description: |-
+  Just click the flag :)
+
+  {{link}}
+
+flag: "lactf{w4s_i7_luck_0r_ski11}"
+
+containers:
+  main:
+    build: .
+    ports:
+      - 80
+
+expose:
+  main:
+    - target: 80
+      http: lucky-flag

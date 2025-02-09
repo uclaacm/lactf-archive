@@ -1,0 +1,26 @@
+curl --location --request POST 'https://instancer.lac.tf/api/admin/challenges/create' \
+--header 'authorization: Bearer K-tJ9wCO8NnTLlXMM_kJL6atPhP8J_ecPhbjBN0Q6Qw' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'chall_id=old-site' \
+--data-urlencode 'per_team=true' \
+--data-urlencode 'lifetime=900' \
+--data-urlencode 'boot_time=15' \
+--data-urlencode 'replace_existing=True' \
+--data-urlencode 'cfg={
+  "containers": {
+    "main": {
+      "image": "us-west1-docker.pkg.dev/la-ctf/lactf-challs/rcds-old-site-main",
+      "ports": [
+        3000
+      ]
+    }
+  },
+  "http": {
+    "main": [[3000, "old-site.instancer.lac.tf"]]
+  }
+}' \
+--data-urlencode 'name=old-site' \
+--data-urlencode 'description=LA CTF 2025 Challenge. Note: If you see "no available servers", please wait up to ~5 minutes. If still errored, open a support ticket in our discord.' \
+--data-urlencode 'author=arcblroth' \
+--data-urlencode 'categories=web' \
+--data-urlencode 'tags=lactf2025'

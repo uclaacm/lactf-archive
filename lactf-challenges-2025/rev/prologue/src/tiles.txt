@@ -1,0 +1,25 @@
+                          DDDSSSSSSSSSSDDD                      
+                           DDSSSSSSSSSSDDD                      
+                           DDDDDSSSSSSSDDD                      
+                           DDDDDSSSSSSDD                        
+                           DD  SSSSSSDD                                                              SSS      
+                               SSSSSSDD                                                              SSS                                                                                                                                     DDD
+                                SSSSSSS                                                              SSS                                                                                                                                     DDD
+                                                                                                     SSS                                                                                                                                     DDD
+                                                                                                     SDS                                                                                                                                    DDDD
+                       DDD                                                                           SDD                                                                                                                                    DDDD
+                       DDD                                                               SS          SD                                                                                                                                    DDDDD
+                                                                                         SS          SD        DDDdDSSSSSSBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB    BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBDDDSSDDDDDDDD
+                                                                                         SS          SD        DDDdDDDSSS                                                                                                          DDDDDDDDDDDDD
+                                                                        SSSSS            SSS         SS        DDDdDDDDSS                                                                                                          DDDDDDDDDDDDD
+                                                                        SSSSS            SSS                   DDDdDDDDS                                                                                                           DDDDDDDDDDDDD
+                                                                        SSSSS            SSS                   DDDdDDDDD                                                                                                              DDDDDDDDDD
+                                                                        SSSSS             SSSSSS              DDDDdDDDD                                                                                                                 DDDDDDDD
+             DSSSS        DD                   DD                       SSSS    SSSS      SSSSSS              DDDDdDDDD                                                                                                                 DDDDDDDD
+             DSSSS        DD    DDDDDDD        DD                       SSSS    SSSS      SSSSSS        SSS   DDDDDDD                                                                                                                      DDDDD
+DDDDDDDDDDDSSSSSSS        DDD    DDDDDD        DD                       SSSS     SSS      SDSSSS        SS    DDDDDDD                                                                                                                       DDDD
+DDDDDDDDDDDSSSSSSS     DDDDDD    DDDDD     DDSSDD                   DDSSSSSS     SS       SDSSSS      SSSD     DDDDD                                                                                                                         DDD
+DDDDDDDDDDDSSSSSS      DDDDDD    DDDDD      DDDDD   DDDDdDDDSSSS     DSSSSDS     DS     DDDDSSSS   SSSSSDD     DDDDD                                                                                                                         DDD
+DDDDDDDDDDDSSSSSS      DDDDDD    DDDDD      DDDD     DDDdDDDDSS      DDDDDD      DD        DDSSS     SDDDD     DDDD                                                                                       
+DDDDDDDDDDDSSSSSS     DDDDDDD    DDDDD       DDD     DDDdDDDDSS      DDDDDD      DD        DDSSS     DDD       DDDD
+DDDDDDDDDDDSSSSSS     DDDDDDD    DDDDD       DDD     DDDdDDDDSS      DDDDDD      DD        DDSSS     DDD       DDDD

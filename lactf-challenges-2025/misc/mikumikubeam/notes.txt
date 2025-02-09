@@ -1,0 +1,24 @@
+* if i vary the image size, we can see that the difference starts with a line of red dots starting from the exact same place
+* in decoding, we can see that the second number in offset doesn't actually affect anything
+* for first offset param, +/- 1 results in noise, however * 2 results in x-wise rotated image
+* err actually, +240 works as well as +243 lmao
+* if i vary image size given correct offset in decryption, we can see that difference in x causes horizontal skew and difference in y causes vertical skew
+* redrange(diff) / prod(msgsize) = 16, it gets lower as msgsize increases to be too big
+	* redcount(diff) / prod(msgsize) does something similar
+* when image is correctly decoded, fft is very very peaky (see https://i.imgur.com/6rynhQB.png) in contrast to when it is not (see https://i.imgur.com/bkzbcDj.png)
+* ooo fft of decoded img transposed and looking at freq[xdim] is interesting
+
+To get offset:
+* set second value in offset to arb (+0, +23, doesn't matter as this value is not used)
+* find first red pixel
+* find every offset for which the first red pixel will appear at that location (search -30 to +5 roughly) using a 5x5 or smthn image
+* attempt decode with a random img size, if its not static noise then that offset will work for decode
+
+To get width/height:
+* redrange(diff) / prod(msgsize) = 16 for small msg sizes and slowly starts to decrease (once we go past 200x80ish)
+* calculate prod(msgsize), take fft of transpose of every recovered image with xdim x ydim = prod(msgsize)
+	* we take fft of transpose because letters have lot of vertical lines so by transposing, we should get non-noisy ffts if the recovery is accurate
+* find recovered image with highest fft peak around xdim (i kinda just experimented and saw a large peak here lol)
+* if the recovered image is unreadable, try larger widths (we might be suffering from redrange(diff) / prod(msgsize) = 15) until fft[xdim] peaks
+* manually search width in increments of 1 further as found width might be slighlty off
+	* even if height is slightly off, it is still readable

@@ -1,0 +1,9 @@
+name: crypt-of-the-necropuzzler
+author: aplet123
+description: |-
+  When no one's looking, the Necrodancer actually likes to play puzzle games in his free time. However, he got stuck on a really tough one and it's sucking all his enjoyment out of the game. If you can beat this one for him, he might not return your stolen heart, but he'll at least give you a flag.
+
+flag: "lactf{i_may_or_may_not_have_blatantly_stolen_a_taiji_puzzle_lol}"
+
+provide:
+  - ./crypt-of-the-necropuzzler.py

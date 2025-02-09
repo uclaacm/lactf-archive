@@ -1,0 +1,27 @@
+name: state-change
+author: asdiml
+description: |-
+  Changes in state are like rustlings in the wind
+
+  `{{nc}}`
+
+flag: 
+  file: flag.txt
+
+provide:
+  - chall
+  - chall.c
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31593

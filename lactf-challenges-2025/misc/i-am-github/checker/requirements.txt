@@ -1,0 +1,4 @@
+python-gnupg
+python-dotenv
+requests
+gitpython

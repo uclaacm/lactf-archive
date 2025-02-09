@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+  <head>
+    <title>I Spy</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <!-- Disable favicon -->
+    <link rel="icon" href="data:image/png;base64,iVBORw0KGgo=" />
+  </head>
+  <body>
+    <!-- Token: 66E7AEBA46293C88D484CDAB0E479268 -->
+    <div class="container">
+      <section class="move-area">
+        <div class=".container">
+          <div class="eye"></div>
+          <div class="eye"></div>
+        </div>
+      </section>
+      <h1>I spy with my little eye...</h1>
+      <form id="suggestionForm">
+        <input
+          type="text"
+          name="stage_token"
+          placeholder="Enter stage token..."
+        />
+        <button type="submit">Get next stage!</button>
+      </form>
+      <div id="result" class="result">
+        <p id="hint"></p>
+        <p id="error"></p>
+      </div>
+    </div>
+
+    <script>
+      const fetchNext = async (e) => {
+        if (e) {
+          e.preventDefault();
+        }
+        const formData = new FormData(
+          document.getElementById("suggestionForm"),
+        );
+        const response = await fetch("/api/suggestion", {
+          method: "POST",
+          body: formData,
+        });
+        if (response.status === 429) {
+          document.getElementById("error").textContent =
+            "You are being ratelimited, please slow down.";
+          return;
+        }
+        const data = await response.json();
+        document.getElementById("hint").textContent = data.suggestion;
+        document.getElementById("error").textContent = data.error;
+      };
+      document.getElementById("suggestionForm").onsubmit = fetchNext;
+      fetchNext();
+    </script>
+    <script defer src="/thingy.js"></script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+name: unsafe
+author: asdiml
+description: |-
+  "OCaml is based" ~ probably enzo
+
+  `{{nc}}`
+
+flag: 
+  file: flag.txt
+
+provide:
+  - chall
+  - unsafe.ml
+  - Dockerfile
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31271

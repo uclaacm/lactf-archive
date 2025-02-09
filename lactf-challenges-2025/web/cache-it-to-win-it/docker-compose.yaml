@@ -1,0 +1,39 @@
+services:
+  web:
+    build: .
+    restart: always
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+      - redis
+    environment:
+      - FLAG=${FLAG}
+      - DATABASE_HOST=db
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=rootpassword
+      - DATABASE_NAME=cacheit
+      - REDIS_HOST=redis
+    volumes:
+      - ".:/app"
+  db:
+    image: mariadb:latest
+    restart: always
+    environment:
+      - MARIADB_ROOT_PASSWORD=rootpassword
+      - MARIADB_DATABASE=cacheit
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - mariadb_data:/var/lib/mysql
+  redis:
+    image: redis:latest
+    command: "redis-server --save 60 1"
+
+volumes:
+  mariadb_data:

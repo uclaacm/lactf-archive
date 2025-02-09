@@ -1,0 +1,31 @@
+name: farquaad
+author: r2uwu2
+description: |-
+  Today, we're taking a journey to the Kingdom of Far Far Away. It is a special day, for Lord Farquaad is executing today!
+
+  [{{ challenge.expose.site[0].http }}](https://{{ challenge.expose.site[0].http }})
+
+flag: "lactf{mirr0r_mirr0r_0n_th3_w4ll_y0ur_th3_c4ptur3r_0f_th3m_4ll}"
+
+provide:
+  - ./pyjail/chall.py
+  - ./pyjail/Dockerfile
+
+containers:
+  pyjail:
+    build: ./pyjail
+    replicas: 4
+    ports: [5000]
+    securityContext:
+      privileged: true
+
+  site:
+    build: ./site
+    ports: [3000]
+    environment:
+      PYHOST: "pyjail"
+
+expose:
+  site:
+    - target: 3000
+      http: farquaad

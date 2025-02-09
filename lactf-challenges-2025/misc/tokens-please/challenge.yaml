@@ -1,0 +1,32 @@
+name: tokens-please
+author: aplet123
+description: |-
+  The glorious country of Arstotzka has switched to cryptocurrency to better audit transactions.
+  Can you still make it past the border checkpoint?
+  
+  `{{nc}}`
+flag:
+  file: ./flag.txt
+
+provide:
+  - ./dist.tar.gz
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    resources:
+      limits:
+        cpu: 300m
+        memory: 256Mi
+      requests:
+        cpu: 150m
+        memory: 128Mi
+
+
+expose:
+  main:
+  - target: 5000
+    tcp: 31337

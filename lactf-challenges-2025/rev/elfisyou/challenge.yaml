@@ -1,0 +1,28 @@
+name: elfisyou
+author: enzocut
+description: |-
+  ELF Is You is a puzzle game where the rules you have to follow are present as bytes you can interact with. By manipulating them, you can change how the program works, repurpose things you find in the binary, and cause surprising segfaults!
+
+  `socat file:$(tty),raw,echo=0 tcp:{{ host }}:{{ port }}`
+
+flag:
+  file: flag.txt
+
+provide:
+  - elf
+  - chal.py
+  - Dockerfile
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31189

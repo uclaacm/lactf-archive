@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Featured Message</title>
+    <link rel="stylesheet" href="/post/styles.css"/>
+</head>
+<body>
+    <div class="post-container">
+        <div class="post-header">
+            <h1>Featured Message</h1>
+            <div class="post-id" id="post-id">Loading...</div>
+        </div>
+        <div class="post-content" id="post-content"></div>
+        <a href="/" class="back-link">&larr; Back</a>
+    </div>
+
+    <script>
+        const postId = window.location.pathname.split('/post/')[1];
+        
+        async function loadPost() {
+            try {
+                const response = await fetch(`/api/post/${postId}`);
+                
+                if (!response.ok) {
+                    throw new Error('Post not found');
+                }
+                
+                const post = await response.json();
+                
+                document.getElementById('post-id').innerHTML = `Post ID ${postId}`;
+                document.getElementById('post-content').innerHTML = post.message;
+                
+            } catch (error) {
+                document.querySelector('.post-container').innerHTML = `
+                    <div class="error-message">
+                        <h2>Error loading post</h2>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        loadPost();
+    </script>
+</body>
+</html>

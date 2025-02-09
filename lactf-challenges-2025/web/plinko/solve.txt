@@ -1,0 +1,2 @@
+Basically just drop outgoing collision requests that push you further to the center. 
+You have to simulate the physics on the frontend in a script and choose to drop collisions that hurt your position.

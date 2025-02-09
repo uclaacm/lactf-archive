@@ -1,0 +1,53 @@
+dir "../build/"
+
+desc "Solve"
+
+import common
+
+reset
+    tell @a "Reset solve"
+end
+
+function input_memory()
+    /scoreboard players set Global Reg0 108
+    /scoreboard players set Global Reg1 97
+    /scoreboard players set Global Reg2 99
+    /scoreboard players set Global Reg3 116
+    /scoreboard players set Global Reg4 102
+    /scoreboard players set Global Reg5 123
+    /scoreboard players set Global Reg6 121
+    /scoreboard players set Global Reg7 52
+    /scoreboard players set Global Reg8 89
+    /scoreboard players set Global Reg9 95
+    /scoreboard players set Global Reg10 116
+    /scoreboard players set Global Reg11 104
+    /scoreboard players set Global Reg12 49
+    /scoreboard players set Global Reg13 115
+    /scoreboard players set Global Reg14 95
+    /scoreboard players set Global Reg15 102
+    /scoreboard players set Global Reg16 108
+    /scoreboard players set Global Reg17 52
+    /scoreboard players set Global Reg18 103
+    /scoreboard players set Global Reg19 95
+    /scoreboard players set Global Reg20 103
+    /scoreboard players set Global Reg21 49
+    /scoreboard players set Global Reg22 118
+    /scoreboard players set Global Reg23 51
+    /scoreboard players set Global Reg24 115
+    /scoreboard players set Global Reg25 95
+    /scoreboard players set Global Reg26 121
+    /scoreboard players set Global Reg27 48
+    /scoreboard players set Global Reg28 117
+    /scoreboard players set Global Reg29 95
+    /scoreboard players set Global Reg30 52
+    /scoreboard players set Global Reg31 95
+    /scoreboard players set Global Reg32 100
+    /scoreboard players set Global Reg33 49
+    /scoreboard players set Global Reg34 52
+    /scoreboard players set Global Reg35 109
+    /scoreboard players set Global Reg36 48
+    /scoreboard players set Global Reg37 110
+    /scoreboard players set Global Reg38 100
+    /scoreboard players set Global Reg39 125
+end
+    

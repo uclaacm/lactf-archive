@@ -1,0 +1,12 @@
+services:
+  pyjail:
+    build: pyjail/
+    privileged: true
+    ports:
+      - "5000:5000"
+  site:
+    build: site/
+    environment:
+      PYHOST: "pyjail"
+    ports:
+      - "3000:3000"

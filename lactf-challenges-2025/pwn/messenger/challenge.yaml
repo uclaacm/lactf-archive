@@ -1,0 +1,32 @@
+name: messenger
+author: enzocut
+description: |-
+  i love sending messages, so i made it possible to add just a few more bytes to them
+
+  `{{nc}}`
+
+flag: "lactf{msg_msg_my_beloved}"
+
+provide:
+  - dist.tar.gz
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+    resources:
+      limits:
+        cpu: 500m
+        memory: 512Mi
+      requests:
+        cpu: 200m
+        memory: 256Mi
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31499
