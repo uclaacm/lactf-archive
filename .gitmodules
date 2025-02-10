@@ -1,6 +1,6 @@
 [submodule "2025/rev/mcflagchecker/cbscript"]
 	path = 2025/rev/mcflagchecker/cbscript
-	url = https://github.com/SethBling/cbscript
-[submodule "2025web/whats-my-number/ece117-unpredictables"]
+	url = https://github.com/SethBling/cbscript.git
+[submodule "2025/web/whats-my-number/ece117-unpredictables"]
 	path = 2025/web/whats-my-number/ece117-unpredictables
-	url = git@github.com:Arc-blroth/ece117-unpredictables.git
+	url = https://github.com/Arc-blroth/ece117-unpredictables
