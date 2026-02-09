@@ -1,0 +1,8 @@
+name: not-just-a-hobby
+author: ryan
+description: |-
+  It's not just a hobby!!!
+
+flag: "lactf{graph1c_d3sign_is_My_PA55i0N!!1!}"
+provide:
+  - ./v.v

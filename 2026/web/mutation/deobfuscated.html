@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mutation Challenge</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        .hint {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Free flag!</h1>
+        <p>All you need to do is inspect this page!</p>
+    </div>
+<script>const F='lactf{с0nѕtаnt_mutаtі0n_1s_fun!_🧬_👋🏽_ІlІ1| ض픋ԡೇ∑ᦞ୞땾᥉༂↗ۑீ᤼യ⌃±❣Ӣ◼ௌௌௌௌௌௌௌௌௌௌௌௌௌௌௌௌௌௌௌௌௌௌௌ}';function r(l){let s='',c='abcdefghijklmnopqrstuvwxyz0123456789';for(let i=0;i<l;i++)s+=c[Math.floor(Math.random()*c.length)];return s}function f(){const w=['fake','wrong','nope','try_again','nice_try','not_here','keep_looking','almost','so_close','decoy','honeypot','red_herring','wrong_flag','not_the_flag','fake_flag','you_wish','lol_nope','trick','bait','wrong_one'];return`lactf{${w[Math.floor(Math.random()*w.length)]}}`}function m(){const w=document.createTreeWalker(document,NodeFilter.SHOW_COMMENT,null,false),c=[];while(w.nextNode())w.currentNode.nodeValue.includes('lactf{')?c.push(w.currentNode):0;c.forEach(n=>n.remove());const t=Math.floor(Math.random()*100)+1,p=Math.floor(Math.random()*t),h=document.documentElement;for(let i=0;i<t;i++){i===p&&h.parentNode.insertBefore(document.createComment(` ${F} `),h);h.parentNode.insertBefore(document.createComment(` ${f()} ${r(32)} `),h)}}document.addEventListener('copy',e=>{e.preventDefault();e.clipboardData.setData('text/plain','Nice try! 🧬');return false});document.addEventListener('contextmenu',e=>{e.preventDefault();return false});let d=false;setInterval(()=>{if(window.outerWidth-window.innerWidth>160||window.outerHeight-window.innerHeight>160)d=true},500);document.addEventListener('keydown',e=>{if(e.keyCode===123||(e.ctrlKey&&e.shiftKey&&(e.keyCode===73||e.keyCode===74||e.keyCode===67))||(e.ctrlKey&&e.keyCode===85)){e.preventDefault();return false}});m();setInterval(m,50);</script></html>

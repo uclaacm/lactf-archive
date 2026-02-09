@@ -1,0 +1,74 @@
+.TH YQ 1 "2024" "yq 4.35" "User Commands"
+.SH NAME
+yq \- Command-line YAML processor
+.SH SYNOPSIS
+.B yq
+[\fIOPTIONS\fR] \fIEXPRESSION\fR [\fIFILE\fR...]
+.SH DESCRIPTION
+.B yq
+is a lightweight and portable command-line YAML processor. It uses jq-like
+syntax but works with YAML files instead of JSON.
+.PP
+yq can read YAML, JSON, XML, CSV, and TOML files and output to any of these
+formats. It supports complex expressions for filtering and transforming data.
+.SH OPTIONS
+.TP
+.B \-p, \-\-input\-format
+Input format: yaml, json, xml, csv, toml (default: yaml)
+.TP
+.B \-o, \-\-output\-format
+Output format: yaml, json, xml, csv, toml (default: yaml)
+.TP
+.B \-P, \-\-prettyPrint
+Pretty print output
+.TP
+.B \-i, \-\-inplace
+Edit file in place
+.TP
+.B \-e, \-\-exit\-status
+Set exit status based on output
+.TP
+.B \-N, \-\-no\-colors
+Disable colored output
+.SH BASIC EXPRESSIONS
+.TP
+.B .
+Identity - outputs input unchanged
+.TP
+.B .foo
+Select field "foo"
+.TP
+.B .[]
+Iterate over array/object values
+.TP
+.B .[0]
+Select first array element
+.TP
+.B keys
+Get keys as array
+.TP
+.B length
+Get length of value
+.SH EXAMPLES
+.PP
+Read a YAML field:
+.RS
+echo 'name: yq' | yq '.name'
+.RE
+.PP
+Convert YAML to JSON:
+.RS
+echo 'name: yq' | yq -o json '.'
+.RE
+.PP
+Modify a field:
+.RS
+echo 'name: old' | yq '.name = "new"'
+.RE
+.SH SEE ALSO
+.BR jq (1),
+.BR xq (1)
+.SH AUTHOR
+Mike Farah and contributors
+.SH WEBSITE
+https://mikefarah.gitbook.io/yq/

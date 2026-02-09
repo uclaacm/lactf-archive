@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad 13 - Books</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: linear-gradient(135deg, #654ea3 0%, #eaafc8 100%); height: 100vh; overflow: hidden; display: flex; justify-content: center; align-items: center; font-family: 'Arial', sans-serif; }
+        .container { text-align: center; }
+        .book { animation: open 2s ease-in-out infinite; }
+        @keyframes open { 0%, 100% { transform: rotateY(0deg); } 50% { transform: rotateY(-20deg); } }
+        h1 { color: #fff; font-size: 1em; margin-top: 8px; }
+        p { color: rgba(255,255,255,0.8); margin-top: 4px; font-size: 0.7em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg class="book" width="60" height="50" viewBox="0 0 80 70">
+            <rect x="10" y="10" width="25" height="50" fill="#fff" transform="skewY(-5)"/>
+            <rect x="35" y="10" width="25" height="50" fill="#f0f0f0" transform="skewY(5)"/>
+            <line x1="35" y1="10" x2="35" y2="60" stroke="#654ea3" stroke-width="2"/>
+        </svg>
+        <h1>READ MORE!</h1>
+        <p>BookWorm</p>
+    </div>
+</body>
+</html>

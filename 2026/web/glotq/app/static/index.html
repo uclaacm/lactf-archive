@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>glotq - Query Everything!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>glotq</h1>
+            <p class="tagline">jq / yq / xq as a service! Query all the things!</p>
+            <p class="subtitle">Because parsing data should be everyone's problem, not just yours.</p>
+        </header>
+
+        <main>
+            <div class="format-tabs">
+                <button class="tab active" data-format="json" onclick="switchFormat('json')">JSON</button>
+                <button class="tab" data-format="yaml" onclick="switchFormat('yaml')">YAML</button>
+                <button class="tab" data-format="xml" onclick="switchFormat('xml')">XML</button>
+            </div>
+
+            <div class="editor-container">
+                <div id="json-editor" class="format-editor active">
+                    <div class="code-block">
+                        <span class="syntax-punct">{</span>
+                        <div class="code-line">
+                            <span class="syntax-key">"command"</span><span class="syntax-punct">:</span>
+                            <select id="json-command" class="inline-select" onchange="handleCommandChange('json')">
+                                <option value="jq">"jq"</option>
+                                <option value="man">"man"</option>
+                            </select><span class="syntax-punct">,</span>
+                        </div>
+                        <div class="code-line" id="json-args-line">
+                            <span class="syntax-key">"args"</span><span class="syntax-punct">:</span>
+                            <span class="syntax-punct">[</span>
+                            <select id="json-args" class="inline-select">
+                                <option value=".">"."</option>
+                                <option value=".[]">".[]"</option>
+                                <option value="keys">"keys"</option>
+                                <option value="length">"length"</option>
+                            </select>
+                            <span class="syntax-punct">],</span>
+                        </div>
+                        <div class="code-line args-disabled" id="json-args-disabled" style="display: none;">
+                            <span class="syntax-key">"args"</span><span class="syntax-punct">:</span>
+                            <span class="syntax-punct">[</span><span class="syntax-string">"jq"</span><span class="syntax-punct">],</span>
+                            <span class="args-note">(shows jq man page)</span>
+                        </div>
+                        <div class="custom-data-section">
+                            <textarea id="json-custom" class="custom-data-input" spellcheck="false" placeholder='  "message": "Hello from glotq!",
+  "data": { "value": 42 }'>"message": "Hello from glotq!",
+"data": { "value": 42 }</textarea>
+                        </div>
+                        <span class="syntax-punct">}</span>
+                    </div>
+                </div>
+
+                <div id="yaml-editor" class="format-editor">
+                    <div class="code-block yaml-block">
+                        <div class="code-line">
+                            <span class="syntax-key">command</span><span class="syntax-punct">:</span>
+                            <select id="yaml-command" class="inline-select yaml-select" onchange="handleCommandChange('yaml')">
+                                <option value="yq">yq</option>
+                                <option value="man">man</option>
+                            </select>
+                        </div>
+                        <div class="code-line" id="yaml-args-line">
+                            <span class="syntax-key">args</span><span class="syntax-punct">:</span>
+                        </div>
+                        <div class="code-line indent" id="yaml-args-value">
+                            <span class="syntax-punct">-</span>
+                            <select id="yaml-args" class="inline-select yaml-select">
+                                <option value=".">"."</option>
+                                <option value=".[]">".[]"</option>
+                                <option value="keys">"keys"</option>
+                                <option value="length">"length"</option>
+                            </select>
+                        </div>
+                        <div class="code-line args-disabled" id="yaml-args-disabled" style="display: none;">
+                            <span class="syntax-key">args</span><span class="syntax-punct">:</span>
+                            <span class="syntax-punct">[</span><span class="syntax-string">"yq"</span><span class="syntax-punct">]</span>
+                            <span class="args-note">(shows yq man page)</span>
+                        </div>
+                        <div class="custom-data-section yaml-custom">
+                            <textarea id="yaml-custom" class="custom-data-input yaml-input" spellcheck="false" placeholder="message: Hello from glotq!
+data:
+  value: 42">message: Hello from glotq!
+data:
+  value: 42</textarea>
+                        </div>
+                    </div>
+                </div>
+                <div id="xml-editor" class="format-editor">
+                    <div class="code-block xml-block">
+                        <div class="code-line">
+                            <span class="syntax-comment">&lt;?xml version="1.0"?&gt;</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="syntax-tag">&lt;request&gt;</span>
+                        </div>
+                        <div class="code-line indent">
+                            <span class="syntax-tag">&lt;command&gt;</span>
+                            <select id="xml-command" class="inline-select xml-select" onchange="handleCommandChange('xml')">
+                                <option value="xq">xq</option>
+                                <option value="man">man</option>
+                            </select>
+                            <span class="syntax-tag">&lt;/command&gt;</span>
+                        </div>
+                        <div id="xml-args-line">
+                            <div class="code-line indent">
+                                <span class="syntax-tag">&lt;args&gt;</span>
+                            </div>
+                            <div class="code-line indent2">
+                                <span class="syntax-tag">&lt;arg&gt;</span>
+                                <select id="xml-args" class="inline-select xml-select">
+                                    <option value=""></option>
+                                    <option value="-x //message">-x //message</option>
+                                    <option value="-x //data">-x //data</option>
+                                    <option value="-q message">-q message</option>
+                                </select>
+                                <span class="syntax-tag">&lt;/arg&gt;</span>
+                            </div>
+                            <div class="code-line indent">
+                                <span class="syntax-tag">&lt;/args&gt;</span>
+                            </div>
+                        </div>
+                        <div class="code-line indent args-disabled" id="xml-args-disabled" style="display: none;">
+                            <span class="syntax-tag">&lt;args&gt;&lt;arg&gt;</span><span class="syntax-string">xq</span><span class="syntax-tag">&lt;/arg&gt;&lt;/args&gt;</span>
+                            <span class="args-note">(shows xq man page)</span>
+                        </div>
+                        <div class="custom-data-section xml-custom">
+                            <textarea id="xml-custom" class="custom-data-input xml-input" spellcheck="false" placeholder="    &lt;message&gt;Hello from glotq!&lt;/message&gt;
+    &lt;data&gt;
+        &lt;value&gt;42&lt;/value&gt;
+    &lt;/data&gt;">    &lt;message&gt;Hello from glotq!&lt;/message&gt;
+    &lt;data&gt;
+        &lt;value&gt;42&lt;/value&gt;
+    &lt;/data&gt;</textarea>
+                        </div>
+                        <div class="code-line">
+                            <span class="syntax-tag">&lt;/request&gt;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="execute-btn" onclick="executeQuery()">
+                Execute Query
+            </button>
+
+            <div class="output-section">
+                <label>Output:</label>
+                <pre id="output">Your results will appear here...</pre>
+            </div>
+        </main>
+
+        <footer>
+            <p>Made with questionable decisions for LA CTF 2026</p>
+            <p class="warning">Pro tip: Don't trust user input. We definitely do though!</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

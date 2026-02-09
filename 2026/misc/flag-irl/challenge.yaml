@@ -1,0 +1,8 @@
+name: flag-irl
+author: pstorm
+description: |-
+  With the generous help of the folks at 3D4E, I finally have a flag that can literally be captured! I made sure to [document this incredible accomplishment](https://www.youtube.com/watch?v=aKpsggYoVnc), though my microphone was busted.
+
+  This is **not** an OSINT challenge, and the video is the only thing you need to solve the challenge. Please do not try to research the challenge author or any other organizations mentioned in the description. It will not help.
+
+flag: "lactf{4n_irl_fla6_f0r_onc3}"

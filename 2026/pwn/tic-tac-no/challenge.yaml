@@ -1,0 +1,27 @@
+name: tic-tac-no
+author: pstorm
+description: |-
+  Tic-tac-toe is a draw when played perfectly. Can you be more perfect than my perfect bot?
+  
+  `{{nc}}`
+
+flag: "lactf{th3_0nly_w1nn1ng_m0ve_1s_t0_p1ay}"
+
+provide:
+  - chall.c
+  - chall
+  - Dockerfile
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 30001

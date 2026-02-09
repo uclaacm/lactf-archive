@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Append Note - The Future of Notes</title>
+    <style>
+        * {
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            background: white;
+            border-radius: 2vh;
+            padding: 4vh 4vw;
+            box-shadow: 0 1vh 4vh rgba(0,0,0,0.3);
+            max-width: 90vw;
+            max-height: 90vh;
+            text-align: center;
+            border: 0.5vh dashed #ff6b6b;
+        }
+
+        h1 {
+            color: #ff6b6b;
+            text-shadow: 0.3vh 0.3vh 0px #feca57;
+            font-size: 5vh;
+            margin-bottom: 1vh;
+        }
+
+        .tagline {
+            color: #48dbfb;
+            font-size: 2.5vh;
+            margin-bottom: 3vh;
+        }
+
+        .funny-message {
+            background: linear-gradient(45deg, #ffeaa7, #fdcb6e);
+            padding: 2vh;
+            border-radius: 1.5vh;
+            margin: 2vh 0;
+            border: 0.3vh solid #f39c12;
+        }
+
+        .funny-message p {
+            margin: 1vh 0;
+            color: #d35400;
+            font-size: 2vh;
+        }
+
+        .funny-message .emoji {
+            font-size: 4vh;
+        }
+
+        form {
+            background: linear-gradient(45deg, #a29bfe, #6c5ce7);
+            padding: 3vh;
+            border-radius: 1.5vh;
+            margin-top: 2vh;
+        }
+
+        label {
+            color: white;
+            font-size: 2.5vh;
+            display: block;
+            margin-bottom: 1.5vh;
+        }
+
+        input[type="text"] {
+            width: 90%;
+            padding: 1.5vh;
+            border: none;
+            border-radius: 1vh;
+            font-size: 2vh;
+            font-family: 'Comic Sans MS', cursive;
+            margin-bottom: 1.5vh;
+        }
+
+        button {
+            background: #00b894;
+            color: white;
+            border: none;
+            padding: 1.5vh 4vw;
+            font-size: 2.5vh;
+            border-radius: 1vh;
+            cursor: pointer;
+            font-family: 'Comic Sans MS', cursive;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.1) rotate(2deg);
+            background: #00cec9;
+        }
+
+        .admin-badge {
+            background: #e74c3c;
+            color: white;
+            padding: 0.5vh 1.5vw;
+            border-radius: 2vh;
+            display: inline-block;
+            margin-bottom: 2vh;
+            font-size: 2vh;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .footer {
+            margin-top: 3vh;
+            color: #636e72;
+            font-size: 1.8vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Append Note</h1>
+        <p class="tagline">The Distributed Notes App of Your Dreams!</p>
+
+        {% if is_admin %}
+        <div class="admin-badge">ADMIN MODE</div>
+        <form action="/append">
+            <label for="content">Write your super secret note:</label>
+            <input type="text" id="content" name="content" placeholder="Type your note here..." required>
+            <input type="hidden" name="url" value="{{ url }}">
+            <br>
+            <button type="submit">Append It!</button>
+        </form>
+        {% else %}
+        <div class="funny-message">
+            <p class="emoji">&#128203;&#10133;&#128640;</p>
+            <p><strong>Welcome to Append Note!</strong></p>
+            <p>We're <em>append optimized</em>, baby!</p>
+            <p>Reads are eventually consistent with the heat death of the universe! &#127777;</p>
+            <p>So like... maybe check back in a few billion years?</p>
+            <p class="emoji">&#9203;&#8734;</p>
+            <p><em>Note: Only admins can actually write notes. We're still working on that "read" feature...</em></p>
+        </div>
+        {% endif %}
+
+        <div class="footer">
+            <p>Powered by optimism and questionable design choices</p>
+        </div>
+    </div>
+</body>
+</html>

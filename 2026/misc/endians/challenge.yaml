@@ -1,0 +1,9 @@
+name: endians
+author: pstorm
+description: |-
+  I was reading about Unicode character encodings until one day, my flag turned into Japanese! Does little-endian mean the little byte's at the end or that the characters start with the little byte?
+  
+flag: "lactf{1_sur3_h0pe_th1s_d0es_n0t_g3t_l0st_1n_translati0n!}"
+provide:
+  - ./chall.txt
+  - ./gen.py

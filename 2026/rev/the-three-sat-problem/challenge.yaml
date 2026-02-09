@@ -1,0 +1,9 @@
+name: the-three-sat-problem
+author: aplet123
+description: |-
+  I have this groundbreaking sci-fi novel idea where it's proven that P=NP then suddenly all of cryptography and subsequently all of society collapses- hey wait why are you leaving I haven't finished pitching my idea yet
+
+flag: "lactf{is_the_three_body_problem_np_hard}"
+
+provide:
+  - ./three_sat_problem

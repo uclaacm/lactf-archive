@@ -1,0 +1,27 @@
+name: mutation mutation
+author: burturt
+description: |-
+  It's a free flag! You just gotta inspect the page to get it.
+  Just be quick though... the flag is constantly mutating. Can you catch it before it changes? 🧬
+
+  {{link}}
+
+flag: "lactf{с0nѕtаnt_mutаtі0n_1s_fun!_🧬_👋🏽_ІlІ1| ض픋ԡೇ∑ᦞ୞땾᥉༂↗ۑீ᤼യ⌃±❣Ӣ◼ௌௌௌௌௌௌௌௌௌௌௌௌௌௌௌௌௌௌௌௌௌௌௌ}"
+
+containers:
+  app:
+    build: app/.
+    ports:
+      - 5000
+    resources:
+      limits:
+        cpu: "150m"
+        memory: "512Mi"
+      requests:
+        cpu: "50m"
+        memory: "128Mi"
+expose:
+  app:
+    - target: 5000
+      http: mutation-mutation
+

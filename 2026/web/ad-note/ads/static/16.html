@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad 16 - Photography</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: linear-gradient(135deg, #232526 0%, #414345 100%); height: 100vh; overflow: hidden; display: flex; justify-content: center; align-items: center; font-family: 'Arial', sans-serif; }
+        .container { text-align: center; }
+        .camera { animation: flash 2s ease-in-out infinite; }
+        @keyframes flash { 0%, 90%, 100% { filter: brightness(1); } 95% { filter: brightness(1.5); } }
+        h1 { color: #fff; font-size: 1em; margin-top: 8px; }
+        p { color: rgba(255,255,255,0.7); margin-top: 4px; font-size: 0.7em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg class="camera" width="70" height="50" viewBox="0 0 100 70">
+            <rect x="10" y="20" width="80" height="45" rx="8" fill="#1a1a1a"/>
+            <circle cx="50" cy="42" r="18" fill="#333" stroke="#666" stroke-width="3"/>
+            <circle cx="50" cy="42" r="10" fill="#4a90d9"/>
+            <circle cx="50" cy="42" r="4" fill="#fff"/>
+            <rect x="30" y="10" width="25" height="12" rx="3" fill="#1a1a1a"/>
+            <circle cx="78" cy="28" r="5" fill="#e74c3c"/>
+        </svg>
+        <h1>CAPTURE MOMENTS!</h1>
+        <p>PhotoPro</p>
+    </div>
+</body>
+</html>

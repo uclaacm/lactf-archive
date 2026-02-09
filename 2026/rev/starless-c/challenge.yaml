@@ -1,0 +1,26 @@
+name: starless-c
+author: aplet123
+description: |-
+  The son of the fortune-teller stands before three doors. A bee. A key. A flag.
+
+  `{{nc}}`
+
+flag:
+  file: flag.txt
+
+provide:
+  - ./starless_c
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+  - target: 5000
+    tcp: 32223

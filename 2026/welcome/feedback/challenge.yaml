@@ -1,0 +1,15 @@
+name: feedback
+author: LA CTF Organizers
+description: |-
+  Thank you so much for playing LA CTF 2026! We hope you had fun and learned something new. We would love to hear your feedback on the challenges, the platform, and the overall experience.
+
+  Please fill out this survey to help us improve for next year and give kudos to our challenge authors. We'll give a few points in return for filling out the survey.
+
+  Note: this challenge will not be used for tie breaking, so please take your time on the form - there is no advantage to rushing through it! Also, please feel free 
+
+  [Link to Survey (opens at **UPDATED 6:30pm PST**)](https://docs.google.com/forms/d/e/1FAIpQLSe5H3DDSkz7GqN6bHW1xl6YM1FOnWDujto-kgklRKGx6C2yYQ/viewform?usp=pp_url&entry.665470356={instancer_token})
+
+flag: "lactf{f33db4ck_r3c31v3d_th4nk5_f0r_pl4y1ng!}"
+
+value: 20
+tiebreakEligible: false

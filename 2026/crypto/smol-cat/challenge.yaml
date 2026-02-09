@@ -1,0 +1,23 @@
+name: smol cats
+author: burturt
+description: |-
+  My cat walked across my keyboard and made this RSA implementation, encrypting the location of the treats they stole from me! However, they already got fed twice today, and are already overweight and needs to lose some weight, so I cannot let them eat more treats. Can you defeat my cat's encryption so I can find their secret stash of treats and keep my cat from overeating?
+
+  `{{nc}}`
+
+flag:
+  file: app/flag.txt
+
+containers:
+  main:
+    build: app
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31225

@@ -1,0 +1,26 @@
+[
+ {
+    "id": "a3e33c2505a19d18",
+    "title": "The Part-Time Parliament",
+    "file": "part-time-parliament.pdf",
+    "price": "10"
+  },
+  {
+    "id": "509d8c2a80e495fb",
+    "title": "The End of Cryptography",
+    "file": "end_of_cryptography.txt",
+    "price": 20
+  },
+  {
+    "id": "f4838abd731caf29",
+    "title": "AVDestroyer Origin Lore",
+    "file": "avd_origin_lore.txt",
+    "price": 40
+  },
+  {
+    "id": "2a16e349fb9045fa",
+    "title": "Flag",
+    "file": "flag.txt",
+    "price": 1000000
+  }
+ ]

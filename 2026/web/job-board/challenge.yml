@@ -1,0 +1,32 @@
+name: job-board
+author: r2uwu2
+description: |-
+  I heard you were looking for a job.
+
+  Too bad the one that gives you the secret flag is private.
+
+  {{ link }}
+
+  Note - Send your job application to the [Admin Recruiter](https://admin-bot.lac.tf/job-board) to view.
+
+flag: &flag "lactf{c0ngr4ts_0n_y0ur_n3w_l7fe}"
+
+provide:
+  - "job-board.zip"
+  - file: "../../admin-bot/handlers/job-board.js"
+    as: "admin-bot.js"
+
+containers:
+  main:
+    build: .
+    ports:
+      - 3000
+    environment:
+      PORT: "3000"
+      FLAG: *flag
+      ADMINPW: "c165218822d7156e"
+
+expose:
+  main:
+    - target: 3000
+      http: job-board

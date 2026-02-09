@@ -1,0 +1,1 @@
+zip -9r clawcha.zip app.js Dockerfile inventory.js package.json package-lock.json site/

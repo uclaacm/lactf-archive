@@ -1,0 +1,38 @@
+name: CTFaaS - CTFs as a Service!
+author: burturt
+description: |-
+  Want to run your own CTF but don't have the time or knowledge to set up the infrastructure? ACM Cyber is proud to announce **CTFaaS**! With our platform, you can easily deploy and manage CTF challenges in isolated environments with the support of our expert infrastructure team, which to date, has not had any infrastructure issues with any CTF they have ever run! Perfect for educators, event organizers, and enthusiasts looking to create engaging cybersecurity competitions without the hassle of server management. For the low low price of **10 challenges solved (free for UCLA students!)**, during our pre-IPO offering, you can get our trial tier, which gives you access to a dedicated CTF infrastructure instance for **30 minutes**! You provide the challenges as Docker containers, we provide the hosting.
+
+  Our challenge deployer, despite allowing you to run arbitrary code, is perfectly secure due to our state-of-the-art security measures, including proper RBAC configurations, service accounts applied to every deployed challenge with limited permissions, and a custom-built sandboxing solution that prevents any malicious activity. Don't believe us? Try it out for yourself and see how secure our platform is! We've even put the keys to our company inside of a Secret in the cluster as proof we stand behind what we claim!
+
+  Note: on our trial instance, network traffic is limited to only your IP address for both ingress and egress to prevent abuse. Do NOT attempt to hack the challenge instancer at ctfaas.chall.lac.tf, but you are free to try to hack anything on the IP address provided to you by the challenge instancer.
+
+  [Get your own CTFaaS instance here!](https://ctfaas.chall.lac.tf/login?login_key={instancer_token})
+
+  Due to resource limitations, we do not deploy the scoreboard software by default. However, if you want it, download [this file](https://chall-files.lac.tf/uploads/eb2a7b72eda7f7d2ba4e27a6bb3013d112f04dd461638cb82a81e44d61071342/ctfd.tar.gz), gunzip it, and upload the resulting .tar file, specifying port 8000.
+
+  Note: system will now allow anyone who solved at least one challenge (welcome/rules challenge included) to start an instance.
+
+flag: "lactf{0h_n0_y0u_h4ck3d_my_p34f3c7ly_s3cur3_c7us73r}"
+
+containers:
+  app:
+    build: standalone_instancer/
+    ports:
+      - 5000
+    resources:
+      limits:
+        cpu: "1100m"
+        memory: "512Mi"
+      requests:
+        cpu: "150m"
+        memory: "256Mi"
+  redis:
+    image: redis:latest
+    ports:
+      - 6379
+
+expose:
+  app:
+    - target: 5000
+      http: ctfaas

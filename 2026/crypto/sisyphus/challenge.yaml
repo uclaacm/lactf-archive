@@ -1,0 +1,26 @@
+name: sisyphus
+author: freed
+description: |-
+  One must imagine sisyphus happy 
+
+  `{{nc}}`
+
+flag:
+  file: flag.txt
+
+provide:
+  - server.py
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31182

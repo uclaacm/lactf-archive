@@ -1,0 +1,1 @@
+zip -9r blogler.zip app.py static/ templates/ Dockerfile

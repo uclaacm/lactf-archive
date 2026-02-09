@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Notes{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body data-ads-url="{{ config.ADS_URL }}" data-min-iframes="{{ config.MIN_IFRAMES }}" data-max-iframes="{{ config.MAX_IFRAMES }}" data-max-results="{{ config.MAX_RESULTS }}">
+    {% block content %}{% endblock %}
+    <script src="/static/notes.js"></script>
+    <script src="/static/ads.js"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

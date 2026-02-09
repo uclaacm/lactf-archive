@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LA CTF Invoice Generator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>LA CTF Invoice Generator</h1>
+      <form id="invoiceForm">
+        <div class="form-group">
+          <label for="name">Customer Name:</label>
+          <input type="text" id="name" name="name" placeholder="" required />
+        </div>
+
+        <div class="form-group">
+          <label for="item">Item Description:</label>
+          <input
+            type="text"
+            id="item"
+            name="item"
+            placeholder="e.g., Laptop, Coffee Machine"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="cost">Cost ($):</label>
+          <input
+            type="number"
+            id="cost"
+            name="cost"
+            step="0.01"
+            min="0"
+            placeholder="0.00"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="datePurchased">Date Purchased:</label>
+          <input type="date" id="datePurchased" name="datePurchased" required />
+        </div>
+
+        <button type="submit" class="btn">Generate Invoice PDF</button>
+      </form>
+      <div id="message"></div>
+    </div>
+
+    <script>
+      document
+        .getElementById("invoiceForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const messageDiv = document.getElementById("message");
+          messageDiv.textContent = "Generating invoice...";
+          messageDiv.className = "message info";
+
+          try {
+            const formData = Object.fromEntries(new FormData(e.target));
+            const response = await fetch("/generate-invoice", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) throw new Error("Failed to generate invoice");
+
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = `invoice-${Date.now()}.pdf`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+
+            messageDiv.textContent = "Invoice generated successfully!";
+            messageDiv.className = "message success";
+          } catch (error) {
+            messageDiv.textContent = "Error: " + error.message;
+            messageDiv.className = "message error";
+          }
+        });
+    </script>
+  </body>
+</html>

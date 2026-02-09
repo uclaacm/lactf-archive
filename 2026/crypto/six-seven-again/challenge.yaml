@@ -1,0 +1,26 @@
+name: six seven again
+author: AVDestroyer
+description: |-
+  LA CTF will take place on Feburary 6 and Feburary 7, 2026.
+
+  `{{nc}}`
+
+flag:
+  file: flag.txt
+
+provide:
+  - chall.py
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31181

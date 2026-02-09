@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - CTFaaS</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0a0a0a;
+            color: #00ff00;
+            padding: 40px;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1, h2 {
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00;
+        }
+        .box {
+            background: #111;
+            border: 1px solid #333;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .status-running {
+            color: #00ff00;
+            font-weight: bold;
+        }
+        .status-stopped {
+            color: #ff6666;
+        }
+        .info-row {
+            margin: 10px 0;
+        }
+        .label {
+            color: #888;
+        }
+        .value {
+            color: #0f0;
+            font-weight: bold;
+        }
+        .cache-info {
+            color: #666;
+            font-size: 12px;
+            font-style: italic;
+        }
+        .connection-info {
+            background: #001100;
+            border: 2px solid #00ff00;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 18px;
+            text-align: center;
+        }
+        .btn {
+            background: #00aa00;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 5px;
+        }
+        .btn:hover {
+            background: #00ff00;
+        }
+        .btn-danger {
+            background: #aa0000;
+            color: #fff;
+        }
+        .btn-danger:hover {
+            background: #ff0000;
+        }
+        .btn-secondary {
+            background: #444;
+            color: #fff;
+        }
+        .btn-secondary:hover {
+            background: #666;
+        }
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        .flash-messages {
+            margin: 20px 0;
+        }
+        .flash-error {
+            background: #330000;
+            border: 1px solid #ff0000;
+            color: #ff6666;
+            padding: 10px;
+            margin: 5px 0;
+        }
+        .flash-success {
+            background: #003300;
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            padding: 10px;
+            margin: 5px 0;
+        }
+        .cooldown-notice {
+            background: #332200;
+            border: 1px solid #ff6600;
+            color: #ff9900;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .logout-section {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+        .progress-box {
+            background: #001100;
+            border: 1px solid #00ff00;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .progress-message {
+            font-size: 16px;
+        }
+    </style>
+    {% if recaptcha_site_key %}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    {% endif %}
+    {% if task_active %}
+    <meta http-equiv="refresh" content="5">
+    {% else %}
+    <meta http-equiv="refresh" content="300">
+    {% endif %}
+</head>
+<body>
+    <div class="container">
+        <h1>CTFaaS Dashboard</h1>
+        <p>Welcome, <strong>{{ team_name }}</strong>!</p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <div class="box">
+            <h2>Instance Status</h2>
+            {% if task_active %}
+                {% if task_type == 'delete' %}
+                    <p class="status-running">DELETING INSTANCE...</p>
+                {% elif task_type == 'refresh' %}
+                    <p class="status-running">REFRESHING STATUS...</p>
+                {% else %}
+                    <p class="status-running">DEPLOYING INSTANCE...</p>
+                {% endif %}
+                <div class="progress-box">
+                    <div id="progress-message" class="progress-message">&gt; {{ task_message }}</div>
+                </div>
+            {% elif vm_status.exists %}
+                <p class="status-running">VM RUNNING</p>
+                <div class="connection-info">
+                    Connect to: <strong>{{ vm_status.external_ip }}:30000</strong>
+                </div>
+                <div class="info-row">
+                    <span class="label">Status:</span>
+                    <span class="value">{{ vm_status.status }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Locked to IP:</span>
+                    <span class="value">{{ vm_status.locked_ip or 'Unknown' }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Your current IP:</span>
+                    <span class="value">{{ client_ip }}</span>
+                </div>
+                {% if vm_status.locked_ip and vm_status.locked_ip != client_ip %}
+                    <div class="cooldown-notice">
+                        Warning: Your current IP ({{ client_ip }}) does not match the locked IP ({{ vm_status.locked_ip }}).
+                        You may not be able to connect to the instance.
+                    </div>
+                {% endif %}
+            {% else %}
+                <p class="status-stopped">No instance running</p>
+                <div class="info-row">
+                    <span class="label">Your current IP:</span>
+                    <span class="value">{{ client_ip }}</span>
+                </div>
+                <p>When you create an instance, network access will be restricted to your current IP address.</p>
+            {% endif %}
+
+            {% if not task_active %}
+                {% if last_refresh_ago is not none %}
+                    <p class="cache-info">
+                        Status last updated <span id="last-refresh-val" data-initial="{{ last_refresh_ago }}">{{ last_refresh_ago }}</span> seconds ago.
+                        Click "Refresh Status" to update.
+                    </p>
+                {% else %}
+                    <p class="cache-info">
+                        Status not yet fetched. Click "Refresh Status" to check GCP.
+                    </p>
+                {% endif %}
+
+                {% if cooldown > 0 %}
+                    <div class="cooldown-notice" id="cooldown-notice">
+                        Cooldown active: Please wait <span id="cooldown-val">{{ cooldown }}</span> seconds before creating a new instance.
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+
+        <div class="controls">
+            {% if task_active %}
+                {% if task_type == 'delete' %}
+                    <button class="btn btn-danger" disabled>Deleting Instance...</button>
+                {% else %}
+                    <button class="btn" disabled>Creating Instance...</button>
+                {% endif %}
+            {% elif not vm_status.exists %}
+                <form method="POST" action="/instance/create" id="create-form" style="display:inline;">
+                    {% if recaptcha_site_key %}
+                    <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}" data-theme="dark" style="margin: 10px 0;"></div>
+                    {% endif %}
+                    <button type="submit" class="btn" id="create-btn" {% if cooldown > 0 %}disabled data-cooldown="{{ cooldown }}"{% endif %}>
+                        Create Instance {% if cooldown > 0 %}({{ cooldown }}s){% endif %}
+                    </button>
+                </form>
+            {% endif %}
+
+            {% if not task_active %}
+                <form method="POST" action="/instance/refresh" style="display:inline;">
+                    <button type="submit" class="btn btn-secondary">Refresh Status</button>
+                </form>
+            {% endif %}
+
+            {% if vm_status.exists and not task_active %}
+                <form method="POST" action="/instance/delete" style="display:inline;">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this instance?');">
+                        Delete Instance
+                    </button>
+                </form>
+            {% endif %}
+        </div>
+
+        <div class="logout-section">
+            <form method="POST" action="/logout">
+                <button type="submit" class="btn btn-secondary">Logout</button>
+            </form>
+        </div>
+    </div>
+
+    {% if task_active %}
+    <script>
+    (function() {
+        var msgEl = document.getElementById('progress-message');
+        var dotCount = 0;
+
+        function poll() {
+            fetch('/instance/status')
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    if (data.active) {
+                        dotCount = (dotCount + 1) % 4;
+                        var dots = '';
+                        for (var i = 0; i <= dotCount; i++) dots += '.';
+                        msgEl.textContent = '> ' + data.message + dots;
+                        setTimeout(poll, 2000);
+                    } else if (data.success) {
+                        msgEl.textContent = data.task_type === 'delete' ? '> Instance deleted.' : '> Instance ready!';
+                        setTimeout(function() { window.location.reload(); }, 1000);
+                    } else {
+                        msgEl.textContent = '> ERROR: ' + (data.error_message || 'Unknown error');
+                        msgEl.style.color = '#ff6666';
+                        setTimeout(function() { window.location.reload(); }, 3000);
+                    }
+                })
+                .catch(function() {
+                    setTimeout(poll, 5000);
+                });
+        }
+
+        setTimeout(poll, 1000);
+    })();
+    </script>
+    {% endif %}
+    
+    <script>
+    (function() {
+        // Cooldown timer
+        var createBtn = document.getElementById('create-btn');
+        if (createBtn && createBtn.hasAttribute('data-cooldown')) {
+            var cooldown = parseInt(createBtn.getAttribute('data-cooldown'), 10);
+            var noticeEl = document.getElementById('cooldown-notice');
+            var noticeValEl = document.getElementById('cooldown-val');
+            
+            var interval = setInterval(function() {
+                cooldown--;
+                if (cooldown <= 0) {
+                    clearInterval(interval);
+                    createBtn.removeAttribute('disabled');
+                    createBtn.textContent = 'Create Instance';
+                    if (noticeEl) noticeEl.style.display = 'none';
+                } else {
+                    createBtn.textContent = 'Create Instance (' + cooldown + 's)';
+                    if (noticeValEl) noticeValEl.textContent = cooldown;
+                }
+            }, 1000);
+        }
+
+        // Last refresh timer
+        var refreshValEl = document.getElementById('last-refresh-val');
+        if (refreshValEl) {
+            var seconds = parseInt(refreshValEl.getAttribute('data-initial'), 10);
+            setInterval(function() {
+                seconds++;
+                refreshValEl.textContent = seconds;
+            }, 1000);
+        }
+    })();
+    </script>
+</body>
+</html>

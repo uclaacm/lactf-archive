@@ -1,0 +1,30 @@
+	.section	.text._RNCINvMs0_NtNtCs3bNtqN8jaZB_3std4sync4onceNtB8_4Once15call_once_forceNCINvMNtBa_9once_lockINtB1b_8OnceLockINtNtBa_14reentrant_lock13ReentrantLockINtNtCsfQL5qMWGko6_4core4cell7RefCellINtNtNtNtBc_2io8buffered10linewriter10LineWriterNtNtB31_5stdio9StdoutRawEEEE10initializeNCINvB1a_11get_or_initNCNvB3I_7cleanup0E0zE0E0Bc_,"ax",@progbits
+	.p2align	4                               # -- Begin function _RNCINvMs0_NtNtCs3bNtqN8jaZB_3std4sync4onceNtB8_4Once15call_once_forceNCINvMNtBa_9once_lockINtB1b_8OnceLockINtNtBa_14reentrant_lock13ReentrantLockINtNtCsfQL5qMWGko6_4core4cell7RefCellINtNtNtNtBc_2io8buffered10linewriter10LineWriterNtNtB31_5stdio9StdoutRawEEEE10initializeNCINvB1a_11get_or_initNCNvB3I_7cleanup0E0zE0E0Bc_
+	.type	_RNCINvMs0_NtNtCs3bNtqN8jaZB_3std4sync4onceNtB8_4Once15call_once_forceNCINvMNtBa_9once_lockINtB1b_8OnceLockINtNtBa_14reentrant_lock13ReentrantLockINtNtCsfQL5qMWGko6_4core4cell7RefCellINtNtNtNtBc_2io8buffered10linewriter10LineWriterNtNtB31_5stdio9StdoutRawEEEE10initializeNCINvB1a_11get_or_initNCNvB3I_7cleanup0E0zE0E0Bc_,@function
+_RNCINvMs0_NtNtCs3bNtqN8jaZB_3std4sync4onceNtB8_4Once15call_once_forceNCINvMNtBa_9once_lockINtB1b_8OnceLockINtNtBa_14reentrant_lock13ReentrantLockINtNtCsfQL5qMWGko6_4core4cell7RefCellINtNtNtNtBc_2io8buffered10linewriter10LineWriterNtNtB31_5stdio9StdoutRawEEEE10initializeNCINvB1a_11get_or_initNCNvB3I_7cleanup0E0zE0E0Bc_: # @_RNCINvMs0_NtNtCs3bNtqN8jaZB_3std4sync4onceNtB8_4Once15call_once_forceNCINvMNtBa_9once_lockINtB1b_8OnceLockINtNtBa_14reentrant_lock13ReentrantLockINtNtCsfQL5qMWGko6_4core4cell7RefCellINtNtNtNtBc_2io8buffered10linewriter10LineWriterNtNtB31_5stdio9StdoutRawEEEE10initializeNCINvB1a_11get_or_initNCNvB3I_7cleanup0E0zE0E0Bc_
+	.cfi_startproc
+# %bb.0:
+	mov	rdx, qword ptr [rdi]
+	mov	rcx, qword ptr [rdx]
+	mov	rax, qword ptr [rdx + 8]
+	mov	qword ptr [rdx], 0
+	test	rcx, rcx
+	je	.LBB380_2
+# %bb.1:
+	mov	byte ptr [rcx], 1
+	xorps	xmm0, xmm0
+	movups	xmmword ptr [rax + 16], xmm0
+	movups	xmmword ptr [rax], xmm0
+	mov	qword ptr [rax + 32], 1
+	mov	qword ptr [rax + 40], 0
+	mov	byte ptr [rax + 48], 0
+	ret
+.LBB380_2:
+	push	rax
+	.cfi_def_cfa_offset 16
+	lea	rdi, [rip + .Lanon.28cb502c8ec02091c8e32b488a8e08d8.86]
+	call	_RNvNtCsfQL5qMWGko6_4core6option13unwrap_failed
+.Lfunc_end380:
+	.size	_RNCINvMs0_NtNtCs3bNtqN8jaZB_3std4sync4onceNtB8_4Once15call_once_forceNCINvMNtBa_9once_lockINtB1b_8OnceLockINtNtBa_14reentrant_lock13ReentrantLockINtNtCsfQL5qMWGko6_4core4cell7RefCellINtNtNtNtBc_2io8buffered10linewriter10LineWriterNtNtB31_5stdio9StdoutRawEEEE10initializeNCINvB1a_11get_or_initNCNvB3I_7cleanup0E0zE0E0Bc_, .Lfunc_end380-_RNCINvMs0_NtNtCs3bNtqN8jaZB_3std4sync4onceNtB8_4Once15call_once_forceNCINvMNtBa_9once_lockINtB1b_8OnceLockINtNtBa_14reentrant_lock13ReentrantLockINtNtCsfQL5qMWGko6_4core4cell7RefCellINtNtNtNtBc_2io8buffered10linewriter10LineWriterNtNtB31_5stdio9StdoutRawEEEE10initializeNCINvB1a_11get_or_initNCNvB3I_7cleanup0E0zE0E0Bc_
+	.cfi_endproc
+                                        # -- End function

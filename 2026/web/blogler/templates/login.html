@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blogler | Login</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <h1>Blogler Login</h1>
+  <div class="login-page">
+    <form action="/login" method="POST">
+      <h2>Login</h2>
+      <label>Username: <input type="text" name="username"></label>
+      <label>Password: <input type="password" name="password"></label>
+      <input type="submit" value="Login">
+    </form>
+    <form action="/register" method="POST">
+      <h2>Create Account</h2>
+      <label>Username: <input type="text" name="username"></label>
+      <label>Password: <input type="password" name="password"></label>
+      <input type="submit" value="Register">
+    </form>
+  </div>
+</body>
+</html>

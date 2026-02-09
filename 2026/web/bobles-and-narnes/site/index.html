@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Narnes and Bobles | Shop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Narnes and Bobles</h1>
+    <div id="balance-container">Balance: $<span id="balance">0</span></div>
+
+    <h2>Cart</h2>
+    <ul id="cart-list"></ul>
+
+    <h2>Books</h2>
+    <div id="books-container"></div>
+
+    <form id="checkout-form" action="/cart/checkout" method="POST">
+      <button type="submit" id="checkout-button">Checkout</button>
+    </form>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

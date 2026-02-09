@@ -1,0 +1,6 @@
+services:
+  append-note:
+    build: .
+    ports:
+      - "4000:4000"
+

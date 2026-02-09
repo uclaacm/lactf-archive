@@ -1,0 +1,25 @@
+name: bobles-and-narnes
+author: r2uwu2
+description: |-
+  The bobler
+
+  {instancer}
+
+flag:
+  file: books/flag.txt
+
+provide:
+  - ./bobles-and-narnes.zip
+
+containers:
+  main:
+    build: .
+    ports:
+      - 3000
+
+expose:
+  main:
+    - target: 3000
+      http: bobles-and-narnes
+
+backend: instancer

@@ -1,0 +1,1 @@
+tar -czvf dist.tar.gz flag/ invoice-generator/ docker-compose.yml

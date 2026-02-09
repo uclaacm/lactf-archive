@@ -1,0 +1,9 @@
+[package]
+name = "lactf2026-reflection-stage1-split"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+indexmap = "2.12.1"
+regex = "1.12.2"
+rustc-demangle = { path = "../rustc-demangle" }

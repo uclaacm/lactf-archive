@@ -1,0 +1,53 @@
+from Crypto.Util.number import getPrime, bytes_to_long
+
+FLAG = open("flag.txt", "rb").read()
+SECRET = bytes_to_long(FLAG)
+
+p = getPrime(512)
+
+
+class RNG:
+    def __init__(self, seed, modulus):
+        self.state = seed
+        self.a = 4378187236568178488156374902954033554168817612809876836185687985356955098509507459200406211027348332345207938363733672019865513005277165462577884966531159
+        self.b = 5998166089683146776473147900393246465728273146407202321254637450343601143170006002385750343013383427197663710513197549189847700541599566914287390375415919
+        self.c = 4686793799228153029935979752698557491405526130735717565192889910432631294797555886472384740255952748527852713105925980690986384345817550367242929172758571
+        self.d = 4434206240071905077800829033789797199713643458206586525895301388157719638163994101476076768832337473337639479654350629169805328840025579672685071683035027
+        self.modulus = modulus
+
+    def next(self):
+        self.state = (
+            self.a * self.state**3
+            + self.b * self.state**2
+            + self.c * self.state
+            + self.d
+        ) % self.modulus
+        return self.state
+
+
+def create_shares(secret, threshold, num_shares, p):
+    rng = RNG(secret, p)
+    coefficients = [secret]
+    for i in range(threshold - 1):
+        coefficients.append(rng.next())
+
+    shares = []
+    for x in range(1, num_shares + 1):
+        y = 0
+        for power, coeff in enumerate(coefficients):
+            term = (coeff * pow(x, power, p)) % p
+            y = (y + term) % p
+        shares.append((x, y))
+
+    return shares
+
+
+THRESHOLD = 10
+NUM_SHARES = 15
+
+shares = create_shares(SECRET, THRESHOLD, NUM_SHARES, p)
+
+print(f"p={p}")
+# p=12670098302188507742440574100120556372985016944156009521523684257469947870807586552014769435979834701674318132454810503226645543995288281801918123674138911
+print(f"Share_1={shares[0]}")
+# Share_1=(1, 6435837956013280115905597517488571345655611296436677708042037032302040770233786701092776352064370211838708484430835996068916818951183247574887417224511655)

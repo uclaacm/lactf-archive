@@ -1,0 +1,97 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f9;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+  color: #333;
+}
+
+#balance-container {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#books-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.book-card {
+  width: 150px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  text-align: center;
+  background: #fafafa;
+}
+
+.book-card img {
+  width: 100%;
+  border-radius: 4px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.book-card button {
+  margin-top: 8px;
+  padding: 6px 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.book-card button:hover {
+  background: #0056b3;
+}
+
+#cart-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+#cart-list li {
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+}
+
+#checkout-button {
+  padding: 10px 15px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#checkout-button:hover {
+  background: #1e7e34;
+}
+
+.book-card label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.book-card input[type="checkbox"] {
+  margin-right: 5px;
+}

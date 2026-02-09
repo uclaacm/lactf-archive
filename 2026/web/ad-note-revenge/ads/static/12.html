@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad 12 - Pet Store</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%); height: 100vh; overflow: hidden; display: flex; justify-content: center; align-items: center; font-family: 'Arial', sans-serif; }
+        .container { text-align: center; }
+        .paw { animation: bounce 0.8s ease-in-out infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        h1 { color: #fff; font-size: 1em; margin-top: 8px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+        p { color: rgba(255,255,255,0.9); margin-top: 4px; font-size: 0.7em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg class="paw" width="60" height="60" viewBox="0 0 80 80">
+            <ellipse cx="40" cy="50" rx="18" ry="15" fill="#fff"/>
+            <circle cx="25" cy="30" r="10" fill="#fff"/>
+            <circle cx="55" cy="30" r="10" fill="#fff"/>
+            <circle cx="15" cy="45" r="8" fill="#fff"/>
+            <circle cx="65" cy="45" r="8" fill="#fff"/>
+        </svg>
+        <h1>LOVE YOUR PET!</h1>
+        <p>PawPalace</p>
+    </div>
+</body>
+</html>

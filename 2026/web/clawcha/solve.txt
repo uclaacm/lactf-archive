@@ -1,0 +1,8 @@
+register with username:
+j:"r2uwu2"
+
+If that was taken, then just add rng amount of spaces before the quote or backspace-encode random characters in the r2uwu2.
+
+This works because json object cookies are encoded with string j:(json encoding here) in expressjs's cookie-parser. If we trick the server into signing a string j:jsonencoding, it will de-serialize to the json object that jsonencoding describes.
+
+Reported to expressjs team a year ago and they said its intended behavior (developer is expected to do validation on the inputs to `.cookie(..., signed: true)`) so don't bother them.

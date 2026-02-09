@@ -1,0 +1,50 @@
+name: extend-note
+author: bliutech
+description: |-
+  Customers loved append-note so much, we decided to add an extended version! :)
+
+  {instancer}
+
+flag: &flag "lactf{1_R34LlY_n33D_T0_r3m3m83R_t0_R3M0V3_My_d38U9_5T4t3m3nt2}"
+
+provide:
+  - "extend-note.zip"
+  - file: "./admin-bot/handlers/extend-note.js"
+    as: "admin-bot.js"
+
+containers:
+  app:
+    build: app/.
+    ports:
+      - 4000
+    environment:
+      ADMIN_SECRET: 495367eeb322981b6fcbb42a31501dce60d2dd0d4a93fd2460475798675a166
+      FLAG: *flag
+      REDIS_URL: redis://redis:6379
+  redis:
+    image: redis:7
+    ports:
+      - 6379
+  admin-bot:
+    build: admin-bot
+    ports:
+      - 8080
+    securityContext:
+      privileged: true
+    resources:
+      requests:
+        cpu: 150m
+        memory: 250Mi
+      limits:
+        cpu: 500m
+        memory: 1Gi
+
+expose:
+  app:
+    - target: 4000
+      http: extend-note
+  admin-bot:
+    - target: 8080
+      http: admin-bot
+
+backend: instancer

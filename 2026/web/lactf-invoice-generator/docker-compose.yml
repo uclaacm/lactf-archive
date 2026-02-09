@@ -1,0 +1,18 @@
+services:
+  invoice-generator:
+    build: ./invoice-generator
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+    depends_on:
+      - flag
+
+  flag:
+    build: ./flag
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

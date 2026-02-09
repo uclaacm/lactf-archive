@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mutation Challenge</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        .hint {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Free flag!</h1>
+        <p>All you need to do is inspect this page!</p>
+    </div>
+
+    <script>
+        const REAL_FLAG = 'lactf{сhеаtеr_uѕе_уоur_brоwѕеr}';
+
+        function randomString(length) {
+            const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result;
+        }
+
+        function randomFakeFlag() {
+            const fakeWords = [
+                'fake', 'wrong', 'nope', 'try_again', 'nice_try', 'not_here',
+                'keep_looking', 'almost', 'so_close', 'decoy', 'honeypot',
+                'red_herring', 'wrong_flag', 'not_the_flag', 'fake_flag',
+                'you_wish', 'lol_nope', 'trick', 'bait', 'wrong_one'
+            ];
+            const word = fakeWords[Math.floor(Math.random() * fakeWords.length)];
+            return `lactf{${word}}`;
+        }
+
+        function mutateComment() {
+            // Remove all existing comments first (search entire document including top-level)
+            const walker = document.createTreeWalker(
+                document,
+                NodeFilter.SHOW_COMMENT,
+                null,
+                false
+            );
+
+            const commentsToRemove = [];
+            while (walker.nextNode()) {
+                if (walker.currentNode.nodeValue.includes('lactf{')) {
+                    commentsToRemove.push(walker.currentNode);
+                }
+            }
+            commentsToRemove.forEach(node => node.remove());
+
+            // Random number of fake comments (1-100 total)
+            const totalComments = Math.floor(Math.random() * 100) + 1;
+            // Place real flag at a random position in the middle
+            const realFlagPosition = Math.floor(Math.random() * totalComments);
+
+            const html = document.documentElement;
+
+            // Add all comments before <html>
+            for (let i = 0; i < totalComments; i++) {
+                if (i === realFlagPosition) {
+                    // Add the real flag with random suffix
+                    const realComment = document.createComment(` ${REAL_FLAG} ${randomString(32)} `);
+                    html.parentNode.insertBefore(realComment, html);
+                }
+                // Add fake comment
+                const fakeComment = document.createComment(` ${randomFakeFlag()} ${randomString(32)} `);
+                html.parentNode.insertBefore(fakeComment, html);
+            }
+        }
+
+        // Prevent copy/paste
+        document.addEventListener('copy', function(e) {
+            e.preventDefault();
+            e.clipboardData.setData('text/plain', 'Nice try! 🧬');
+            return false;
+        });
+
+        // Prevent right-click context menu
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // Detect DevTools by checking if console.log is overridden or timing
+        let devtoolsOpen = false;
+        const detectDevTools = () => {
+            const threshold = 160;
+            if (window.outerWidth - window.innerWidth > threshold ||
+                window.outerHeight - window.innerHeight > threshold) {
+                devtoolsOpen = true;
+            }
+        };
+        setInterval(detectDevTools, 500);
+
+        // Prevent keyboard shortcuts for DevTools
+        document.addEventListener('keydown', function(e) {
+            // Prevent F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, Ctrl+U
+            if (e.keyCode === 123 || // F12
+                (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) || // Ctrl+Shift+I/J/C
+                (e.ctrlKey && e.keyCode === 85)) { // Ctrl+U
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Start mutation immediately and repeat every 50ms
+        mutateComment();
+        setInterval(mutateComment, 50);
+    </script>
+</body>
+</html>

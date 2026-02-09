@@ -1,0 +1,185 @@
+---
+# ==============================================================================
+# SECTION 1: CHALLENGE INFRASTRUCTURE
+# ==============================================================================
+
+# 1. Namespaces
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: hidden-vault
+
+---
+
+# 2. The Flag (Hidden in K3s DB)
+# The user cannot see this via 'kubectl get secrets' due to RBAC,
+# but can find it by reading the K3s SQLite database on the host node.
+apiVersion: v1
+kind: Secret
+metadata:
+  name: real-flag
+  namespace: hidden-vault
+stringData:
+  flag: "lactf{0h_n0_y0u_h4ck3d_my_p34f3c7ly_s3cur3_c7us73r}"
+
+---
+# 3. ServiceAccount for the Deployer App
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ctf-deployer-sa
+  namespace: default
+
+---
+# 4. RBAC: Vulnerable Role
+# Only has access to create namespaces and deployments
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: ctf-deployer-role
+rules:
+  - apiGroups: [""]
+    resources: ["namespaces", "services"]
+    verbs: ["get", "create", "list", "delete"]
+  - apiGroups: ["apps"]
+    resources: ["deployments"]
+    verbs: ["get", "create", "list", "delete"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: ctf-deployer-binding
+subjects:
+  - kind: ServiceAccount
+    name: ctf-deployer-sa
+    namespace: default
+roleRef:
+  kind: ClusterRole
+  name: ctf-deployer-role
+  apiGroup: rbac.authorization.k8s.io
+
+---
+# 4.5 RBAC: Impersonation Role for CTF App
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ctf-app
+  namespace: default
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: ctf-app-role
+rules:
+  - apiGroups: [""]
+    resources: ["serviceaccounts"]
+    verbs: ["impersonate"]
+    resourceNames: ["ctf-deployer-sa"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: ctf-app-binding
+subjects:
+  - kind: ServiceAccount
+    name: ctf-app
+    namespace: default
+roleRef:
+  kind: ClusterRole
+  name: ctf-app-role
+  apiGroup: rbac.authorization.k8s.io
+
+---
+# 5. The Web App Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ctf-deployer
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ctf-deployer
+  template:
+    metadata:
+      labels:
+        app: ctf-deployer
+    spec:
+      serviceAccountName: ctf-deployer-sa
+      automountServiceAccountToken: true
+      containers:
+        - name: app
+          image: ghcr.io/burturt/receiver:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
+
+---
+# 6. Service to access the Deployer
+apiVersion: v1
+kind: Service
+metadata:
+  name: ctf-deployer-svc
+  namespace: default
+spec:
+  type: NodePort
+  selector:
+    app: ctf-deployer
+  ports:
+    - port: 80
+      targetPort: 5000
+      nodePort: 30000 # Access via http://VM_IP:30000
+
+---
+# ==============================================================================
+# SECTION 2: INSECURE DOCKER REGISTRY
+# Goal: Allow users to push/pull custom images within the cluster
+# internal address: registry.default.svc.cluster.local:5000
+# ==============================================================================
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registry
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: registry
+  template:
+    metadata:
+      labels:
+        app: registry
+    spec:
+      containers:
+      - name: registry
+        image: registry:2
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
+        env:
+        # Disable authentication and allow deletion if needed
+        - name: REGISTRY_STORAGE_DELETE_ENABLED
+          value: "true"
+        - name: REGISTRY_AUTH
+          value: "" 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: registry
+  namespace: default
+spec:
+  type: ClusterIP
+  clusterIP: 10.43.254.254
+  selector:
+    app: registry
+  ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: 5000

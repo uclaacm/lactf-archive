@@ -1,0 +1,15 @@
+[unstable]
+build-std = ["core", "std", "alloc"]
+
+[build]
+target = "x86_64-unknown-linux-gnu"
+rustflags = [
+  "-Clinker-plugin-lto=true",
+  "-Clink-arg=-Wl,--lto-emit-asm",
+  "-Clink-arg=-masm=intel",
+  "-Clink-arg=-Wl,-mllvm",
+  "-Clink-arg=-Wl,--x86-asm-syntax=intel",
+]
+
+[target.x86_64-unknown-linux-gnu]
+linker = "./definitely-a-real-linker.py"

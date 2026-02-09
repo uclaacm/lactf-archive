@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad 9 - Tech Innovation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: linear-gradient(135deg, #141e30 0%, #243b55 100%); height: 100vh; overflow: hidden; display: flex; justify-content: center; align-items: center; font-family: 'Arial', sans-serif; }
+        .container { text-align: center; }
+        .chip { animation: glow 2s ease-in-out infinite; }
+        @keyframes glow { 0%, 100% { filter: drop-shadow(0 0 5px #00d4ff); } 50% { filter: drop-shadow(0 0 20px #00d4ff); } }
+        h1 { color: #00d4ff; font-size: 1em; margin-top: 8px; }
+        p { color: rgba(255,255,255,0.7); margin-top: 4px; font-size: 0.7em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg class="chip" width="60" height="60" viewBox="0 0 80 80">
+            <rect x="15" y="15" width="50" height="50" rx="5" fill="#1a1a2e" stroke="#00d4ff" stroke-width="2"/>
+            <rect x="25" y="25" width="30" height="30" fill="#00d4ff" opacity="0.3"/>
+            <line x1="20" y1="5" x2="20" y2="15" stroke="#00d4ff" stroke-width="2"/>
+            <line x1="40" y1="5" x2="40" y2="15" stroke="#00d4ff" stroke-width="2"/>
+            <line x1="60" y1="5" x2="60" y2="15" stroke="#00d4ff" stroke-width="2"/>
+            <line x1="20" y1="65" x2="20" y2="75" stroke="#00d4ff" stroke-width="2"/>
+            <line x1="40" y1="65" x2="40" y2="75" stroke="#00d4ff" stroke-width="2"/>
+            <line x1="60" y1="65" x2="60" y2="75" stroke="#00d4ff" stroke-width="2"/>
+        </svg>
+        <h1>NEXT GEN TECH!</h1>
+        <p>TechNova</p>
+    </div>
+</body>
+</html>

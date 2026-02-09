@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Trial</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap');
+    
+        @keyframes spin {
+            from {
+                rotate: 0deg;
+            }
+
+            50% {
+                rotate: 180deg;
+            }
+
+            to {
+                rotate: 360deg;
+            }
+        }
+
+        body {
+            background-color: #cccccc;
+        }
+
+        h1, p, button {
+            text-align: center;
+            font-family: "Comic Relief", cursive;
+        }
+
+        p {
+            font-size: 18pt;
+        }
+
+        button {
+            cursor: pointer;
+            max-width: 75%;
+        }
+
+        input[type=range] {
+            width: 100%;
+            animation: 10s linear 0s infinite normal both running spin;
+        }
+
+        #disp {
+            text-decoration: underline;
+        }
+
+        #lucky {
+            border: 2pt solid black;
+            padding: 20pt;
+            background: linear-gradient(45deg, #FFFF00, #FBC02D);
+            border-radius: 999pt;
+            box-shadow: 0 0 50pt 30pt #F57F17;
+            font-size: 36pt;
+        }
+    </style>
+</head>
+<body>
+    <h1>The Trial</h1>
+    <p>Want the flag? Just fill in the sentence and we'll send it right over.</p>
+    <p>I want the <span id="disp"></span>.</p>
+    <input type="range" min="0" max="456975" value="420417" id="val">
+    <p id="msg"></p>
+    <button id="submit">Submit</button>
+    <button id="lucky">I'm Feeling Lucky</button>
+    <script>
+        const val = document.getElementById("val");
+        const disp = document.getElementById("disp");
+        const forminp = document.getElementById("forminp");
+        const submit = document.getElementById("submit");
+        const lucky = document.getElementById("lucky");
+        const msg = document.getElementById("msg");
+        const cm = "kjzhcyprdolnbgusfiawtqmxev";
+        function update() {
+            let s = "";
+            let n = val.value;
+            for (let i = 0; i < 4; i ++) {
+                s += cm[n % cm.length];
+                n = Math.floor(n / cm.length);
+            }
+            if (disp.textContent !== s) {
+                disp.textContent = s;
+            }
+        }
+        setInterval(update, 10);
+        submit.addEventListener("click", async () => {
+            const req = await fetch("/getflag", {
+                method: "POST",
+                body: `word=${encodeURIComponent(disp.textContent)}`,
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                }
+            });
+            msg.textContent = await req.text();
+        });
+        lucky.addEventListener("click", () => {
+            location.replace("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+        });
+        function bounce(ele) {
+            const t = [0, 0];
+            const v = [1, 1];
+            setInterval(() => {
+                t[0] += v[0];
+                t[1] += v[1];
+                ele.style.translate = `${t[0]}pt ${t[1]}pt`;
+                const pos = ele.getBoundingClientRect();
+                if (pos.right >= window.innerWidth) {
+                    v[0] = -1;
+                } else if (pos.left <= 0) {
+                    v[0] = 1;
+                }
+                if (pos.bottom >= window.innerHeight) {
+                    v[1] = -1;
+                } else if (pos.top <= 0) {
+                    v[1] = 1;
+                }
+            }, 20);
+        }
+        bounce(submit);
+        bounce(lucky);
+    </script>
+</body>
+</html>

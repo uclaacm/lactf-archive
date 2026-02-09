@@ -1,0 +1,11 @@
+name: lazy-bigrams
+author: pstorm
+description: |-
+  Don't feel like writing a plaintext...
+  
+  Flag is all lowercase.
+  
+flag: "lactf{n0t_r34lly_4_b1gr4m_su8st1tu7ion_bu7_1_w1ll_tak3_1t_f0r_n0w}"
+provide:
+  - ./ct.txt
+  - ./chall.py

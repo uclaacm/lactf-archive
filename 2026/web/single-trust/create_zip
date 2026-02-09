@@ -1,0 +1,1 @@
+zip -9r single-trust.zip Dockerfile index.html index.js package.json package-lock.json static/

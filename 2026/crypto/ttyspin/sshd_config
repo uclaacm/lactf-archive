@@ -1,0 +1,11 @@
+Port 2222
+ListenAddress 0.0.0.0
+
+AllowUsers ttyspin
+PasswordAuthentication yes
+ForceCommand /usr/local/bin/python3 /app/game.py
+
+KbdInteractiveAuthentication no
+UsePAM yes
+X11Forwarding no
+PrintMotd no

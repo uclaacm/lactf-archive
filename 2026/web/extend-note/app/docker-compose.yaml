@@ -1,0 +1,10 @@
+services:
+  append-note:
+    build: .
+    ports:
+      - "4000:4000"
+    environment:
+      - REDIS_URL=redis://redis:6379
+  redis:
+    image: redis:7
+

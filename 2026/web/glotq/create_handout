@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+
+SCRIPT_DIR="$(dirname "$0")"
+cd "$SCRIPT_DIR/app"
+
+REAL_FLAG=$(cat flag.txt)
+
+echo "lactf{fake_flag}" > flag.txt
+
+zip -9r ../glotq.zip .
+
+echo "$REAL_FLAG" > flag.txt
+
+echo "Created glotq.zip with fake flag"

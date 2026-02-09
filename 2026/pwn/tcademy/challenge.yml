@@ -1,0 +1,30 @@
+name: tcademy
+author: asdiml
+description: |-
+  I'm telling you, tcache poisoning doesn't just happen due to double-frees!
+
+  `{{nc}}`
+
+flag:
+  file: flag.txt
+
+provide:
+  - chall.c
+  - chall
+  - Dockerfile
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+    environment:
+      JAIL_TIME: "75"
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31144

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad 4 - Coffee Break</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: linear-gradient(135deg, #4a3728 0%, #2c1810 100%); height: 100vh; overflow: hidden; display: flex; justify-content: center; align-items: center; font-family: 'Arial', sans-serif; }
+        .container { text-align: center; }
+        .steam { animation: steam 2s ease-in-out infinite; opacity: 0.7; }
+        @keyframes steam { 0%, 100% { transform: translateY(0) scaleX(1); opacity: 0.7; } 50% { transform: translateY(-10px) scaleX(1.2); opacity: 0.3; } }
+        h1 { color: #d4a574; font-size: 1em; margin-top: 8px; }
+        p { color: #a67c52; margin-top: 4px; font-size: 0.7em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg width="60" height="70" viewBox="0 0 80 100">
+            <path class="steam" d="M25 25 Q30 15 25 5 M40 25 Q45 15 40 5 M55 25 Q60 15 55 5" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M15 30 L15 75 Q15 85 25 85 L55 85 Q65 85 65 75 L65 30 Z" fill="#d4a574"/>
+            <path d="M65 40 Q80 40 80 55 Q80 70 65 70" stroke="#d4a574" stroke-width="6" fill="none"/>
+        </svg>
+        <h1>WAKE UP!</h1>
+        <p>BrewMaster Coffee</p>
+    </div>
+</body>
+</html>

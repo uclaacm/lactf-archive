@@ -1,0 +1,11 @@
+name: reflection
+author: arcblroth
+description: |-
+  I can keep digging.
+  
+  I could pull us down to the [center of the earth](https://youtu.be/qJXKBLeXK9c).
+
+flag: "lactf{sike_this_is_actually_a_pumber_reference}"
+
+provide:
+  - ./reflection

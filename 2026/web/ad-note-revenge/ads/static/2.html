@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad 2 - Pizza Time</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: linear-gradient(135deg, #ff9a56 0%, #ff6b35 100%); height: 100vh; overflow: hidden; display: flex; justify-content: center; align-items: center; font-family: 'Arial', sans-serif; }
+        .container { text-align: center; }
+        .pizza { animation: spin 4s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        h1 { color: #fff; font-size: 1em; margin-top: 8px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        p { color: #ffe4c4; margin-top: 4px; font-size: 0.7em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg class="pizza" width="70" height="70" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" fill="#f4d03f"/>
+            <circle cx="35" cy="35" r="8" fill="#e74c3c"/>
+            <circle cx="60" cy="40" r="6" fill="#e74c3c"/>
+            <circle cx="45" cy="60" r="7" fill="#e74c3c"/>
+            <circle cx="65" cy="65" r="5" fill="#27ae60"/>
+            <circle cx="30" cy="55" r="4" fill="#27ae60"/>
+        </svg>
+        <h1>HOT & FRESH!</h1>
+        <p>PizzaParadise</p>
+    </div>
+</body>
+</html>

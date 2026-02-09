@@ -1,0 +1,38 @@
+name: misdirection
+author: AVDestroyer
+description: |-
+  To win the game, answer the riddle: what's inconveniently long and full of misdirection?
+
+  {instancer}
+
+  Note: this challenge may take a while to start up (even after the instance is created). It also will take a significant amount of time to regenerate keys (including at startup).
+
+flag: &flag "lactf{d0nt_b3_n0nc00p3r4t1v3_w1th_my_s3rv3r}"
+
+provide:
+  - ./dist.tar.gz
+
+containers:
+  main:
+    build: "app/"
+    ports:
+      - 8000
+    environment:
+      PORT: "8000"
+      FLAG: *flag
+    resources:
+      limits:
+        cpu: "1100m"
+        memory: "512Mi"
+      requests:
+        cpu: "150m"
+        memory: "128Mi"
+
+expose:
+  main:
+    - target: 8000
+      http: misdirection
+
+backend: instancer
+instancer:
+  boot_time: 30

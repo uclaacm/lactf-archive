@@ -1,0 +1,8 @@
+name: the-fish
+author: pstorm
+description: |-
+  The fish asks you for the flag. Unfortunately, it can only describe it to you in its own words.
+  
+flag: "lactf{7h3r3_m4y_83_50m3_155u35_w17h_7h15_1f_7h3_c011472_c0nj3c7ur3_15_d15pr0v3n}"
+provide:
+  - ./fish.py

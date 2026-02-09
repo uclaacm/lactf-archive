@@ -1,0 +1,26 @@
+name: six seven
+author: AVDestroyer
+description: |-
+  When bro uses RSA encryption to talk crap behind my back but I lowkenuinely just factor his public key because I know he picked `[67]*` as his primes
+
+  `{{nc}}`
+
+flag:
+  file: flag.txt
+
+provide:
+  - chall.py
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31180

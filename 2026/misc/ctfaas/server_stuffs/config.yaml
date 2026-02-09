@@ -1,0 +1,13 @@
+# /etc/rancher/k3s/config.yaml
+
+# 1. Listen on all interfaces, not a specific private IP
+bind-address: 0.0.0.0
+
+# 2. Add a static node name. 
+# This prevents K3s from creating a new 'node' object if the VM hostname changes.
+node-name: k3s-master
+
+# 3. Add a placeholder or loopback to TLS SANs (Dynamic listener will handle the rest)
+tls-san:
+  - "127.0.0.1"
+  - "localhost"

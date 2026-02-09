@@ -1,0 +1,75 @@
+.TH XQ 1 "2024" "xq 1.2.4" "User Commands"
+.SH NAME
+xq \- Command-line XML and HTML beautifier and content extractor
+.SH SYNOPSIS
+.B xq
+[\fIOPTIONS\fR] [\fIFILE\fR]
+.SH DESCRIPTION
+.B xq
+is a command-line XML and HTML beautifier and content extractor. It can
+format XML/HTML documents and extract specific nodes using XPath or CSS
+selectors.
+.PP
+When run without arguments, xq reads from stdin and outputs formatted XML.
+.SH OPTIONS
+.TP
+.B \-x, \-\-xpath \fIEXPRESSION\fR
+Extract nodes using XPath expression
+.TP
+.B \-q, \-\-query \fISELECTOR\fR
+Extract nodes using CSS selector
+.TP
+.B \-a, \-\-attr \fINAME\fR
+Extract attribute value instead of node content
+.TP
+.B \-n, \-\-node
+Return full node content instead of text
+.TP
+.B \-m, \-\-html
+Use HTML formatter
+.TP
+.B \-c, \-\-color
+Force colorful output
+.TP
+.B \-\-no\-color
+Disable colorful output
+.TP
+.B \-\-indent \fIN\fR
+Use N spaces for indentation (default: 2)
+.TP
+.B \-\-tab
+Use tabs for indentation
+.SH XPATH EXAMPLES
+.PP
+Extract all <message> elements:
+.RS
+echo '<root><message>Hello</message></root>' | xq -x '//message'
+.RE
+.PP
+Extract element by path:
+.RS
+echo '<root><a><b>text</b></a></root>' | xq -x '/root/a/b'
+.RE
+.PP
+Extract attribute:
+.RS
+echo '<root id="123"/>' | xq -x '/root/@id'
+.RE
+.SH CSS SELECTOR EXAMPLES
+.PP
+Select by tag name:
+.RS
+echo '<div><p>Hello</p></div>' | xq -q 'p'
+.RE
+.PP
+Select by class:
+.RS
+echo '<div class="msg">Hi</div>' | xq -q '.msg'
+.RE
+.SH SEE ALSO
+.BR jq (1),
+.BR yq (1)
+.SH AUTHOR
+Sergey Bronnikov (sibprogrammer)
+.SH WEBSITE
+https://github.com/sibprogrammer/xq

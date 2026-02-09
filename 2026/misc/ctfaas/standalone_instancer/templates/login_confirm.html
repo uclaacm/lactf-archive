@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Confirmation - CTFaaS</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0a0a0a;
+            color: #00ff00;
+            padding: 40px;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00;
+        }
+        .box {
+            background: #111;
+            border: 1px solid #333;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .info-row {
+            margin: 10px 0;
+        }
+        .label {
+            color: #888;
+        }
+        .value {
+            color: #0f0;
+            font-weight: bold;
+        }
+        .btn {
+            background: #00aa00;
+            color: #000;
+            padding: 12px 30px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background: #00ff00;
+        }
+        p {
+            line-height: 1.6;
+        }
+    </style>
+    {% if recaptcha_site_key %}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    {% endif %}
+</head>
+<body>
+    <div class="container">
+        <h1>Login Confirmation</h1>
+        <div class="box">
+            <div class="info-row">
+                <span class="label">Team Name:</span>
+                <span class="value">{{ team_name }}</span>
+            </div>
+            <div class="info-row">
+                <span class="label">Email:</span>
+                <span class="value">{{ email }}</span>
+            </div>
+        </div>
+        <p>Click below to confirm your identity and verify eligibility.</p>
+        <p>You must be in the UCLA division OR have solved at least 10 challenges.</p>
+        <form method="POST" action="/login" id="login-form">
+            <input type="hidden" name="token" value="{{ token }}">
+            {% if recaptcha_site_key %}
+            <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}" data-theme="dark" style="margin: 20px 0;"></div>
+            {% endif %}
+            <button type="submit" class="btn">Login</button>
+        </form>
+    </div>
+</body>
+</html>

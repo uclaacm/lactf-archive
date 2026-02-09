@@ -1,0 +1,15 @@
+	.section	.text._RNvXs_NvXsf_NtNtCs78A21jy8lRn_5alloc5boxed7convertINtBc_3BoxDNtNtCsfQL5qMWGko6_4core5error5ErrorNtNtB11_6marker4SyncNtB1y_4SendEL_EINtNtB11_7convert4FromNtNtBe_6string6StringE4fromNtB4_11StringErrorNtNtB11_3fmt7Display3fmt,"ax",@progbits
+	.p2align	4                               # -- Begin function _RNvXs_NvXsf_NtNtCs78A21jy8lRn_5alloc5boxed7convertINtBc_3BoxDNtNtCsfQL5qMWGko6_4core5error5ErrorNtNtB11_6marker4SyncNtB1y_4SendEL_EINtNtB11_7convert4FromNtNtBe_6string6StringE4fromNtB4_11StringErrorNtNtB11_3fmt7Display3fmt
+	.type	_RNvXs_NvXsf_NtNtCs78A21jy8lRn_5alloc5boxed7convertINtBc_3BoxDNtNtCsfQL5qMWGko6_4core5error5ErrorNtNtB11_6marker4SyncNtB1y_4SendEL_EINtNtB11_7convert4FromNtNtBe_6string6StringE4fromNtB4_11StringErrorNtNtB11_3fmt7Display3fmt,@function
+_RNvXs_NvXsf_NtNtCs78A21jy8lRn_5alloc5boxed7convertINtBc_3BoxDNtNtCsfQL5qMWGko6_4core5error5ErrorNtNtB11_6marker4SyncNtB1y_4SendEL_EINtNtB11_7convert4FromNtNtBe_6string6StringE4fromNtB4_11StringErrorNtNtB11_3fmt7Display3fmt: # @_RNvXs_NvXsf_NtNtCs78A21jy8lRn_5alloc5boxed7convertINtBc_3BoxDNtNtCsfQL5qMWGko6_4core5error5ErrorNtNtB11_6marker4SyncNtB1y_4SendEL_EINtNtB11_7convert4FromNtNtBe_6string6StringE4fromNtB4_11StringErrorNtNtB11_3fmt7Display3fmt
+	.cfi_startproc
+# %bb.0:
+	mov	rax, rsi
+	mov	rsi, qword ptr [rdi + 8]
+	mov	rdx, qword ptr [rdi + 16]
+	mov	rdi, rax
+	jmp	_RNvMsa_NtCsfQL5qMWGko6_4core3fmtNtB5_9Formatter3pad # TAILCALL
+.Lfunc_end309:
+	.size	_RNvXs_NvXsf_NtNtCs78A21jy8lRn_5alloc5boxed7convertINtBc_3BoxDNtNtCsfQL5qMWGko6_4core5error5ErrorNtNtB11_6marker4SyncNtB1y_4SendEL_EINtNtB11_7convert4FromNtNtBe_6string6StringE4fromNtB4_11StringErrorNtNtB11_3fmt7Display3fmt, .Lfunc_end309-_RNvXs_NvXsf_NtNtCs78A21jy8lRn_5alloc5boxed7convertINtBc_3BoxDNtNtCsfQL5qMWGko6_4core5error5ErrorNtNtB11_6marker4SyncNtB1y_4SendEL_EINtNtB11_7convert4FromNtNtBe_6string6StringE4fromNtB4_11StringErrorNtNtB11_3fmt7Display3fmt
+	.cfi_endproc
+                                        # -- End function

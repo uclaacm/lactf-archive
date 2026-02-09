@@ -1,0 +1,53 @@
+:root {
+  font-family: Arial;
+  line-spacing: 1.25;
+  padding: 0rem 0.5rem;
+
+  /* fun colors yippee */
+  --primary-blue: #2196f3;
+  --off-dark: #212121;
+  --deep-purple: #673ab7;
+}
+
+h1 > span.title,
+h1 > span.name {
+  color: var(--primary-blue);
+}
+
+span.email {
+  color: var(--deep-purple);
+}
+
+p, label, input {
+  color: var(--off-dark);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: max-content;
+  background-color: #f5f5f5;
+  padding: 2rem;
+  border-radius: 0.25rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type=submit] {
+  padding: 0.25rem;
+  cursor: pointer;
+  font-family: Arial;
+}
+
+a {
+  color: var(--primary-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

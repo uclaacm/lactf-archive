@@ -1,0 +1,9 @@
+name: error-correction
+author: pstorm
+description: |-
+  Looks like their error correction's no match for my error creation!
+  
+flag: "lactf{Th15_15_pr0b481y_n07_wh47_7h3y_m34n7_8y_3rr0r_c0rr3c710n_CVOD5Jp7IOq+XgR}"
+provide:
+  - ./chall.png
+  - ./chall.py

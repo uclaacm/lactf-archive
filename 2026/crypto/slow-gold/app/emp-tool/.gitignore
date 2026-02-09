@@ -1,0 +1,41 @@
+Testing/
+*.DS_Store
+*.txt.cpp
+*CTestTestfile.cmake
+.exrc
+build/
+CMakeCache.txt
+CMakeFiles/
+Makefile
+bin/
+cmake_install.cmake
+install_manifest.txt
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+*.hex
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app

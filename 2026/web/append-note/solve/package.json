@@ -1,0 +1,10 @@
+{
+  "name": "solver",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "bliutech",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

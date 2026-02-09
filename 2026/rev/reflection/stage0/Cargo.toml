@@ -1,0 +1,14 @@
+cargo-features = ["trim-paths"]
+
+[package]
+name = "reflection"
+version = "1.4.1"
+edition = "2024"
+
+[profile.release]
+opt-level = 3
+codegen-units = 1
+trim-paths = true
+debug = "none"
+strip = "debuginfo"
+lto = true

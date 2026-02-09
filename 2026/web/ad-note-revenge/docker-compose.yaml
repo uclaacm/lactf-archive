@@ -1,0 +1,28 @@
+services:
+  ads:
+    build: ./ads
+    ports:
+      - "9000:80"
+    networks:
+      - app-network
+
+  redis:
+    image: redis:7-alpine
+    networks:
+      - app-network
+
+  notes:
+    build: ./notes
+    ports:
+      - "4000:4000"
+    depends_on:
+      - ads
+      - redis
+    environment:
+      REDIS_URL: redis://redis:6379
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

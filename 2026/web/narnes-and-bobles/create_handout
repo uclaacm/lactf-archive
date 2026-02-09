@@ -1,0 +1,2 @@
+zip -9r narnes-and-bobles.zip books/ books.json bun.lock Dockerfile package.json server.js site
+zip -d narnes-and-bobles.zip books/flag.txt

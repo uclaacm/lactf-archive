@@ -1,0 +1,36 @@
+name: slow-gold
+author: freed
+description: |-
+  The scenes of life are gold,
+  so let's take it slow.
+  After all,
+  how often is it that you get a second chance?
+
+  `{{nc}}`
+
+  (You should probably use the program provided to connect instead of netcat)
+flag: "lactf{1_h0p3_y0u_l1v3_th1s_0ne_t0_th3_fullest}"
+
+provide:
+  - dist.tar.gz
+
+containers:
+  main:
+    build: app/
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+    resources:
+      limits:
+        cpu: "1000m"
+        memory: "2Gi"
+      requests:
+        cpu: "150m"
+        memory: "1Gi"
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31183

@@ -1,0 +1,9 @@
+name: lactf-1986
+author: pstorm
+description: |-
+  Dug around the archives and found a floppy disk containing a long-forgotten LA CTF challenge. Perhaps you may be the first to solve it in decades.
+
+flag: "lactf{3asy_3nough_7o_8rute_f0rce_bu7_n0t_ea5y_en0ugh_jus7_t0_brut3_forc3}"
+
+provide:
+  - ./CHALL.IMG

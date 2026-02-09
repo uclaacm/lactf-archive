@@ -1,0 +1,72 @@
+.TH JQ 1 "2024" "jq 1.7" "User Commands"
+.SH NAME
+jq \- Command-line JSON processor
+.SH SYNOPSIS
+.B jq
+[\fIOPTIONS\fR] \fIFILTER\fR [\fIFILE\fR...]
+.SH DESCRIPTION
+.B jq
+is a lightweight and flexible command-line JSON processor. It allows you to
+slice, filter, map, and transform structured JSON data with ease.
+.PP
+jq is like sed for JSON data - you can use it to slice and filter and map
+and transform structured data with the same ease that sed, awk, grep and
+friends let you play with text.
+.SH OPTIONS
+.TP
+.B \-c, \-\-compact\-output
+Compact output (no pretty printing)
+.TP
+.B \-r, \-\-raw\-output
+Output raw strings, not JSON quoted
+.TP
+.B \-s, \-\-slurp
+Read entire input into array
+.TP
+.B \-e, \-\-exit\-status
+Set exit status based on output
+.TP
+.B \-n, \-\-null\-input
+Don't read any input
+.SH BASIC FILTERS
+.TP
+.B .
+Identity filter - outputs input unchanged
+.TP
+.B .foo
+Select object field "foo"
+.TP
+.B .[]
+Iterate over array elements
+.TP
+.B .[0]
+Select first array element
+.TP
+.B keys
+Get object keys as array
+.TP
+.B length
+Get length of string/array/object
+.SH EXAMPLES
+.PP
+Pretty print JSON:
+.RS
+echo '{"name":"jq"}' | jq '.'
+.RE
+.PP
+Extract a field:
+.RS
+echo '{"name":"jq","version":"1.7"}' | jq '.name'
+.RE
+.PP
+Iterate array:
+.RS
+echo '[1,2,3]' | jq '.[]'
+.RE
+.SH SEE ALSO
+.BR yq (1),
+.BR xq (1)
+.SH AUTHOR
+Stephen Dolan and contributors
+.SH WEBSITE
+https://jqlang.github.io/jq/

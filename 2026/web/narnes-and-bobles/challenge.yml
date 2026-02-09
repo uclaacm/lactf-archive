@@ -1,0 +1,27 @@
+name: narnes-and-bobles
+author: r2uwu2
+description: |-
+  I heard Amazon killed a certain book store so I'm gonna make my own book store and kill Amazon.
+
+  I dove deep and delivered results.
+
+  {instancer}
+
+flag:
+  file: books/flag.txt
+
+provide:
+  - ./narnes-and-bobles.zip
+
+containers:
+  main:
+    build: .
+    ports:
+      - 3000
+
+expose:
+  main:
+    - target: 3000
+      http: narnes-and-bobles
+
+backend: instancer

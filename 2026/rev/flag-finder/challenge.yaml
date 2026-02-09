@@ -1,0 +1,19 @@
+name: flag-finder
+author: pstorm
+description: |-
+  No flag? No problem! My Flag Finder is here to help!
+
+  {{link}}
+
+flag: "lactf{Wh47_d0_y0u_637_wh3n_y0u_cr055_4_r363x_4nd_4_n0n06r4m?_4_r363x06r4m!}"
+
+containers:
+  main:
+    build: .
+    ports:
+      - 80
+
+expose:
+  main:
+    - target: 80
+      http: flag-finder

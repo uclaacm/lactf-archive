@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad 10 - Food Delivery</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: linear-gradient(135deg, #f12711 0%, #f5af19 100%); height: 100vh; overflow: hidden; display: flex; justify-content: center; align-items: center; font-family: 'Arial', sans-serif; }
+        .container { text-align: center; }
+        .scooter { animation: drive 2s ease-in-out infinite; }
+        @keyframes drive { 0%, 100% { transform: translateX(-5px); } 50% { transform: translateX(5px); } }
+        h1 { color: #fff; font-size: 1em; margin-top: 8px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+        p { color: rgba(255,255,255,0.9); margin-top: 4px; font-size: 0.7em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg class="scooter" width="70" height="50" viewBox="0 0 100 70">
+            <circle cx="20" cy="55" r="12" fill="#333"/>
+            <circle cx="80" cy="55" r="12" fill="#333"/>
+            <rect x="25" y="35" width="40" height="20" rx="5" fill="#fff"/>
+            <rect x="30" y="20" width="25" height="18" rx="3" fill="#f12711"/>
+            <rect x="60" y="40" width="20" height="10" fill="#333"/>
+        </svg>
+        <h1>30 MIN DELIVERY!</h1>
+        <p>QuickBite</p>
+    </div>
+</body>
+</html>

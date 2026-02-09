@@ -1,0 +1,3 @@
+#!/bin/bash
+
+zip -9r ad-note.zip ads/* notes/* docker-compose.yaml

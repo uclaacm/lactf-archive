@@ -1,0 +1,17 @@
+	.section	.text._RNvXs0_NvXsf_NtNtCs78A21jy8lRn_5alloc5boxed7convertINtBd_3BoxDNtNtCsfQL5qMWGko6_4core5error5ErrorNtNtB12_6marker4SyncNtB1z_4SendEL_EINtNtB12_7convert4FromNtNtBf_6string6StringE4fromNtB5_11StringErrorNtNtB12_3fmt5Debug3fmt,"ax",@progbits
+	.p2align	4                               # -- Begin function _RNvXs0_NvXsf_NtNtCs78A21jy8lRn_5alloc5boxed7convertINtBd_3BoxDNtNtCsfQL5qMWGko6_4core5error5ErrorNtNtB12_6marker4SyncNtB1z_4SendEL_EINtNtB12_7convert4FromNtNtBf_6string6StringE4fromNtB5_11StringErrorNtNtB12_3fmt5Debug3fmt
+	.type	_RNvXs0_NvXsf_NtNtCs78A21jy8lRn_5alloc5boxed7convertINtBd_3BoxDNtNtCsfQL5qMWGko6_4core5error5ErrorNtNtB12_6marker4SyncNtB1z_4SendEL_EINtNtB12_7convert4FromNtNtBf_6string6StringE4fromNtB5_11StringErrorNtNtB12_3fmt5Debug3fmt,@function
+_RNvXs0_NvXsf_NtNtCs78A21jy8lRn_5alloc5boxed7convertINtBd_3BoxDNtNtCsfQL5qMWGko6_4core5error5ErrorNtNtB12_6marker4SyncNtB1z_4SendEL_EINtNtB12_7convert4FromNtNtBf_6string6StringE4fromNtB5_11StringErrorNtNtB12_3fmt5Debug3fmt: # @_RNvXs0_NvXsf_NtNtCs78A21jy8lRn_5alloc5boxed7convertINtBd_3BoxDNtNtCsfQL5qMWGko6_4core5error5ErrorNtNtB12_6marker4SyncNtB1z_4SendEL_EINtNtB12_7convert4FromNtNtBf_6string6StringE4fromNtB5_11StringErrorNtNtB12_3fmt5Debug3fmt
+	.cfi_startproc
+# %bb.0:
+	mov	rax, qword ptr [rdi + 8]
+	mov	r8, qword ptr [rdi + 16]
+	mov	rdx, qword ptr [rsi]
+	mov	rcx, qword ptr [rsi + 8]
+	mov	rdi, rax
+	mov	rsi, r8
+	jmp	_RNvXsh_NtCsfQL5qMWGko6_4core3fmteNtB5_5Debug3fmt # TAILCALL
+.Lfunc_end308:
+	.size	_RNvXs0_NvXsf_NtNtCs78A21jy8lRn_5alloc5boxed7convertINtBd_3BoxDNtNtCsfQL5qMWGko6_4core5error5ErrorNtNtB12_6marker4SyncNtB1z_4SendEL_EINtNtB12_7convert4FromNtNtBf_6string6StringE4fromNtB5_11StringErrorNtNtB12_3fmt5Debug3fmt, .Lfunc_end308-_RNvXs0_NvXsf_NtNtCs78A21jy8lRn_5alloc5boxed7convertINtBd_3BoxDNtNtCsfQL5qMWGko6_4core5error5ErrorNtNtB12_6marker4SyncNtB1z_4SendEL_EINtNtB12_7convert4FromNtNtBf_6string6StringE4fromNtB5_11StringErrorNtNtB12_3fmt5Debug3fmt
+	.cfi_endproc
+                                        # -- End function

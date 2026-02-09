@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Riddle me this</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="./main.js"></script>
+  </head>
+  <body>
+    <h1>What's inconveniently long and full of misdirection?</h1>
+    <h2 id="loading-message">Please wait...</h2>
+    <div class="game-container">
+      <div class="stats">
+        <p>Snake Length: <span class="grow-count">0</span> / 14</p>
+        <p class="message">&nbsp;</p>
+      </div>
+      <canvas id="game-canvas" width="1000" height="600"></canvas>
+      <div class="controls">
+        <button class="grow">Grow Snake!</button>
+        <img
+          class="flag"
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='50' font-size='80' text-anchor='middle' dominant-baseline='middle'%3E🚩%3C/text%3E%3C/svg%3E"
+          alt="flag"
+          height="150"
+        />
+      </div>
+    </div>
+  </body>
+</html>

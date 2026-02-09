@@ -1,0 +1,12 @@
+name: cat bomb!
+author: burturt
+description: |-
+  I was hiking in the woods when I stumbled across this amazing thing: thousands of these orange structures! I stopped to take a photo but then this cat *had* to photo bomb my otherwise perfect photo with it's tail! Can you find where this photo was taken?
+
+  Move to the exact location where this photo was taken in Google Street View, and then submit the coordinates (latitude and longitude) from the url in the format `lactf{LAT,LONG}`.
+
+  For example, if the photo [celebrating the anniversary of the Bruin Bear statue](https://alumni.ucla.edu/event/the-bruin-bear-statue-anniversary/) was the target photo, then [this](https://maps.app.goo.gl/YTt69MqjjUZAxVS58) would be the correct Google Street View location, and the answer to submit would be `lactf{34.0710103,-118.4449715}`.
+  
+flag: "lactf{34.9681588,135.7772502}"
+provide:
+  - ./cat-bomb.jpeg

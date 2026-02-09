@@ -1,0 +1,20 @@
+services:
+  ads:
+    build: ./ads
+    ports:
+      - "9000:80"
+    networks:
+      - app-network
+
+  notes:
+    build: ./notes
+    ports:
+      - "4000:4000"
+    depends_on:
+      - ads
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

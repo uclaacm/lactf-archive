@@ -1,0 +1,39 @@
+body {
+    background-color: #1a237e;
+}
+
+h1, textarea, button {
+    color: #b2ebf2;
+    font-family: "JetBrains Mono", "Cascadia Code", "Fira Code", monospace;
+    text-align: center;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+form {
+    width: 100%;
+    padding: 0 25%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 10px;
+}
+
+textarea {
+    background-color: #ffffff10;
+    border-radius: 10px;
+    border: 1px solid #ff8a65;
+    font-size: 18px;
+}
+
+button {
+    background-color: #7cb34250;
+    border: 1px solid #ff8a65;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+

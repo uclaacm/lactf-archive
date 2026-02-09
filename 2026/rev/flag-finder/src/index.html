@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pstorm's Flag Finder</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 98vw;
+            max-width: none;
+            box-sizing: border-box;
+        }
+
+        #fullInput {
+            display: grid;
+            grid-template-columns: repeat(101, 1fr);
+            gap: 0px;
+            margin: 10px 0;
+            width: 100%;
+            justify-content: center;
+            background-color: black;
+            padding: 1px;
+        }
+
+        input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none; 
+            width: 100%;
+            aspect-ratio: 1;
+            background-color: #fff;
+            margin: 0;
+            cursor: pointer;
+            transition: background 0.1s;
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: black;
+            box-shadow: none;
+        }
+
+        button {
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.2s;
+            width: 94vw;
+        }
+
+        button:hover { background-color: #0056b3; }
+
+        .status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            word-break: break-all;
+        }
+        
+        .status.success { background: #d4edda; color: #155724; }
+        .status.error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h3>pstorm's Flag Finder</h3>
+    <p>Looking for a flag? Find it here!</p>
+    <div id="fullInput"></div>
+    <button id="find">Find flag</button>
+    <div id="result" class="status"></div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

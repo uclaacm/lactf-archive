@@ -1,0 +1,26 @@
+name: blogler
+author: r2uwu2
+description: |-
+  They call me the blogler.
+
+  {{instancer}}
+
+flag:
+  file: flag
+
+provide:
+  - ./blogler.zip
+
+containers:
+  main:
+    build: .
+    ports:
+      - 3000
+    environment:
+      PORT: "3000"
+
+expose:
+  main:
+    - target: 3000
+      http: blogler
+backend: instancer

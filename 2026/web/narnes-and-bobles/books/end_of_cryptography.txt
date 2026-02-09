@@ -1,0 +1,48 @@
+The end of Cryptography
+Slant
+Summary:
+
+    Alice has something she wants to tell Bob.
+
+Notes:
+
+    One from the vaults.
+
+Work Text:
+
+Alice had a message to send.
+"I have a message to send", she announced over the public channels. Eve, who always paid excessive attention to everything Alice said, thought that this sounded interesting, and resolved to read the message.
+"I shall send it to Bob in the most convoluted way possible," expounded Alice further, "using a mixture of private and public channels as well as key information sent by trusted courier"
+Eve found this talk of exceptional complication extremely intriguing. Meanwhile, Bob got himself a sandwich.
+"It shall be ages yet before Alice sends me her message, for she must encode it in the most convoluted way possible. In addition, it is liable to be dull to read even once deciphered" thought Bob. "Secondly, deciphering it is going to be a headache." Therefore Bob made himself a cup of tea to go with his sandwich.
+
+Via a complex series of disguises and the use of clever technology to sample information from allegedly secure channels, Eve recovered a fraction of the message and of the key. By applying all of her considerable intelligence and a hideous quantity of computational power, she was able to recover the plaintext, recode a message and pass it on to Bob as if nothing had happened. Only then did she actually read the plaintext. The message was this: "Eve, I love you, now stop hiding in my garden and come inside." And she did, and then there was hot cryptological loving information exchange.
+
+Afterwards, Alice said "I feel you understand me and my love for overly complex communication protocols in ways no one else could"
+"Yes," agreed Eve, "that's because I've been reading your post since the early 1970s"
+Alice lowered her eyes modestly, long lashes casting shadows across her cheeks
+"Even the one-time keys?"
+"Gods you're hot when you talk secure information sharing"
+After that, no one talked for a bit.
+
+"It is a pity that our attitudes to communication and trust kept us apart for so long."
+"but if we hadn't had those attitudes, we wouldn't have met at all."
+"I hope my monumental trust issues do not present overwhelming obstacles to our enjoying a deeper relationship."
+"I hope my pathological need to pry into other peoples business does not adversely affect it either."
+"Errr... what happened to my trusted courier?"
+"Oh, Carol's tied up in my cellar."
+
+Meanwhile, Bob had decoded the message with a key provided by Charlie. His message read
+"You never reply to my messages; I'm leaving you for Eve, Alice."
+"Women eh? Oh well, I'm off down the pub. Are you coming?" said Charlie, who was reading over his shoulder. Bob replied in the affirmative, thinking
+"Charlie is refreshingly straightforwards in his communication. And quite handsome too.
+
+"You didn't get Charlie then? Good"
+"There was a second courier?" Eve looked at Alice admiringly.
+"Yes. His key will decode to a different message for Bob. Of course, when the key and message are the same length, the assignation of the labels message and key are arbitrary"
+By this point, Eve's gaze had moved from admiring to rapt adoration.
+"Will you marry me?"
+
+ 
+
+"mmmpf" said Carol, around her gag. Being a trusted courier sucked.

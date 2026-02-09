@@ -1,0 +1,4 @@
+# This file is very large so I don't want to check it into version control.
+# It's just the equivalent of docker pull --platform linux/amd64 ctfd/ctfd:latest && docker save -o ctfd.tar ctfd/ctfd:latest && gzip ctfd.tar
+ctfd.tar.gz
+image.tar

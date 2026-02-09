@@ -1,0 +1,37 @@
+name: ad-note
+author: bliutech
+description: |-
+  Every note-taking app was missing one key feature—ads!
+
+  [{{ challenge.expose.notes[0].http }}](https://{{ challenge.expose.notes[0].http }})
+
+  [Admin Bot](https://admin-bot.lac.tf/ad-note)
+
+flag: &flag "lactf{53cur17y_v1a_m0n3t1z47i0n}"
+
+provide:
+  - "ad-note.zip"
+  - file: "../../admin-bot/handlers/ad-note.js"
+    as: "admin-bot.js"
+
+containers:
+  ads:
+    build: ads/.
+    ports:
+      - 80
+  notes:
+    build: notes/.
+    ports:
+      - 4000
+    environment:
+      ADS_URL: https://ads.chall.lac.tf
+      ADMIN_SECRET: 1669d15f9444f5755af570fdc6c9b6087ba9a49df8da30bd
+      FLAG: *flag
+
+expose:
+  ads:
+    - target: 80
+      http: ads
+  notes:
+    - target: 4000
+      http: notes

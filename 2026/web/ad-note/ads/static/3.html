@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad 3 - Gaming Zone</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); height: 100vh; overflow: hidden; display: flex; justify-content: center; align-items: center; font-family: 'Arial', sans-serif; }
+        .container { text-align: center; }
+        .controller { animation: pulse 1.5s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px #00ff88); } 50% { transform: scale(1.1); filter: drop-shadow(0 0 20px #00ff88); } }
+        h1 { color: #00ff88; font-size: 1em; margin-top: 8px; text-shadow: 0 0 10px #00ff88; }
+        p { color: #fff; margin-top: 4px; font-size: 0.7em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg class="controller" width="70" height="50" viewBox="0 0 100 60">
+            <rect x="10" y="15" width="80" height="35" rx="10" fill="#333"/>
+            <circle cx="30" cy="32" r="8" fill="#444"/>
+            <circle cx="70" cy="32" r="4" fill="#00ff88"/>
+            <circle cx="78" cy="25" r="4" fill="#ff0088"/>
+            <rect x="45" y="28" width="10" height="8" rx="2" fill="#444"/>
+        </svg>
+        <h1>LEVEL UP!</h1>
+        <p>GameZone Pro</p>
+    </div>
+</body>
+</html>

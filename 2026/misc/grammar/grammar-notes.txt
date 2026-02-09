@@ -1,0 +1,34 @@
+Note:
+
+Boxes represent terminals (i.e., characters) and circles represent nonterminals. Circles of the same color represent the same nonterminal (excluding black circles, which can be any). Some vertical lines (for the stacks of circles) are not shown because of lack of space. For accessibility: the colored circles in text format are ABACDE BC EAEA, where each letter represents a color.
+
+
+Grammar:
+
+flag = start, word, {underscore, word}, end;
+start = "l", "a", "c", "t", "f", "{";
+end = "}";
+underscore = "_";
+word = fragment, {fragment};
+
+fragment = cd | vc | vd | c | d;
+cd = con, dig;
+vc = vow, con;
+vd = vow, dig;
+c = con;
+d = dig;
+
+con = "f" | con2;
+con2 = "g" | con3;
+con3 = "p" | con4;
+con4 = "t" | con5;
+con5 = "r";
+
+vow = "e" | vow2;
+vow2 = "o" | vow3;
+vow3 = "u";
+
+dig = "0" | dig2;
+dig2 = "1" | dig3;
+dig3 = "4" | dig4;
+dig4 = "5";

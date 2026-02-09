@@ -1,0 +1,30 @@
+name: lactf-invoice-generator
+author: AVDestroyer
+description: |-
+  I need an itemized list of everything purchased for LA CTF 2026.
+
+  {instancer}
+
+flag: &flag "lactf{plz_s4n1t1z3_y0ur_purch4s3_l1st}"
+
+provide:
+  - "dist.tar.gz"
+
+containers:
+  invoice-generator:
+    build: invoice-generator/.
+    ports:
+      - 3000
+  flag:
+    build: flag/.
+    ports:
+      - 8081
+    environment:
+      FLAG: *flag
+
+expose:
+  invoice-generator:
+    - target: 3000
+      http: lactf-invoice-generator
+
+backend: instancer

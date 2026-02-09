@@ -1,0 +1,11 @@
+	.section	.text._RNSNvYNCNvNtNtCs3bNtqN8jaZB_3std3sys9backtrace10__print_fmts_0INtNtNtCsfQL5qMWGko6_4core3ops8function6FnOnceTRNtNtNtBc_12backtrace_rs9backtrace5FrameEE9call_once6vtableBc_,"ax",@progbits
+	.p2align	4                               # -- Begin function _RNSNvYNCNvNtNtCs3bNtqN8jaZB_3std3sys9backtrace10__print_fmts_0INtNtNtCsfQL5qMWGko6_4core3ops8function6FnOnceTRNtNtNtBc_12backtrace_rs9backtrace5FrameEE9call_once6vtableBc_
+	.type	_RNSNvYNCNvNtNtCs3bNtqN8jaZB_3std3sys9backtrace10__print_fmts_0INtNtNtCsfQL5qMWGko6_4core3ops8function6FnOnceTRNtNtNtBc_12backtrace_rs9backtrace5FrameEE9call_once6vtableBc_,@function
+_RNSNvYNCNvNtNtCs3bNtqN8jaZB_3std3sys9backtrace10__print_fmts_0INtNtNtCsfQL5qMWGko6_4core3ops8function6FnOnceTRNtNtNtBc_12backtrace_rs9backtrace5FrameEE9call_once6vtableBc_: # @_RNSNvYNCNvNtNtCs3bNtqN8jaZB_3std3sys9backtrace10__print_fmts_0INtNtNtCsfQL5qMWGko6_4core3ops8function6FnOnceTRNtNtNtBc_12backtrace_rs9backtrace5FrameEE9call_once6vtableBc_
+	.cfi_startproc
+# %bb.0:
+	jmp	_RNCNvNtNtCs3bNtqN8jaZB_3std3sys9backtrace10__print_fmts_0B7_ # TAILCALL
+.Lfunc_end45:
+	.size	_RNSNvYNCNvNtNtCs3bNtqN8jaZB_3std3sys9backtrace10__print_fmts_0INtNtNtCsfQL5qMWGko6_4core3ops8function6FnOnceTRNtNtNtBc_12backtrace_rs9backtrace5FrameEE9call_once6vtableBc_, .Lfunc_end45-_RNSNvYNCNvNtNtCs3bNtqN8jaZB_3std3sys9backtrace10__print_fmts_0INtNtNtCsfQL5qMWGko6_4core3ops8function6FnOnceTRNtNtNtBc_12backtrace_rs9backtrace5FrameEE9call_once6vtableBc_
+	.cfi_endproc
+                                        # -- End function

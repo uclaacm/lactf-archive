@@ -1,0 +1,1 @@
+In your browser, just pause javascript execution and that should stop the mutation so you can then copy the flag!

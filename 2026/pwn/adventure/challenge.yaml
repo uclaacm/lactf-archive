@@ -1,0 +1,30 @@
+name: adventure
+author: bliutech
+description: |-
+  Thanks for playing my game!
+  
+  `{{nc}}`
+
+flag:
+  file: flag.txt
+
+provide:
+  - chall.c
+  - chall
+  - Dockerfile
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+    environment:
+      JAIL_TIME: "120"
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31337

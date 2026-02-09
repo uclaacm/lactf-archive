@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blogler | User Panel</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="user-panel-page">
+  <h1>Blogler User Panel</h1>
+  <p>Share your <a href="/blog">blog</a> with the world!</p>
+  <div class="user-panel">
+    <form method="POST" action="/config" class="panel-entry">
+      <h2>Blog Serving Config Editor</h2>
+      <div class="editor"></div>
+      <input type="hidden" name="config">
+      <input type="submit" value="Update Config">
+    </form>
+    <form method="POST" action="/blog" class="panel-entry">
+      <h2>Upload New Blog</h2>
+      <div class="editor"></div>
+      <input type="hidden" name="title">
+      <input type="hidden" name="blog">
+      <input type="submit" value="Upload!">
+    </form>
+  </div>
+  <script src="https://unpkg.com/monaco-editor@0.45.0/min/vs/loader.js"></script>
+  <script src="/static/main.js"></script>
+</body>
+</html>

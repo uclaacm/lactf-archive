@@ -1,0 +1,10 @@
+name: not-so-lazy-trigrams
+author: pstorm
+description: |-
+  Finally got the energy to write a trigram substitution cipher. 
+  Surely three shuffles are better than one!
+  
+flag: "lactf{still_too_lazy_to_write_a_plaintext_so_heres_a_random_wikipedia_article}"
+provide:
+  - ./ct.txt
+  - ./chall.py

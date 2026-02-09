@@ -1,0 +1,46 @@
+name: append-note
+author: bliutech
+description: |-
+  Our distributed notes app is append optimized.
+  Reads are eventually consistent with the heat death of the universe! :)
+
+  {instancer}
+
+flag: &flag "lactf{3V3n7U4LLy_C0N5I573N7_70_L34X}"
+
+provide:
+  - "append-note.zip"
+  - file: "./admin-bot/handlers/append-note.js"
+    as: "admin-bot.js"
+
+containers:
+  app:
+    build: app/.
+    ports:
+      - 4000
+    environment:
+      ADMIN_SECRET: dd2a7023a1ff1f489d77d3ec446eea7822292754e42091dacaeb29f0003ebe4
+      FLAG: *flag
+  admin-bot:
+    build: admin-bot
+    ports:
+      - 8080
+    securityContext:
+      privileged: true
+    resources:
+      requests:
+        cpu: 150m
+        memory: 250Mi
+      limits:
+        cpu: 500m
+        memory: 1Gi
+
+expose:
+  app:
+    - target: 4000
+      http: append-note
+  admin-bot:
+    - target: 8080
+      http: admin-bot
+
+backend: instancer

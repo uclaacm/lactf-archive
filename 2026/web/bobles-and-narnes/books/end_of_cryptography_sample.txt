@@ -1,0 +1,14 @@
+The end of Cryptography
+Slant
+Summary:
+
+    Alice has something she wants to tell Bob.
+
+Notes:
+
+    One from the vaults.
+
+Work Text:
+
+Alice had a message to send.
+"I have a message to send", she announced over the public channels. Eve, who always paid excessive attention to everything Alice said, thought that this sounded interesting, and resolved to read the message.

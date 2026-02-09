@@ -1,0 +1,25 @@
+name: literally-1984
+author: aplet123
+description: |-
+  Because I am very cultured and literate I am able to draw parallels between the prophetic novel 1984 by George Orwell and the modern pyjail landscape.
+
+  `{{ nc }}`
+
+flag: "lactf{BIG_AUDITHOOK_IS_WATCHING_YOU}"
+
+provide:
+  - ./dist.tar.gz
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 32323

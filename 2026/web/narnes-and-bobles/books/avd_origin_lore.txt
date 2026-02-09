@@ -1,0 +1,23 @@
+Vorax Origin (too long to fit on Discord)
+
+It was a close game for Arnav. His team was 9-10 in a first to 11 and both sides were tired. As Arnav ran to the edge of the key, he saw an orange flash in a corner of his eye. He jumps and catches the ball in one hand to start dribbling. A sly smile creaks across his face, for it is Voraxing time. 
+
+He dribbles to the left. He dribbles to the right. He dribbles between his legs, as this will be a good night. The captain of ptms basketball has nothing to fear. He can smell that his point is near. 
+
+A defender came close and challenged, “are you the Vorax because you speak for the trees, or do you speak for the trees because you’re the Vorax?” 
+
+Vorax, quick on his toes, replied, “I am the Vorax because I make all the threes.”
+
+Unamused, his defender quipped, “I defend harder than McAfee antivirus, are you sure you can win?”
+
+In less than a second, the Vorax cooked. The court was but a problem: there is an elliptic curve from the Vorax to the basket with coefficients only known to the NSA. Using his built in sage math interpreter, the Vorax performed an attack fabled about for generations to come. He ran a quick E = EllipticCurve(Zmod(101), [2, 3]); E.category(). Sage reported “Category of schemes over Ring of integers modulo 101” but the Vorax only saw “Category of schemes over Ring of integers that the Vorax can solve.”
+
+From the get go, it was apparent to our protagonist that the court used an LCG, as it was made in Minecraft. He first simulated a few shots to get a few random numbers from the field, taking the gcd to be m. He laid three fingers sideways (mod m) and declared, “with this breath, I determine a to be congruent to (X_2 - X_3)/(X_2 - X_1) and b to be trivial.”
+
+Having cracked the lcg at the root of the problem, he used ghidra to reverse engineer the court and he did it. The Vorax had cracked the cipher to scoring and the elliptic curve connecting him to the hoop was now apparent. 
+
+He dribbled once more and shot, jumping slightly back. Tall like a tree, he shot the ball far over his opponent’s head. The only  sound made was the swish of the ball penetrating the basket. 
+
+Having done the deed, the Vorax swirled around, slicking back his hair to the side. To the defender who doubted him, he uttered one line.
+
+“Nah, I’d win”

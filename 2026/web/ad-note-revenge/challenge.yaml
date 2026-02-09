@@ -1,0 +1,51 @@
+name: ad-note-revenge
+author: bliutech
+description: |-
+  The shareholders loved our last notes app so much, we had to launch another one!
+
+  {instancer}
+
+flag: &flag "lactf{1_5h0Uld_h4V3_PuT_4_r4T3_l1M1T_fR0M_tH3_b391nn1n9}"
+
+provide:
+  - "ad-note-revenge.zip"
+  - file: "admin-bot/handlers/ad-note-revenge.js"
+    as: "admin-bot.js"
+
+containers:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - 6379
+  notes:
+    build: notes/.
+    ports:
+      - 4000
+    environment:
+      ADS_URL: https://ads.chall.lac.tf
+      ADMIN_SECRET: e1977e5d11db82b531e2ba6d028b27414e53f0d3cb7d1dfa4f7c2541f60a4df
+      REDIS_URL: redis://redis:6379
+      FLAG: *flag
+  admin-bot:
+    build: admin-bot
+    ports:
+      - 8080
+    securityContext:
+      privileged: true
+    resources:
+      requests:
+        cpu: 100m
+        memory: 250Mi
+      limits:
+        cpu: 500m
+        memory: 1Gi
+
+expose:
+  notes:
+    - target: 4000
+      http: notes-revenge
+  admin-bot:
+    - target: 8080
+      http: admin-bot
+
+backend: instancer

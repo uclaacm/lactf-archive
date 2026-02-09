@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Notes - Search{% endblock %}
+
+{% block content %}
+<div class="page-layout">
+    <div class="ads-column" id="left-ads"></div>
+
+    <div class="center-content">
+        <h1>Notes</h1>
+
+        <div class="nav-bar">
+            <a href="/" class="nav-btn active">Search Notes</a>
+            <a href="/create" class="nav-btn">Create Note</a>
+        </div>
+
+        <div class="search-container">
+            <form action="/" method="GET" class="search-form">
+                <input type="text" name="search" id="search-input" placeholder="Search your notes...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        <p class="search-info" id="search-info"></p>
+
+        <div class="results-grid" id="results-grid"></div>
+    </div>
+
+    <div class="ads-column" id="right-ads"></div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/search.js"></script>
+{% endblock %}

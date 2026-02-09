@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad 1 - Rocket Launch</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); height: 100vh; overflow: hidden; display: flex; justify-content: center; align-items: center; font-family: 'Arial', sans-serif; }
+        .container { text-align: center; }
+        .rocket { animation: launch 3s ease-in-out infinite; }
+        @keyframes launch { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        h1 { color: #e94560; font-size: 1em; margin-top: 8px; text-shadow: 0 0 10px #e94560; }
+        p { color: #fff; margin-top: 4px; font-size: 0.7em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg class="rocket" width="50" height="75" viewBox="0 0 100 150">
+            <path d="M50 10 L70 60 L60 60 L60 100 L40 100 L40 60 L30 60 Z" fill="#e94560"/>
+            <circle cx="50" cy="45" r="10" fill="#fff"/>
+            <path d="M35 100 L50 130 L65 100" fill="#ff6b35">
+                <animate attributeName="d" values="M35 100 L50 130 L65 100;M35 100 L50 140 L65 100;M35 100 L50 130 L65 100" dur="0.3s" repeatCount="indefinite"/>
+            </path>
+        </svg>
+        <h1>LAUNCH YOUR DREAMS!</h1>
+        <p>RocketCo</p>
+    </div>
+</body>
+</html>

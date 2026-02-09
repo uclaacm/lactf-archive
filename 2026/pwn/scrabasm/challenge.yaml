@@ -1,0 +1,30 @@
+name: ScrabASM
+author: bliutech
+description: |
+  Scrabble for ASM!
+
+  `{{nc}}`
+
+flag:
+  file: flag.txt
+
+provide:
+  - chall.c
+  - chall
+  - Dockerfile
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+    environment:
+      JAIL_TIME: "60"
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31338

@@ -1,0 +1,22 @@
+name: the-trial
+author: aplet123
+description: |-
+  I think the main takeaway from Kafka is that bureaucracy is bad? Or maybe it's that we live in a society.
+
+  {{ link }}
+
+flag: &flag "lactf{gregor_samsa_awoke_from_wait_thats_the_wrong_book}"
+
+containers:
+  main:
+    build: .
+    ports:
+      - 3000
+    environment:
+      PORT: "3000"
+      FLAG: *flag
+
+expose:
+  main:
+    - target: 3000
+      http: the-trial

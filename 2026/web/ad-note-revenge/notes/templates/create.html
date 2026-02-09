@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Notes - Create{% endblock %}
+
+{% block content %}
+<div class="page-layout">
+    <div class="ads-column" id="left-ads"></div>
+
+    <div class="center-content">
+        <h1>Notes</h1>
+
+        <div class="nav-bar">
+            <a href="/" class="nav-btn">Search Notes</a>
+            <a href="/create" class="nav-btn active">Create Note</a>
+        </div>
+
+        <div class="create-card">
+            <h2>Create a New Note</h2>
+            <form id="create-form" class="create-form">
+                <textarea name="content" id="note-content" placeholder="Write your note here..." required></textarea>
+                <button type="submit" class="btn">Create Note</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="ads-column" id="right-ads"></div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/create.js"></script>
+{% endblock %}

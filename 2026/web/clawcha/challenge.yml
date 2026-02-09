@@ -1,0 +1,25 @@
+name: clawcha
+author: r2uwu2
+description: |-
+  I found a hoyoverse claw machine out in the wild. You should play it a lot and give ~~me~~ it all your moneys.
+
+  {{ link }}
+
+flag: &flag "lactf{m4yb3_th3_r34l_g4ch4_w4s_l7f3}"
+
+provide:
+  - "clawcha.zip"
+
+containers:
+  main:
+    build: .
+    ports:
+      - 3000
+    environment:
+      PORT: "3000"
+      FLAG: *flag
+
+expose:
+  main:
+    - target: 3000
+      http: clawcha

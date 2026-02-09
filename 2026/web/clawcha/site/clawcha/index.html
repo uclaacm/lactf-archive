@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Clawcha Gameplay</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  <script defer src="/clawcha/game.js"></script>
+  <style>
+    .swal2-image {
+      margin-top: 0 !important;
+    }
+  </style>
+</head>
+<body>
+  <a-scene>
+    <a-assets class="items">
+      <!--
+        old:
+        zhongli: <img id="zhongli" src="https://i.imgur.com/gijoOB7.png">
+      -->
+      <img id="kafka" src="https://i.imgur.com/TwiBlv0.png">
+      <img id="zhongli" src="https://i.imgur.com/GMeCcjH.png">
+      <img id="dan-heng" src="https://i.imgur.com/v0axp1x.png">
+      <img id="acheron" src="https://i.imgur.com/cj0jWaq.png">
+      <img id="jingliu" src="https://i.imgur.com/Fk8SO5g.png">
+      <img id="flag" src="/img/flag.png">
+    </a-assets>
+    <a-assets>
+      <img id="machine-texture" src="https://i.imgur.com/N3PcA1W.jpeg">
+    </a-assets>
+
+    <!-- machine box -->
+    <a-box position="0 1 -4.75" rotation="0 0 0" width="8" depth="4.5" height="2" color="#4CC3D9" material="src: #machine-texture"></a-box>
+    <a-box position="0 5 -5.5" rotation="0 0 0" width="8" depth="3" height="6" material="opacity: 0.5" color="#FFFFFF"></a-box>
+
+    <!-- claw axis -->
+    <a-cylinder id="clawcylinder" position="0 7.5 -5.5" radius="0.05" height="1" color="#FFC65D"></a-cylinder>
+
+    <!-- top left/right of the claw -->
+    <a-box id="c-tl" position="-0.45 6.64 -5.5" width="1.19" height="0.08"  color="#FFC65D" rotation="0 0 40"></a-box>
+    <a-box id="c-tr" position="0.45 6.64 -5.5" width="1.19" height="0.08"  color="#FFC65D" rotation="0 0 -40"></a-box>
+
+    <!-- bottom left/right of the claw -->
+    <a-box id="c-bl" position="-0.72686 5.764 -5.5" width="1.19" height="0.08" color="#FFC65D" rotation="0 0 -75"></a-box>
+    <a-box id="c-br" position="0.72686 5.764 -5.5" width="1.19" height="0.08" color="#FFC65D" rotation="0 0 75"></a-box>
+
+    <!-- controls -->
+    <a-cylinder id="t-up" position="0.42645 2.0282 -3.64584" segments-radial="3" rotation="0 180 0" scale="0.2 0.1 0.3" color="white"></a-cylinder>
+    <a-cylinder id="t-down" position="0.42645 2.0282 -2.97581" segments-radial="3" rotation="" scale="0.2 0.1 0.3" color="white"></a-cylinder>
+    <a-cylinder id="t-left" position="0.01725 2.0282 -3.2983" segments-radial="3" rotation="0 -90 0" scale="0.2 0.1 0.3" color="white"></a-cylinder>
+    <a-cylinder id="t-right" position="0.8241 2.0282 -3.31412" segments-radial="3" rotation="0 90 0" scale="0.2 0.1 0.3" color="white"></a-cylinder>
+    <a-cylinder id="t-claw" geometry="radius: 0.34" color="white" position="-0.78817 1.59709 -3.32035"></a-cylinder>
+
+    <a-plane position="0 0 -4" rotation="-90 0 0" width="16" height="8" color="#7BC8A4"></a-plane>
+    <a-sky color="#ECECEC"></a-sky>
+    <a-entity camera="active: true" look-controls wasd-controls position="0 4 5">
+      <a-entity
+        cursor="fuse: true; fuseTimeout: 500; rayOrigin: mouse"
+        position="0 0 -1"
+        geometry="primitive: ring; radiusInner: 0; radiusOuter: 0"
+        material="color: black; shader: flat">
+      </a-entity>
+    </a-entity>
+  </a-scene>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Error - CTFaaS</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0a0a0a;
+            color: #00ff00;
+            padding: 40px;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #ff0000;
+            text-shadow: 0 0 10px #ff0000;
+        }
+        .error-box {
+            background: #220000;
+            border: 2px solid #ff0000;
+            padding: 20px;
+            margin: 20px 0;
+            color: #ff6666;
+        }
+        .btn {
+            background: #444;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Error</h1>
+        <div class="error-box">
+            {{ message }}
+        </div>
+        <a href="/" class="btn">Back to Home</a>
+    </div>
+</body>
+</html>

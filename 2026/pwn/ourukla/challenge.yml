@@ -1,0 +1,28 @@
+name: ourukla
+author: asdiml
+description: |-
+  Welcome to ourUKLA v0.1.7!
+
+  `{{nc}}`
+
+flag:
+  file: flag.txt
+
+provide:
+  - chall.c
+  - chall
+  - Dockerfile
+
+containers:
+  main:
+    build: .
+    replicas: 1
+    ports:
+      - 5000
+    securityContext:
+      privileged: true
+
+expose:
+  main:
+    - target: 5000
+      tcp: 31147

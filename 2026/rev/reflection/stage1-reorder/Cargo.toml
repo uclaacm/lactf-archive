@@ -1,0 +1,8 @@
+[package]
+name = "lactf2026-reflection-stage1-reorder"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+regex = "1.12.2"
+rustc-demangle = { path = "../rustc-demangle" }

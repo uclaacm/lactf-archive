@@ -1,0 +1,25 @@
+name: glotq
+author: bliutech
+description: |-
+  jq / yq / xq as a service!
+
+  {instancer}
+
+flag:
+  file: app/flag.txt
+
+provide:
+  - "glotq.zip"
+
+containers:
+  app:
+    build: app/.
+    ports:
+      - 8080
+
+expose:
+  app:
+    - target: 8080
+      http: glotq
+
+backend: instancer

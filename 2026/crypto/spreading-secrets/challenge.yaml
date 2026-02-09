@@ -1,0 +1,10 @@
+name: spreading-secrets
+author: AVDestroyer
+description: |-
+  I heard you like sharing secrets, so I shared my secret with the polynomial that shares the secret.
+
+flag:
+  file: flag.txt
+
+provide:
+  - chall.py

@@ -1,0 +1,27 @@
+name: ttyspin
+author: Red Guy
+description: |-
+  Ready for a classic, yet modern gaming experience?
+
+  `ssh -p {{port}} ttyspin@{{host}}` (password: `ttyspin`)
+
+  Note: if the game isn't working locally on linux, try running `export TERM=xterm-256color`
+
+flag:
+  file: flag.txt
+
+provide:
+  - app/board.py
+  - app/game.py
+
+containers:
+  main:
+    build: .
+    replicas: 3
+    ports:
+      - 2222
+
+expose:
+  main:
+    - target: 2222
+      tcp: 32123

@@ -1,0 +1,10 @@
+name: grammar
+author: k
+description: |-
+  Inspired by CS 131 Programming Languages, I decided to make a context-free grammar in EBNF for my flag! But it looks like some squirrels have eaten away at the parse tree...
+
+flag: "lactf{pr0fe55or_p4u1_eggert}"
+
+provide:
+  - ./grammar-notes.txt
+  - ./tree.png
