@@ -120,9 +120,9 @@ while remaining:
         tile = next(iter(remaining))
 
     r.sendline(b'1')
-    r.recvuntil(b': ')
+    #r.recvuntil(b': ')
     r.sendline(str(tile).encode())
-    r.recvuntil(b'> ')
+    #r.recvuntil(b'> ')
     swaps += 1
 
 log.info("Finished in %d swaps", swaps)
